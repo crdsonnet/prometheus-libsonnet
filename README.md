@@ -8,4 +8,4 @@ Go structs in Prometheus.
 
 ## Docs
 
-See docs to [configure](./prometheusConfig/docs/README.md).
+See docs to [configure](./docs/README.md).
