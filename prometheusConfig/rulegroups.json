@@ -64,16 +64,16 @@
     },
     "RuleGroup": {
       "properties": {
-        "Name": {
+        "name": {
           "type": "string"
         },
-        "Interval": {
+        "interval": {
           "type": "integer"
         },
-        "Limit": {
+        "limit": {
           "type": "integer"
         },
-        "Rules": {
+        "rules": {
           "items": {
             "$ref": "#/$defs/RuleNode"
           },
@@ -83,15 +83,13 @@
       "additionalProperties": false,
       "type": "object",
       "required": [
-        "Name",
-        "Interval",
-        "Limit",
-        "Rules"
+        "name",
+        "rules"
       ]
     },
     "RuleGroups": {
       "properties": {
-        "Groups": {
+        "groups": {
           "items": {
             "$ref": "#/$defs/RuleGroup"
           },
@@ -101,27 +99,27 @@
       "additionalProperties": false,
       "type": "object",
       "required": [
-        "Groups"
+        "groups"
       ]
     },
     "RuleNode": {
       "properties": {
-        "Record": {
+        "record": {
           "$ref": "#/$defs/Node"
         },
-        "Alert": {
+        "alert": {
           "$ref": "#/$defs/Node"
         },
-        "Expr": {
+        "expr": {
           "$ref": "#/$defs/Node"
         },
-        "For": {
+        "for": {
           "type": "integer"
         },
-        "KeepFiringFor": {
+        "keep_firing_for": {
           "type": "integer"
         },
-        "Labels": {
+        "labels": {
           "patternProperties": {
             ".*": {
               "type": "string"
@@ -129,7 +127,7 @@
           },
           "type": "object"
         },
-        "Annotations": {
+        "annotations": {
           "patternProperties": {
             ".*": {
               "type": "string"
@@ -141,13 +139,7 @@
       "additionalProperties": false,
       "type": "object",
       "required": [
-        "Record",
-        "Alert",
-        "Expr",
-        "For",
-        "KeepFiringFor",
-        "Labels",
-        "Annotations"
+        "expr"
       ]
     }
   }

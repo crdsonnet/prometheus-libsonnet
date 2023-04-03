@@ -53,3 +53,5 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+replace github.com/invopop/jsonschema v0.7.0 => github.com/mathewTH/jsonschema v0.0.0-20230105050639-da6de4ce9006

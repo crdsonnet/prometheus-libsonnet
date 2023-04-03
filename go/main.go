@@ -10,7 +10,9 @@ import (
 )
 
 func main() {
-	sconfig := jsonschema.Reflect(&config.Config{})
+    reflector := jsonschema.Reflector{}
+    reflector.FieldNameTag = "yaml"
+	sconfig := reflector.Reflect(&config.Config{})
 	config, err := json.MarshalIndent(sconfig, "", "  ")
 	if err != nil {
 		panic(err.Error())
@@ -20,14 +22,14 @@ func main() {
 		panic(err)
 	}
 
-	srule := jsonschema.Reflect(&rulefmt.Rule{})
-	rule, err := json.MarshalIndent(srule, "", "  ")
+	srulegroup := reflector.Reflect(&rulefmt.RuleGroups{})
+	rulegroup, err := json.MarshalIndent(srulegroup, "", "  ")
 	if err != nil {
 		panic(err.Error())
 	}
 
 
-	if err := os.WriteFile("rule.json", rule, 0666); err != nil {
+	if err := os.WriteFile("rulegroups.json", rulegroup, 0666); err != nil {
 		panic(err)
 	}
 }
