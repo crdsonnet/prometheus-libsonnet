@@ -85,7 +85,8 @@
       "required": [
         "name",
         "rules"
-      ]
+      ],
+      "description": "RuleGroup is a list of sequentially evaluated recording and alerting rules."
     },
     "RuleGroups": {
       "properties": {
@@ -100,7 +101,8 @@
       "type": "object",
       "required": [
         "groups"
-      ]
+      ],
+      "description": "RuleGroups is a set of rule groups that are typically exposed in a file."
     },
     "RuleNode": {
       "properties": {
@@ -140,7 +142,8 @@
       "type": "object",
       "required": [
         "expr"
-      ]
+      ],
+      "description": "RuleNode adds yaml.v3 layer to support line and column outputs for invalid rules."
     }
   }
 }

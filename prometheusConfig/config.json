@@ -7,7 +7,7 @@
       "properties": {
         "alert_relabel_configs": {
           "items": {
-            "$ref": "#/$defs/Config"
+            "$ref": "#/$defs/RelabelConfig"
           },
           "type": "array"
         },
@@ -16,7 +16,8 @@
         }
       },
       "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "description": "AlertingConfig configures alerting and alertmanager related configs."
     },
     "AlertmanagerConfig": {
       "properties": {
@@ -24,22 +25,27 @@
           "$ref": "#/$defs/HTTPClientConfig"
         },
         "scheme": {
-          "type": "string"
+          "type": "string",
+          "description": "The URL scheme to use when talking to Alertmanagers."
         },
         "path_prefix": {
-          "type": "string"
+          "type": "string",
+          "description": "Path prefix to add in front of the push endpoint path."
         },
         "timeout": {
-          "type": "integer"
+          "type": "integer",
+          "description": "The timeout used when sending alerts."
         },
         "api_version": {
-          "type": "string"
+          "type": "string",
+          "description": "The api version of Alertmanager."
         },
         "relabel_configs": {
           "items": {
-            "$ref": "#/$defs/Config"
+            "$ref": "#/$defs/RelabelConfig"
           },
-          "type": "array"
+          "type": "array",
+          "description": "List of Alertmanager relabel configurations."
         }
       },
       "additionalProperties": false,
@@ -47,13 +53,15 @@
       "required": [
         "HTTPClientConfig",
         "api_version"
-      ]
+      ],
+      "description": "AlertmanagerConfig configures how Alertmanagers can be discovered and communicated with."
     },
     "AlertmanagerConfigs": {
       "items": {
         "$ref": "#/$defs/AlertmanagerConfig"
       },
-      "type": "array"
+      "type": "array",
+      "description": "AlertmanagerConfigs is a slice of *AlertmanagerConfig."
     },
     "Authorization": {
       "properties": {
@@ -86,7 +94,8 @@
       "type": "object",
       "required": [
         "username"
-      ]
+      ],
+      "description": "BasicAuth contains basic HTTP authentication credentials."
     },
     "Config": {
       "properties": {
@@ -137,75 +146,96 @@
       "type": "object",
       "required": [
         "global"
-      ]
+      ],
+      "description": "Config is the top-level configuration for Prometheus's config files."
     },
     "ExemplarsConfig": {
       "properties": {
         "max_exemplars": {
-          "type": "integer"
+          "type": "integer",
+          "description": "MaxExemplars sets the size, in # of exemplars stored, of the single circular buffer used to store exemplars in memory.\nUse a value of 0 or less than 0 to disable the storage without having to restart Prometheus."
         }
       },
       "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "description": "ExemplarsConfig configures runtime reloadable configuration options."
     },
     "GlobalConfig": {
       "properties": {
         "scrape_interval": {
-          "type": "integer"
+          "type": "integer",
+          "description": "How frequently to scrape targets by default."
         },
         "scrape_timeout": {
-          "type": "integer"
+          "type": "integer",
+          "description": "The default timeout when scraping targets."
         },
         "evaluation_interval": {
-          "type": "integer"
+          "type": "integer",
+          "description": "How frequently to evaluate rules by default."
         },
         "query_log_file": {
-          "type": "string"
+          "type": "string",
+          "description": "File to which PromQL queries are logged."
         },
         "external_labels": {
-          "$ref": "#/$defs/Labels"
+          "$ref": "#/$defs/Labels",
+          "description": "The labels to add to any timeseries that this Prometheus instance scrapes."
         }
       },
       "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "description": "GlobalConfig configures values that are used across other configuration objects."
     },
     "HTTPClientConfig": {
       "properties": {
         "basic_auth": {
-          "$ref": "#/$defs/BasicAuth"
+          "$ref": "#/$defs/BasicAuth",
+          "description": "The HTTP basic authentication credentials for the targets."
         },
         "authorization": {
-          "$ref": "#/$defs/Authorization"
+          "$ref": "#/$defs/Authorization",
+          "description": "The HTTP authorization credentials for the targets."
         },
         "oauth2": {
-          "$ref": "#/$defs/OAuth2"
+          "$ref": "#/$defs/OAuth2",
+          "description": "The OAuth2 client credentials used to fetch a token for the targets."
         },
         "bearer_token": {
-          "type": "string"
+          "type": "string",
+          "description": "The bearer token for the targets. Deprecated in favour of\nAuthorization.Credentials."
         },
         "bearer_token_file": {
-          "type": "string"
+          "type": "string",
+          "description": "The bearer token file for the targets. Deprecated in favour of\nAuthorization.CredentialsFile."
         },
         "tls_config": {
-          "$ref": "#/$defs/TLSConfig"
+          "$ref": "#/$defs/TLSConfig",
+          "description": "TLSConfig to use to connect to the targets."
         },
         "follow_redirects": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "FollowRedirects specifies whether the client should follow HTTP 3xx redirects.\nThe omitempty flag is not set, because it would be hidden from the\nmarshalled configuration when set to false."
         },
         "enable_http2": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "EnableHTTP2 specifies whether the client should configure HTTP2.\nThe omitempty flag is not set, because it would be hidden from the\nmarshalled configuration when set to false."
         },
         "proxy_url": {
-          "$ref": "#/$defs/URL"
+          "$ref": "#/$defs/URL",
+          "description": "HTTP proxy server to use to connect to the targets."
         },
         "no_proxy": {
-          "type": "string"
+          "type": "string",
+          "description": "NoProxy contains addresses that should not use a proxy."
         },
         "proxy_from_environment": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function\nto determine proxies."
         },
         "proxy_connect_header": {
-          "$ref": "#/$defs/Header"
+          "$ref": "#/$defs/Header",
+          "description": "ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string."
         }
       },
       "additionalProperties": false,
@@ -213,7 +243,8 @@
       "required": [
         "follow_redirects",
         "enable_http2"
-      ]
+      ],
+      "description": "HTTPClientConfig configures an HTTP client."
     },
     "Header": {
       "patternProperties": {
@@ -240,7 +271,15 @@
       "required": [
         "Name",
         "Value"
-      ]
+      ],
+      "description": "Label is a key/value pair of strings."
+    },
+    "LabelNames": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "description": "LabelNames is a sortable LabelName slice."
     },
     "LabelSet": {
       "patternProperties": {
@@ -248,24 +287,29 @@
           "type": "string"
         }
       },
-      "type": "object"
+      "type": "object",
+      "description": "A LabelSet is a collection of LabelName and LabelValue pairs."
     },
     "Labels": {
       "items": {
         "$ref": "#/$defs/Label"
       },
-      "type": "array"
+      "type": "array",
+      "description": "Labels is implemented by a single flat string holding name/value pairs."
     },
     "MetadataConfig": {
       "properties": {
         "send": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Send controls whether we send metric metadata to remote storage."
         },
         "send_interval": {
-          "type": "integer"
+          "type": "integer",
+          "description": "SendInterval controls how frequently we send metric metadata."
         },
         "max_samples_per_send": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Maximum number of samples per send."
         }
       },
       "additionalProperties": false,
@@ -273,7 +317,8 @@
       "required": [
         "send",
         "send_interval"
-      ]
+      ],
+      "description": "MetadataConfig is the configuration for sending metadata to remote storage."
     },
     "OAuth2": {
       "properties": {
@@ -307,16 +352,20 @@
           "$ref": "#/$defs/TLSConfig"
         },
         "proxy_url": {
-          "$ref": "#/$defs/URL"
+          "$ref": "#/$defs/URL",
+          "description": "HTTP proxy server to use to connect to the targets."
         },
         "no_proxy": {
-          "type": "string"
+          "type": "string",
+          "description": "NoProxy contains addresses that should not use a proxy."
         },
         "proxy_from_environment": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function\nto determine proxies."
         },
         "proxy_connect_header": {
-          "$ref": "#/$defs/Header"
+          "$ref": "#/$defs/Header",
+          "description": "ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string."
         }
       },
       "additionalProperties": false,
@@ -326,27 +375,34 @@
         "client_secret",
         "client_secret_file",
         "token_url"
-      ]
+      ],
+      "description": "OAuth2 is the oauth2 client configuration."
     },
     "QueueConfig": {
       "properties": {
         "capacity": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Number of samples to buffer per shard before we block. Defaults to\nMaxSamplesPerSend."
         },
         "max_shards": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Max number of shards, i.e. amount of concurrency."
         },
         "min_shards": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Min number of shards, i.e. amount of concurrency."
         },
         "max_samples_per_send": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Maximum number of samples per send."
         },
         "batch_send_deadline": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Maximum time sample will wait in buffer."
         },
         "min_backoff": {
-          "type": "integer"
+          "type": "integer",
+          "description": "On recoverable errors, backoff exponentially."
         },
         "max_backoff": {
           "type": "integer"
@@ -356,7 +412,49 @@
         }
       },
       "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "description": "QueueConfig is the configuration for the queue used to write to remote storage."
+    },
+    "RelabelConfig": {
+      "properties": {
+        "source_labels": {
+          "$ref": "#/$defs/LabelNames",
+          "description": "A list of labels from which values are taken and concatenated\nwith the configured separator in order."
+        },
+        "separator": {
+          "type": "string",
+          "description": "Separator is the string between concatenated values from the source labels."
+        },
+        "regex": {
+          "$ref": "#/$defs/RelabelRegexp",
+          "description": "Regex against which the concatenation is matched."
+        },
+        "modulus": {
+          "type": "integer",
+          "description": "Modulus to take of the hash of concatenated values from the source labels."
+        },
+        "target_label": {
+          "type": "string",
+          "description": "TargetLabel is the label to which the resulting string is written in a replacement.\nRegexp interpolation is allowed for the replace action."
+        },
+        "replacement": {
+          "type": "string",
+          "description": "Replacement is the regex replacement pattern to be used."
+        },
+        "action": {
+          "type": "string",
+          "description": "Action is the action to be performed for the relabeling."
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "description": "Config is the configuration for relabeling of target label sets."
+    },
+    "RelabelRegexp": {
+      "properties": {},
+      "additionalProperties": false,
+      "type": "object",
+      "description": "Regexp encapsulates a regexp.Regexp and makes it YAML marshalable."
     },
     "RemoteReadConfig": {
       "properties": {
@@ -381,13 +479,16 @@
           "type": "string"
         },
         "HTTPClientConfig": {
-          "$ref": "#/$defs/HTTPClientConfig"
+          "$ref": "#/$defs/HTTPClientConfig",
+          "description": "We cannot do proper Go type embedding below as the parser will then parse\nvalues arbitrarily into the overflow maps of further-down types."
         },
         "required_matchers": {
-          "$ref": "#/$defs/LabelSet"
+          "$ref": "#/$defs/LabelSet",
+          "description": "RequiredMatchers is an optional list of equality matchers which have to\nbe present in a selector to query the remote read endpoint."
         },
         "filter_external_labels": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Whether to use the external labels as selectors for the remote read endpoint."
         }
       },
       "additionalProperties": false,
@@ -395,7 +496,8 @@
       "required": [
         "url",
         "HTTPClientConfig"
-      ]
+      ],
+      "description": "RemoteReadConfig is the configuration for reading from remote storage."
     },
     "RemoteWriteConfig": {
       "properties": {
@@ -415,7 +517,7 @@
         },
         "write_relabel_configs": {
           "items": {
-            "$ref": "#/$defs/Config"
+            "$ref": "#/$defs/RelabelConfig"
           },
           "type": "array"
         },
@@ -429,7 +531,8 @@
           "type": "boolean"
         },
         "HTTPClientConfig": {
-          "$ref": "#/$defs/HTTPClientConfig"
+          "$ref": "#/$defs/HTTPClientConfig",
+          "description": "We cannot do proper Go type embedding below as the parser will then parse\nvalues arbitrarily into the overflow maps of further-down types."
         },
         "queue_config": {
           "$ref": "#/$defs/QueueConfig"
@@ -446,66 +549,83 @@
       "required": [
         "url",
         "HTTPClientConfig"
-      ]
+      ],
+      "description": "RemoteWriteConfig is the configuration for writing to remote storage."
     },
     "ScrapeConfig": {
       "properties": {
         "job_name": {
-          "type": "string"
+          "type": "string",
+          "description": "The job name to which the job label is set by default."
         },
         "honor_labels": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Indicator whether the scraped metrics should remain unmodified."
         },
         "honor_timestamps": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Indicator whether the scraped timestamps should be respected."
         },
         "params": {
-          "$ref": "#/$defs/Values"
+          "$ref": "#/$defs/Values",
+          "description": "A set of query parameters with which the target is scraped."
         },
         "scrape_interval": {
-          "type": "integer"
+          "type": "integer",
+          "description": "How frequently to scrape the targets of this scrape config."
         },
         "scrape_timeout": {
-          "type": "integer"
+          "type": "integer",
+          "description": "The timeout for scraping targets of this config."
         },
         "metrics_path": {
-          "type": "string"
+          "type": "string",
+          "description": "The HTTP resource path on which to fetch metrics from targets."
         },
         "scheme": {
-          "type": "string"
+          "type": "string",
+          "description": "The URL scheme with which to fetch metrics from targets."
         },
         "body_size_limit": {
-          "type": "integer"
+          "type": "integer",
+          "description": "An uncompressed response body larger than this many bytes will cause the\nscrape to fail. 0 means no limit."
         },
         "sample_limit": {
-          "type": "integer"
+          "type": "integer",
+          "description": "More than this many samples post metric-relabeling will cause the scrape to\nfail."
         },
         "target_limit": {
-          "type": "integer"
+          "type": "integer",
+          "description": "More than this many targets after the target relabeling will cause the\nscrapes to fail."
         },
         "label_limit": {
-          "type": "integer"
+          "type": "integer",
+          "description": "More than this many labels post metric-relabeling will cause the scrape to\nfail."
         },
         "label_name_length_limit": {
-          "type": "integer"
+          "type": "integer",
+          "description": "More than this label name length post metric-relabeling will cause the\nscrape to fail."
         },
         "label_value_length_limit": {
-          "type": "integer"
+          "type": "integer",
+          "description": "More than this label value length post metric-relabeling will cause the\nscrape to fail."
         },
         "HTTPClientConfig": {
           "$ref": "#/$defs/HTTPClientConfig"
         },
         "relabel_configs": {
           "items": {
-            "$ref": "#/$defs/Config"
+            "$ref": "#/$defs/RelabelConfig"
           },
-          "type": "array"
+          "type": "array",
+          "description": "List of target relabel configurations."
         },
         "metric_relabel_configs": {
           "items": {
-            "$ref": "#/$defs/Config"
+            "$ref": "#/$defs/RelabelConfig"
           },
-          "type": "array"
+          "type": "array",
+          "description": "List of metric relabel configurations."
         }
       },
       "additionalProperties": false,
@@ -514,7 +634,8 @@
         "job_name",
         "honor_timestamps",
         "HTTPClientConfig"
-      ]
+      ],
+      "description": "ScrapeConfig configures a scraping unit for Prometheus."
     },
     "SigV4Config": {
       "properties": {
@@ -547,52 +668,64 @@
         }
       },
       "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "description": "StorageConfig configures runtime reloadable configuration options."
     },
     "TLSConfig": {
       "properties": {
         "ca_file": {
-          "type": "string"
+          "type": "string",
+          "description": "The CA cert to use for the targets."
         },
         "cert_file": {
-          "type": "string"
+          "type": "string",
+          "description": "The client cert file for the targets."
         },
         "key_file": {
-          "type": "string"
+          "type": "string",
+          "description": "The client key file for the targets."
         },
         "server_name": {
-          "type": "string"
+          "type": "string",
+          "description": "Used to verify the hostname for the targets."
         },
         "insecure_skip_verify": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Disable target certificate validation."
         },
         "min_version": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Minimum TLS version."
         },
         "max_version": {
-          "type": "integer"
+          "type": "integer",
+          "description": "Maximum TLS version."
         }
       },
       "additionalProperties": false,
       "type": "object",
       "required": [
         "insecure_skip_verify"
-      ]
+      ],
+      "description": "TLSConfig configures the options for TLS connections."
     },
     "TSDBConfig": {
       "properties": {
         "OutOfOrderTimeWindow": {
-          "type": "integer"
+          "type": "integer",
+          "description": "OutOfOrderTimeWindow sets how long back in time an out-of-order sample can be inserted\ninto the TSDB. This flag is typically set while unmarshaling the configuration file and translating\nOutOfOrderTimeWindowFlag's duration. The unit of this flag is expected to be the same as any\nother timestamp in the TSDB."
         },
         "out_of_order_time_window": {
-          "type": "integer"
+          "type": "integer",
+          "description": "OutOfOrderTimeWindowFlag holds the parsed duration from the config file.\nDuring unmarshall, this is converted into milliseconds and stored in OutOfOrderTimeWindow.\nThis should not be used directly and must be converted into OutOfOrderTimeWindow."
         }
       },
       "additionalProperties": false,
       "type": "object",
       "required": [
         "OutOfOrderTimeWindow"
-      ]
+      ],
+      "description": "TSDBConfig configures runtime reloadable configuration options."
     },
     "TracingConfig": {
       "properties": {
@@ -627,7 +760,8 @@
         }
       },
       "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "description": "TracingConfig configures the tracing options."
     },
     "URL": {
       "properties": {
@@ -679,7 +813,8 @@
         "RawQuery",
         "Fragment",
         "RawFragment"
-      ]
+      ],
+      "description": "URL is a custom URL type that allows validation at configuration load time."
     },
     "Userinfo": {
       "properties": {},
