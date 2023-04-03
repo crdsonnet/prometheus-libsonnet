@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/prometheus/prometheus/model/rulefmt/rule",
+  "$ref": "#/$defs/Rule",
+  "$defs": {
+    "Rule": {
+      "properties": {
+        "Record": {
+          "type": "string"
+        },
+        "Alert": {
+          "type": "string"
+        },
+        "Expr": {
+          "type": "string"
+        },
+        "For": {
+          "type": "integer"
+        },
+        "KeepFiringFor": {
+          "type": "integer"
+        },
+        "Labels": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "Annotations": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "Record",
+        "Alert",
+        "Expr",
+        "For",
+        "KeepFiringFor",
+        "Labels",
+        "Annotations"
+      ]
+    }
+  }
+}

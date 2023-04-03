@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/prometheus/prometheus/model/rulefmt/rule-groups",
+  "$ref": "#/$defs/RuleGroups",
+  "$defs": {
+    "Node": {
+      "properties": {
+        "Kind": {
+          "type": "integer"
+        },
+        "Style": {
+          "type": "integer"
+        },
+        "Tag": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        },
+        "Anchor": {
+          "type": "string"
+        },
+        "Alias": {
+          "$ref": "#/$defs/Node"
+        },
+        "Content": {
+          "items": {
+            "$ref": "#/$defs/Node"
+          },
+          "type": "array"
+        },
+        "HeadComment": {
+          "type": "string"
+        },
+        "LineComment": {
+          "type": "string"
+        },
+        "FootComment": {
+          "type": "string"
+        },
+        "Line": {
+          "type": "integer"
+        },
+        "Column": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "Kind",
+        "Style",
+        "Tag",
+        "Value",
+        "Anchor",
+        "Alias",
+        "Content",
+        "HeadComment",
+        "LineComment",
+        "FootComment",
+        "Line",
+        "Column"
+      ]
+    },
+    "RuleGroup": {
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Interval": {
+          "type": "integer"
+        },
+        "Limit": {
+          "type": "integer"
+        },
+        "Rules": {
+          "items": {
+            "$ref": "#/$defs/RuleNode"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "Name",
+        "Interval",
+        "Limit",
+        "Rules"
+      ]
+    },
+    "RuleGroups": {
+      "properties": {
+        "Groups": {
+          "items": {
+            "$ref": "#/$defs/RuleGroup"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "Groups"
+      ]
+    },
+    "RuleNode": {
+      "properties": {
+        "Record": {
+          "$ref": "#/$defs/Node"
+        },
+        "Alert": {
+          "$ref": "#/$defs/Node"
+        },
+        "Expr": {
+          "$ref": "#/$defs/Node"
+        },
+        "For": {
+          "type": "integer"
+        },
+        "KeepFiringFor": {
+          "type": "integer"
+        },
+        "Labels": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "Annotations": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "Record",
+        "Alert",
+        "Expr",
+        "For",
+        "KeepFiringFor",
+        "Labels",
+        "Annotations"
+      ]
+    }
+  }
+}

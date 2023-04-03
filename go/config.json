@@ -1,0 +1,804 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/prometheus/prometheus/config/config",
+  "$ref": "#/$defs/Config",
+  "$defs": {
+    "AlertingConfig": {
+      "properties": {
+        "AlertRelabelConfigs": {
+          "items": {
+            "$ref": "#/$defs/Config"
+          },
+          "type": "array"
+        },
+        "AlertmanagerConfigs": {
+          "$ref": "#/$defs/AlertmanagerConfigs"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "AlertRelabelConfigs",
+        "AlertmanagerConfigs"
+      ]
+    },
+    "AlertmanagerConfig": {
+      "properties": {
+        "ServiceDiscoveryConfigs": {
+          "$ref": "#/$defs/Configs"
+        },
+        "HTTPClientConfig": {
+          "$ref": "#/$defs/HTTPClientConfig"
+        },
+        "Scheme": {
+          "type": "string"
+        },
+        "PathPrefix": {
+          "type": "string"
+        },
+        "Timeout": {
+          "type": "integer"
+        },
+        "APIVersion": {
+          "type": "string"
+        },
+        "RelabelConfigs": {
+          "items": {
+            "$ref": "#/$defs/Config"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "ServiceDiscoveryConfigs",
+        "HTTPClientConfig",
+        "Scheme",
+        "PathPrefix",
+        "Timeout",
+        "APIVersion",
+        "RelabelConfigs"
+      ]
+    },
+    "AlertmanagerConfigs": {
+      "items": {
+        "$ref": "#/$defs/AlertmanagerConfig"
+      },
+      "type": "array"
+    },
+    "Authorization": {
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "credentials": {
+          "type": "string"
+        },
+        "credentials_file": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "BasicAuth": {
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "password_file": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "username"
+      ]
+    },
+    "Config": {
+      "properties": {
+        "GlobalConfig": {
+          "$ref": "#/$defs/GlobalConfig"
+        },
+        "AlertingConfig": {
+          "$ref": "#/$defs/AlertingConfig"
+        },
+        "RuleFiles": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "ScrapeConfigFiles": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "ScrapeConfigs": {
+          "items": {
+            "$ref": "#/$defs/ScrapeConfig"
+          },
+          "type": "array"
+        },
+        "StorageConfig": {
+          "$ref": "#/$defs/StorageConfig"
+        },
+        "TracingConfig": {
+          "$ref": "#/$defs/TracingConfig"
+        },
+        "RemoteWriteConfigs": {
+          "items": {
+            "$ref": "#/$defs/RemoteWriteConfig"
+          },
+          "type": "array"
+        },
+        "RemoteReadConfigs": {
+          "items": {
+            "$ref": "#/$defs/RemoteReadConfig"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "GlobalConfig",
+        "AlertingConfig",
+        "RuleFiles",
+        "ScrapeConfigFiles",
+        "ScrapeConfigs",
+        "StorageConfig",
+        "TracingConfig",
+        "RemoteWriteConfigs",
+        "RemoteReadConfigs"
+      ]
+    },
+    "Configs": {
+      "items": {
+        "$ref": "#/$defs/Config"
+      },
+      "type": "array"
+    },
+    "ExemplarsConfig": {
+      "properties": {
+        "MaxExemplars": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "MaxExemplars"
+      ]
+    },
+    "GlobalConfig": {
+      "properties": {
+        "ScrapeInterval": {
+          "type": "integer"
+        },
+        "ScrapeTimeout": {
+          "type": "integer"
+        },
+        "EvaluationInterval": {
+          "type": "integer"
+        },
+        "QueryLogFile": {
+          "type": "string"
+        },
+        "ExternalLabels": {
+          "$ref": "#/$defs/Labels"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "ScrapeInterval",
+        "ScrapeTimeout",
+        "EvaluationInterval",
+        "QueryLogFile",
+        "ExternalLabels"
+      ]
+    },
+    "HTTPClientConfig": {
+      "properties": {
+        "basic_auth": {
+          "$ref": "#/$defs/BasicAuth"
+        },
+        "authorization": {
+          "$ref": "#/$defs/Authorization"
+        },
+        "oauth2": {
+          "$ref": "#/$defs/OAuth2"
+        },
+        "bearer_token": {
+          "type": "string"
+        },
+        "bearer_token_file": {
+          "type": "string"
+        },
+        "tls_config": {
+          "$ref": "#/$defs/TLSConfig"
+        },
+        "follow_redirects": {
+          "type": "boolean"
+        },
+        "enable_http2": {
+          "type": "boolean"
+        },
+        "proxy_url": {
+          "$ref": "#/$defs/URL"
+        },
+        "no_proxy": {
+          "type": "string"
+        },
+        "proxy_from_environment": {
+          "type": "boolean"
+        },
+        "proxy_connect_header": {
+          "$ref": "#/$defs/Header"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "follow_redirects",
+        "enable_http2"
+      ]
+    },
+    "Header": {
+      "patternProperties": {
+        ".*": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "Label": {
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "Name",
+        "Value"
+      ]
+    },
+    "LabelSet": {
+      "patternProperties": {
+        ".*": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Labels": {
+      "items": {
+        "$ref": "#/$defs/Label"
+      },
+      "type": "array"
+    },
+    "MetadataConfig": {
+      "properties": {
+        "Send": {
+          "type": "boolean"
+        },
+        "SendInterval": {
+          "type": "integer"
+        },
+        "MaxSamplesPerSend": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "Send",
+        "SendInterval",
+        "MaxSamplesPerSend"
+      ]
+    },
+    "OAuth2": {
+      "properties": {
+        "client_id": {
+          "type": "string"
+        },
+        "client_secret": {
+          "type": "string"
+        },
+        "client_secret_file": {
+          "type": "string"
+        },
+        "scopes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "token_url": {
+          "type": "string"
+        },
+        "endpoint_params": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "TLSConfig": {
+          "$ref": "#/$defs/TLSConfig"
+        },
+        "proxy_url": {
+          "$ref": "#/$defs/URL"
+        },
+        "no_proxy": {
+          "type": "string"
+        },
+        "proxy_from_environment": {
+          "type": "boolean"
+        },
+        "proxy_connect_header": {
+          "$ref": "#/$defs/Header"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "client_id",
+        "client_secret",
+        "client_secret_file",
+        "token_url",
+        "TLSConfig"
+      ]
+    },
+    "QueueConfig": {
+      "properties": {
+        "Capacity": {
+          "type": "integer"
+        },
+        "MaxShards": {
+          "type": "integer"
+        },
+        "MinShards": {
+          "type": "integer"
+        },
+        "MaxSamplesPerSend": {
+          "type": "integer"
+        },
+        "BatchSendDeadline": {
+          "type": "integer"
+        },
+        "MinBackoff": {
+          "type": "integer"
+        },
+        "MaxBackoff": {
+          "type": "integer"
+        },
+        "RetryOnRateLimit": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "Capacity",
+        "MaxShards",
+        "MinShards",
+        "MaxSamplesPerSend",
+        "BatchSendDeadline",
+        "MinBackoff",
+        "MaxBackoff",
+        "RetryOnRateLimit"
+      ]
+    },
+    "RemoteReadConfig": {
+      "properties": {
+        "URL": {
+          "$ref": "#/$defs/URL"
+        },
+        "RemoteTimeout": {
+          "type": "integer"
+        },
+        "Headers": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "ReadRecent": {
+          "type": "boolean"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "HTTPClientConfig": {
+          "$ref": "#/$defs/HTTPClientConfig"
+        },
+        "RequiredMatchers": {
+          "$ref": "#/$defs/LabelSet"
+        },
+        "FilterExternalLabels": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "URL",
+        "RemoteTimeout",
+        "Headers",
+        "ReadRecent",
+        "Name",
+        "HTTPClientConfig",
+        "RequiredMatchers",
+        "FilterExternalLabels"
+      ]
+    },
+    "RemoteWriteConfig": {
+      "properties": {
+        "URL": {
+          "$ref": "#/$defs/URL"
+        },
+        "RemoteTimeout": {
+          "type": "integer"
+        },
+        "Headers": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "WriteRelabelConfigs": {
+          "items": {
+            "$ref": "#/$defs/Config"
+          },
+          "type": "array"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "SendExemplars": {
+          "type": "boolean"
+        },
+        "SendNativeHistograms": {
+          "type": "boolean"
+        },
+        "HTTPClientConfig": {
+          "$ref": "#/$defs/HTTPClientConfig"
+        },
+        "QueueConfig": {
+          "$ref": "#/$defs/QueueConfig"
+        },
+        "MetadataConfig": {
+          "$ref": "#/$defs/MetadataConfig"
+        },
+        "SigV4Config": {
+          "$ref": "#/$defs/SigV4Config"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "URL",
+        "RemoteTimeout",
+        "Headers",
+        "WriteRelabelConfigs",
+        "Name",
+        "SendExemplars",
+        "SendNativeHistograms",
+        "HTTPClientConfig",
+        "QueueConfig",
+        "MetadataConfig",
+        "SigV4Config"
+      ]
+    },
+    "ScrapeConfig": {
+      "properties": {
+        "JobName": {
+          "type": "string"
+        },
+        "HonorLabels": {
+          "type": "boolean"
+        },
+        "HonorTimestamps": {
+          "type": "boolean"
+        },
+        "Params": {
+          "$ref": "#/$defs/Values"
+        },
+        "ScrapeInterval": {
+          "type": "integer"
+        },
+        "ScrapeTimeout": {
+          "type": "integer"
+        },
+        "MetricsPath": {
+          "type": "string"
+        },
+        "Scheme": {
+          "type": "string"
+        },
+        "BodySizeLimit": {
+          "type": "integer"
+        },
+        "SampleLimit": {
+          "type": "integer"
+        },
+        "TargetLimit": {
+          "type": "integer"
+        },
+        "LabelLimit": {
+          "type": "integer"
+        },
+        "LabelNameLengthLimit": {
+          "type": "integer"
+        },
+        "LabelValueLengthLimit": {
+          "type": "integer"
+        },
+        "ServiceDiscoveryConfigs": {
+          "$ref": "#/$defs/Configs"
+        },
+        "HTTPClientConfig": {
+          "$ref": "#/$defs/HTTPClientConfig"
+        },
+        "RelabelConfigs": {
+          "items": {
+            "$ref": "#/$defs/Config"
+          },
+          "type": "array"
+        },
+        "MetricRelabelConfigs": {
+          "items": {
+            "$ref": "#/$defs/Config"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "JobName",
+        "HonorLabels",
+        "HonorTimestamps",
+        "Params",
+        "ScrapeInterval",
+        "ScrapeTimeout",
+        "MetricsPath",
+        "Scheme",
+        "BodySizeLimit",
+        "SampleLimit",
+        "TargetLimit",
+        "LabelLimit",
+        "LabelNameLengthLimit",
+        "LabelValueLengthLimit",
+        "ServiceDiscoveryConfigs",
+        "HTTPClientConfig",
+        "RelabelConfigs",
+        "MetricRelabelConfigs"
+      ]
+    },
+    "SigV4Config": {
+      "properties": {
+        "Region": {
+          "type": "string"
+        },
+        "AccessKey": {
+          "type": "string"
+        },
+        "SecretKey": {
+          "type": "string"
+        },
+        "Profile": {
+          "type": "string"
+        },
+        "RoleARN": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "Region",
+        "AccessKey",
+        "SecretKey",
+        "Profile",
+        "RoleARN"
+      ]
+    },
+    "StorageConfig": {
+      "properties": {
+        "TSDBConfig": {
+          "$ref": "#/$defs/TSDBConfig"
+        },
+        "ExemplarsConfig": {
+          "$ref": "#/$defs/ExemplarsConfig"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "TSDBConfig",
+        "ExemplarsConfig"
+      ]
+    },
+    "TLSConfig": {
+      "properties": {
+        "ca_file": {
+          "type": "string"
+        },
+        "cert_file": {
+          "type": "string"
+        },
+        "key_file": {
+          "type": "string"
+        },
+        "server_name": {
+          "type": "string"
+        },
+        "insecure_skip_verify": {
+          "type": "boolean"
+        },
+        "min_version": {
+          "type": "integer"
+        },
+        "max_version": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "insecure_skip_verify"
+      ]
+    },
+    "TSDBConfig": {
+      "properties": {
+        "OutOfOrderTimeWindow": {
+          "type": "integer"
+        },
+        "OutOfOrderTimeWindowFlag": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "OutOfOrderTimeWindow",
+        "OutOfOrderTimeWindowFlag"
+      ]
+    },
+    "TracingConfig": {
+      "properties": {
+        "ClientType": {
+          "type": "string"
+        },
+        "Endpoint": {
+          "type": "string"
+        },
+        "SamplingFraction": {
+          "type": "number"
+        },
+        "Insecure": {
+          "type": "boolean"
+        },
+        "TLSConfig": {
+          "$ref": "#/$defs/TLSConfig"
+        },
+        "Headers": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "Compression": {
+          "type": "string"
+        },
+        "Timeout": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "ClientType",
+        "Endpoint",
+        "SamplingFraction",
+        "Insecure",
+        "TLSConfig",
+        "Headers",
+        "Compression",
+        "Timeout"
+      ]
+    },
+    "URL": {
+      "properties": {
+        "Scheme": {
+          "type": "string"
+        },
+        "Opaque": {
+          "type": "string"
+        },
+        "User": {
+          "$ref": "#/$defs/Userinfo"
+        },
+        "Host": {
+          "type": "string"
+        },
+        "Path": {
+          "type": "string"
+        },
+        "RawPath": {
+          "type": "string"
+        },
+        "OmitHost": {
+          "type": "boolean"
+        },
+        "ForceQuery": {
+          "type": "boolean"
+        },
+        "RawQuery": {
+          "type": "string"
+        },
+        "Fragment": {
+          "type": "string"
+        },
+        "RawFragment": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "Scheme",
+        "Opaque",
+        "User",
+        "Host",
+        "Path",
+        "RawPath",
+        "OmitHost",
+        "ForceQuery",
+        "RawQuery",
+        "Fragment",
+        "RawFragment"
+      ]
+    },
+    "Userinfo": {
+      "properties": {},
+      "additionalProperties": false,
+      "type": "object"
+    },
+    "Values": {
+      "patternProperties": {
+        ".*": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
