@@ -1,6 +1,24 @@
-# rule_roups
+# prometheusRules
+
+`prometheusRules` can generate recording rules and alerts for
+[prometheus](https://github.com/prometheus/prometheus).
+
+Additional information about the configuration options can be found in the
+[official](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/)
+[docs](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/).
 
 
+## Install
+
+```
+jb install github.com/crdsonnet/prometheus-libsonnet/prometheusRules@master
+```
+
+## Usage
+
+```jsonnet
+local prometheusRules = import "github.com/crdsonnet/prometheus-libsonnet/prometheusRules/main.libsonnet"
+```
 
 ## Index
 

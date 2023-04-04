@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$ref": "#/$defs/RuleGroups",
+  "$defs": {
+    "Rule": {
+      "properties": {
+        "record": {
+          "type": "string"
+        },
+        "alert": {
+          "type": "string"
+        },
+        "expr": {
+          "type": "string"
+        },
+        "for": {
+          "type": "integer"
+        },
+        "keep_firing_for": {
+          "type": "integer"
+        },
+        "labels": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "annotations": {
+          "patternProperties": {
+            ".*": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "expr"
+      ],
+      "description": "Rule describes an alerting or recording rule."
+    },
+    "RuleGroup": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "interval": {
+          "type": "integer"
+        },
+        "limit": {
+          "type": "integer"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/$defs/Rule"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "name",
+        "rules"
+      ],
+      "description": "RuleGroup is a list of sequentially evaluated recording and alerting rules."
+    },
+    "RuleGroups": {
+      "properties": {
+        "groups": {
+          "items": {
+            "$ref": "#/$defs/RuleGroup"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "groups"
+      ],
+      "description": "RuleGroups is a set of rule groups that are typically exposed in a file."
+    }
+  }
+}

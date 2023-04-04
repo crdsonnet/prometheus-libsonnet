@@ -6,15 +6,15 @@ local render = 'dynamic';
 local schema = import './schema.json';
 
 local parsed = crdsonnet.fromSchema(
-  'prometheusConfig',
+  'prometheusRules',
   schema,
   render=render
 );
 
 (
   if render == 'dynamic'
-  then parsed.prometheusConfig
-  else parsed + '.prometheusConfig'
+  then parsed.prometheusRules
+  else parsed + '.prometheusRules'
 )
 + (
   if render == 'dynamic'
@@ -27,21 +27,18 @@ local parsed = crdsonnet.fromSchema(
     {
       '#'::
         d.pkg(
-          name='prometheusConfig',
-          url='github.com/crdsonnet/prometheus-libsonnet/prometheusConfig',
+          name='prometheusRules',
+          url='github.com/crdsonnet/prometheus-libsonnet/prometheusRules',
           help=|||
-            `prometheusConfig` can generate config for [prometheus](https://github.com/prometheus/prometheus).
+            `prometheusRules` can generate recording rules and alerts for
+            [prometheus](https://github.com/prometheus/prometheus).
 
             Additional information about the configuration options can be found in the
-            [official docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/).
+            [official](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/)
+            [docs](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/).
           |||,
           filename=std.thisFile,
         ),
-    } + {
-      [key]+:
-        { '#':: d.package.newSub(key, '') }
-      for key in std.objectFields(parsed.prometheusConfig)
-      if std.isObject(parsed.prometheusConfig[key])
     }
   else ''  // don't bother with docs for static rendering
 )
