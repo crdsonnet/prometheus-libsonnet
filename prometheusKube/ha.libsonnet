@@ -1,3 +1,4 @@
+local prometheusConfig = import 'github.com/crdsonnet/prometheus-libsonnet/prometheusConfig/main.libsonnet';
 local k = import 'github.com/grafana/jsonnet-libs/ksonnet-util/kausal.libsonnet';
 local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
 
@@ -9,29 +10,21 @@ function(replicas=2) {
   // The '__replica__' label is used by Cortex for deduplication.
   // We add a different one to each HA replica but remove it from
   // alerts to not break deduplication of alerts in the Alertmanager.
-  config+: {
-    alerting+: {
-      alert_relabel_configs+: [
-        {
-          regex: '__replica__',
-          action: 'labeldrop',
-        },
-      ],
-    },
-  },
+  config+:
+    prometheusConfig.alerting.withAlertRelabelConfigsMixin([
+      prometheusConfig.alerting.alert_relabel_configs.withRegex('__replica__')
+      + prometheusConfig.alerting.alert_relabel_configs.withAction('labeldrop'),
+    ]),
 
   local configMap = k.core.v1.configMap,
   config_map+:
     configMap.withData({
       ['%s-%s.yml' % [this.name, i]]:
         k.util.manifestYaml(
-          this.config {
-            global+: {
-              external_labels+: {
-                __replica__: this.name + '-' + i,
-              },
-            },
-          }
+          this.config
+          + prometheusConfig.global.withExternalLabelsMixin(
+            { __replica__: this.name + '-' + i }
+          )
         )
       for i in std.range(0, replicas - 1)
     }),

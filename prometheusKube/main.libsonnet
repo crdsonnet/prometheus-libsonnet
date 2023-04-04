@@ -1,4 +1,5 @@
 // Library based on https://github.com/grafana/jsonnet-libs/tree/master/prometheus
+local prometheusConfig = import 'github.com/crdsonnet/prometheus-libsonnet/prometheusConfig/main.libsonnet';
 local k = import 'github.com/grafana/jsonnet-libs/ksonnet-util/kausal.libsonnet';
 local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
 
@@ -18,11 +19,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
     path:: '/prometheus/',
     config_path:: '/etc/prometheus',
     config_file:: 'prometheus.yml',
-    config:: {
-      global: {
-        scrape_interval: '15s',
-      },
-    },
+    config: prometheusConfig.global.withScrapeInterval('15s'),
 
     local configMap = k.core.v1.configMap,
     config_map:
