@@ -1,9 +1,42 @@
-// Library based on https://github.com/grafana/jsonnet-libs/tree/master/prometheus
 local prometheusConfig = import 'github.com/crdsonnet/prometheus-libsonnet/prometheusConfig/main.libsonnet';
 local k = import 'github.com/grafana/jsonnet-libs/ksonnet-util/kausal.libsonnet';
 local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
 
 {
+  '#'::
+    d.pkg(
+      name='prometheusKube',
+      url='github.com/crdsonnet/prometheus-libsonnet/prometheusKube',
+      help=|||
+        `prometheusKube` provides the manifests to configure Prometheus instances on
+        Kubernetes.
+
+        This library is based on https://github.com/grafana/jsonnet-libs/tree/master/prometheus
+      |||,
+      filename=std.thisFile,
+    )
+    + d.package.withUsageTemplate(|||
+      local %(name)s = import "%(import)s";
+
+      %(name)s.new()
+    |||),
+
+  '#new'::
+    d.func.new(
+      |||
+        `new` initializes a Prometheus instance.
+
+        The `namespace` argument is required to properly configure RBAC.
+      |||,
+      args=[
+        d.arg('namespace', d.T.string),
+        d.arg('name', d.T.string, default='prometheus'),
+        d.arg('image', d.T.string, default='prom/prometheus:v2.43.0'),
+        d.arg('watchImage', d.T.string, default='weaveworks/watch:master-0c44bf6'),
+        d.arg('port', d.T.number, default=9093),
+        d.arg('pvcStorage', d.T.string, default='300Gi'),
+      ]
+    ),
   new(
     namespace,
     name='prometheus',
@@ -139,6 +172,15 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       ]),
   },
 
+  '#withEnabledFeatures'::
+    d.func.new(
+      |||
+        `withEnabledFeatures` turns on a list of feature flags.
+      |||,
+      args=[
+        d.arg('features', d.T.array),
+      ]
+    ),
   withEnabledFeatures(features): {
     container+:
       k.core.v1.container.withArgsMixin(
@@ -149,14 +191,15 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
   '#withExternalUrl'::
     d.func.new(
       |||
-        `withExternalUrl` configures the external URL through which this 
+        `withExternalUrl` configures the external URL through which this instance will be
+        reachable.
 
         Example:
 
         ```jsonnet
-        alertmanagerKube.new()
-        + alertmanagerKube.withExternalUrl(
-          'http://alertmanager.%s.svc.%s' % [
+        prometheusKube.new()
+        + prometheusKube.withExternalUrl(
+          'http://prometheus.%s.svc.%s' % [
             namespace,
             dnsSuffix,
           ]
@@ -167,7 +210,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         d.arg('config', d.T.object),
       ]
     ),
-  withExternalUrl(hostname, path='/alertmanager/'): {
+  withExternalUrl(hostname, path='/prometheus/'): {
     path:: path,
 
     local container = k.core.v1.container,
@@ -180,9 +223,36 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       ]),
   },
 
+  '#withHighAvailability'::
+    d.func.new(
+      |||
+        `withHighAvailability` will configure the right properties to run multiple
+        Prometheus instances in a high availability setup.
+      |||,
+      args=[
+        d.arg('replicas', d.T.number, default=2),
+      ]
+    ),
   withHighAvailability(replicas=2): (import './ha.libsonnet')(replicas=2),
 
+  '#withMixins'::
+    d.func.new(
+      |||
+        `withMixins` will create configMaps and configure Prometheus with the given
+        'Monitoring mixin'.
+      |||,
+      args=[
+        d.arg('replicas', d.T.number, default=2),
+      ]
+    ),
   withMixins(mixins): (import './mixins.libsonnet')(mixins),
 
+  '#withCoreMixin'::
+    d.func.new(
+      |||
+        `withCoreMixin` will add a small mixin with alerts to monitor the health of
+        Prometheus scrapes.
+      |||,
+    ),
   withCoreMixin(): self.withMixins(import './coreMixin.libsonnet'),
 }
