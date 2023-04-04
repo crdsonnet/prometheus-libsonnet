@@ -9,12 +9,14 @@ import (
 
 	"github.com/iancoleman/strcase"
 	"github.com/invopop/jsonschema"
+	"github.com/prometheus/common/model"
 	"github.com/prometheus/prometheus/config"
 	"github.com/prometheus/prometheus/model/rulefmt"
 )
 
 func main() {
 	reflector := jsonschema.Reflector{}
+
 	if err := reflector.AddGoComments("github.com/prometheus", "./prometheus/config"); err != nil {
 		fmt.Println(err)
 	}
@@ -27,6 +29,10 @@ func main() {
 	if err := reflector.AddGoComments("github.com/prometheus", "./common/config"); err != nil {
 		fmt.Println(err)
 	}
+	if err := reflector.AddGoComments("main", "./"); err != nil {
+		fmt.Println(err)
+	}
+
 	reflector.Namer = func(t reflect.Type) string {
 		if t.PkgPath() != "" && t.PkgPath() != reflect.TypeOf(config.Config{}).PkgPath() {
 			prefix := ""
@@ -38,6 +44,7 @@ func main() {
 		}
 		return t.Name()
 	}
+
 	reflector.FieldNameTag = "yaml"
 	sconfig := reflector.Reflect(&config.Config{})
 	config, err := json.MarshalIndent(sconfig, "", "  ")
@@ -49,7 +56,22 @@ func main() {
 		panic(err)
 	}
 
-	srulegroup := reflector.Reflect(&rulefmt.RuleGroups{})
+	// Reconstruct RuleGroup to avoid yaml.Node in rulefmt.RuleNode
+
+	// RuleGroup is a list of sequentially evaluated recording and alerting rules.
+	type RuleGroup struct {
+		Name     string         `yaml:"name"`
+		Interval model.Duration `yaml:"interval,omitempty"`
+		Limit    int            `yaml:"limit,omitempty"`
+		Rules    []rulefmt.Rule `yaml:"rules"`
+	}
+
+	// RuleGroups is a set of rule groups that are typically exposed in a file.
+	type RuleGroups struct {
+		Groups []RuleGroup `yaml:"groups"`
+	}
+
+	srulegroup := reflector.Reflect(&RuleGroups{})
 	rulegroup, err := json.MarshalIndent(srulegroup, "", "  ")
 	if err != nil {
 		panic(err.Error())

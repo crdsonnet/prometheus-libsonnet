@@ -1,119 +1,17 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/prometheus/prometheus/model/rulefmt/rule-groups",
   "$ref": "#/$defs/RuleGroups",
   "$defs": {
-    "Node": {
-      "properties": {
-        "Kind": {
-          "type": "integer"
-        },
-        "Style": {
-          "type": "integer"
-        },
-        "Tag": {
-          "type": "string"
-        },
-        "Value": {
-          "type": "string"
-        },
-        "Anchor": {
-          "type": "string"
-        },
-        "Alias": {
-          "$ref": "#/$defs/Node"
-        },
-        "Content": {
-          "items": {
-            "$ref": "#/$defs/Node"
-          },
-          "type": "array"
-        },
-        "HeadComment": {
-          "type": "string"
-        },
-        "LineComment": {
-          "type": "string"
-        },
-        "FootComment": {
-          "type": "string"
-        },
-        "Line": {
-          "type": "integer"
-        },
-        "Column": {
-          "type": "integer"
-        }
-      },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "Kind",
-        "Style",
-        "Tag",
-        "Value",
-        "Anchor",
-        "Alias",
-        "Content",
-        "HeadComment",
-        "LineComment",
-        "FootComment",
-        "Line",
-        "Column"
-      ]
-    },
-    "RuleGroup": {
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "interval": {
-          "type": "integer"
-        },
-        "limit": {
-          "type": "integer"
-        },
-        "rules": {
-          "items": {
-            "$ref": "#/$defs/RuleNode"
-          },
-          "type": "array"
-        }
-      },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "name",
-        "rules"
-      ],
-      "description": "RuleGroup is a list of sequentially evaluated recording and alerting rules."
-    },
-    "RuleGroups": {
-      "properties": {
-        "groups": {
-          "items": {
-            "$ref": "#/$defs/RuleGroup"
-          },
-          "type": "array"
-        }
-      },
-      "additionalProperties": false,
-      "type": "object",
-      "required": [
-        "groups"
-      ],
-      "description": "RuleGroups is a set of rule groups that are typically exposed in a file."
-    },
-    "RuleNode": {
+    "Rule": {
       "properties": {
         "record": {
-          "$ref": "#/$defs/Node"
+          "type": "string"
         },
         "alert": {
-          "$ref": "#/$defs/Node"
+          "type": "string"
         },
         "expr": {
-          "$ref": "#/$defs/Node"
+          "type": "string"
         },
         "for": {
           "type": "integer"
@@ -143,7 +41,49 @@
       "required": [
         "expr"
       ],
-      "description": "RuleNode adds yaml.v3 layer to support line and column outputs for invalid rules."
+      "description": "Rule describes an alerting or recording rule."
+    },
+    "RuleGroup": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "interval": {
+          "type": "integer"
+        },
+        "limit": {
+          "type": "integer"
+        },
+        "rules": {
+          "items": {
+            "$ref": "#/$defs/Rule"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "name",
+        "rules"
+      ],
+      "description": "RuleGroup is a list of sequentially evaluated recording and alerting rules."
+    },
+    "RuleGroups": {
+      "properties": {
+        "groups": {
+          "items": {
+            "$ref": "#/$defs/RuleGroup"
+          },
+          "type": "array"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "groups"
+      ],
+      "description": "RuleGroups is a set of rule groups that are typically exposed in a file."
     }
   }
 }

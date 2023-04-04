@@ -24,6 +24,7 @@ local prometheusConfig = import "github.com/crdsonnet/prometheus-libsonnet/prome
 * [global](prometheusConfig/global.md)
 * [remote_read](prometheusConfig/remote_read.md)
 * [remote_write](prometheusConfig/remote_write.md)
+* [rule_roups](prometheusConfig/rule_roups.md)
 * [scrape_configs](prometheusConfig/scrape_configs.md)
 * [storage](prometheusConfig/storage.md)
 * [tracing](prometheusConfig/tracing.md)

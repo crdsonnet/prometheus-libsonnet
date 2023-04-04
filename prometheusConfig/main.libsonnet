@@ -1,15 +1,24 @@
 local crdsonnet = import 'github.com/Duologic/crdsonnet/crdsonnet/main.libsonnet';
 local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
 
-local schema = import './config.json';
-
 local render = 'dynamic';
+
+local schema = import './config.json';
 
 local parsed = crdsonnet.fromSchema(
   'prometheusConfig',
   schema,
   render=render
 );
+
+local ruleschema = import './rulegroups.json';
+
+local ruleparsed = crdsonnet.fromSchema(
+  'ruleGroups',
+  ruleschema,
+  render=render
+);
+
 
 (
   if render == 'dynamic'
@@ -42,6 +51,19 @@ local parsed = crdsonnet.fromSchema(
         { '#':: d.package.newSub(key, '') }
       for key in std.objectFields(parsed.prometheusConfig)
       if std.isObject(parsed.prometheusConfig[key])
+    } + {
+      rule_groups: (
+        if render == 'dynamic'
+        then ruleparsed.ruleGroups
+             {
+          '#'::
+            d.package.newSub(
+              name='rule_roups',
+              help='',
+            ),
+        }
+        else ruleparsed + '.ruleGroups'
+      ),
     }
   else ''  // don't bother with docs for static rendering
 )
