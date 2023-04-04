@@ -19,7 +19,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
     path:: '/prometheus/',
     config_path:: '/etc/prometheus',
     config_file:: 'prometheus.yml',
-    config: prometheusConfig.global.withScrapeInterval('15s'),
+    config:: prometheusConfig.global.withScrapeInterval('15s'),
 
     local configMap = k.core.v1.configMap,
     config_map:
