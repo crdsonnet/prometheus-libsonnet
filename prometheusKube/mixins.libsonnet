@@ -11,7 +11,7 @@ function(mixins) {
     prometheusRules+:: {},
   },
 
-  mixin_data:: [
+  local mixin_data = [
     local mixin = mixins[mixinName] + emptyMixin;
     local prometheusAlerts = mixin.prometheusAlerts;
     local prometheusRules = mixin.prometheusRules;
@@ -31,14 +31,14 @@ function(mixins) {
   config_maps_mixins+: [
     configMap.new(mixin.configmapName)
     + configMap.withData(mixin.files)
-    for mixin in this.mixin_data
+    for mixin in mixin_data
     if mixin.hasFiles
   ],
 
   config+: {
     rule_files+: std.reverse(std.sort([
       '%s/%s' % [mixin.path, file]
-      for mixin in this.mixin_data
+      for mixin in mixin_data
       for file in std.objectFields(mixin.files)
     ])),
   },
@@ -50,7 +50,7 @@ function(mixins) {
         if mixin.hasFiles
         then k.util.configVolumeMount(mixin.configmapName, mixin.path)
         else {},
-      this.mixin_data,
+      mixin_data,
       {}
     ),
 }
