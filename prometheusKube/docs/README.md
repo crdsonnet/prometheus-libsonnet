@@ -52,8 +52,7 @@ The `namespace` argument is required to properly configure RBAC.
 withAlertmanagers()
 ```
 
-`withAlertmanagers` will add a small mixin with alerts to monitor the health of
-Prometheus scrapes.
+`withAlertmanagers` configures prometheus with an array of alertmanager.
 
 
 ### fn withCoreMixin

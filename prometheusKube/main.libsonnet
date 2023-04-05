@@ -259,8 +259,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
   '#withAlertmanagers'::
     d.func.new(
       |||
-        `withAlertmanagers` will add a small mixin with alerts to monitor the health of
-        Prometheus scrapes.
+        `withAlertmanagers` configures prometheus with an array of alertmanager.
       |||,
     ),
   withAlertmanagers(alertmanagers): {
