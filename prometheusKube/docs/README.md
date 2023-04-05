@@ -24,7 +24,7 @@ prometheusKube.new()
 ## Index
 
 * [`fn new(namespace, name='prometheus', image='prom/prometheus:v2.43.0', watchImage='weaveworks/watch:master-0c44bf6', port=9093, pvcStorage='300Gi')`](#fn-new)
-* [`fn withAlertmanagers()`](#fn-withalertmanagers)
+* [`fn withAlertmanagers(alertmanagers)`](#fn-withalertmanagers)
 * [`fn withCoreMixin()`](#fn-withcoremixin)
 * [`fn withEnabledFeatures(features)`](#fn-withenabledfeatures)
 * [`fn withExternalUrl(config)`](#fn-withexternalurl)
@@ -49,7 +49,7 @@ The `namespace` argument is required to properly configure RBAC.
 ### fn withAlertmanagers
 
 ```ts
-withAlertmanagers()
+withAlertmanagers(alertmanagers)
 ```
 
 `withAlertmanagers` configures prometheus with an array of alertmanager.

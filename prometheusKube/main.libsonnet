@@ -261,6 +261,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       |||
         `withAlertmanagers` configures prometheus with an array of alertmanager.
       |||,
+      args=[d.arg('alertmanagers', d.T.array)],
     ),
   withAlertmanagers(alertmanagers): {
     config+: prometheusConfig.alerting.withAlertmanagers(alertmanagers),
