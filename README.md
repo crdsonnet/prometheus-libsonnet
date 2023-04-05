@@ -11,4 +11,4 @@ curated.
 
 See docs to [configure](./prometheusConfig/docs/README.md), write
 [rules](./prometheusRules/docs/README.md) and
-[install](./alertmanagerKube/docs/README.md).
+[install](./prometheusKube/docs/README.md).
