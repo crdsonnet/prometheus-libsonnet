@@ -242,7 +242,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         'Monitoring mixin'.
       |||,
       args=[
-        d.arg('replicas', d.T.number, default=2),
+        d.arg('mixins', d.T.object),
       ]
     ),
   withMixins(mixins): (import './mixins.libsonnet')(mixins),
@@ -255,4 +255,17 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       |||,
     ),
   withCoreMixin(): self.withMixins(import './coreMixin.libsonnet'),
+
+  '#withAlertmanagers'::
+    d.func.new(
+      |||
+        `withAlertmanagers` will add a small mixin with alerts to monitor the health of
+        Prometheus scrapes.
+      |||,
+    ),
+  withAlertmanagers(alertmanagers): {
+    config+: prometheusConfig.alerting.withAlertmanagers(alertmanagers),
+  },
+
+  util: (import './util.libsonnet'),
 }

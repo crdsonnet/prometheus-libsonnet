@@ -24,11 +24,14 @@ prometheusKube.new()
 ## Index
 
 * [`fn new(namespace, name='prometheus', image='prom/prometheus:v2.43.0', watchImage='weaveworks/watch:master-0c44bf6', port=9093, pvcStorage='300Gi')`](#fn-new)
+* [`fn withAlertmanagers()`](#fn-withalertmanagers)
 * [`fn withCoreMixin()`](#fn-withcoremixin)
 * [`fn withEnabledFeatures(features)`](#fn-withenabledfeatures)
 * [`fn withExternalUrl(config)`](#fn-withexternalurl)
 * [`fn withHighAvailability(replicas=2)`](#fn-withhighavailability)
-* [`fn withMixins(replicas=2)`](#fn-withmixins)
+* [`fn withMixins(mixins)`](#fn-withmixins)
+* [`obj util`](#obj-util)
+  * [`fn buildAlertmanagers()`](#fn-utilbuildalertmanagers)
 
 ## Fields
 
@@ -41,6 +44,16 @@ new(namespace, name='prometheus', image='prom/prometheus:v2.43.0', watchImage='w
 `new` initializes a Prometheus instance.
 
 The `namespace` argument is required to properly configure RBAC.
+
+
+### fn withAlertmanagers
+
+```ts
+withAlertmanagers()
+```
+
+`withAlertmanagers` will add a small mixin with alerts to monitor the health of
+Prometheus scrapes.
 
 
 ### fn withCoreMixin
@@ -97,9 +110,58 @@ Prometheus instances in a high availability setup.
 ### fn withMixins
 
 ```ts
-withMixins(replicas=2)
+withMixins(mixins)
 ```
 
 `withMixins` will create configMaps and configure Prometheus with the given
 'Monitoring mixin'.
+
+
+### obj util
+
+
+#### fn util.buildAlertmanagers
+
+```ts
+buildAlertmanagers()
+```
+
+`buildAlertmanagers` constructs an array of alertmanager configurations for
+prometheus. It is intended to work with [`buildPeers`](https://github.com/crdsonnet/alertmanager-libsonnet/blob/master/alertmanagerKube/docs/README.md#fn-utilbuildpeers)
+in the alertmanager-libsonnet to provide one global alertmanager über-cluster
+spread over multiple kubernetes clusters. This requires all those clusters to have
+inter-cluster network connectivity.
+
+`cluster_name` in the object below has 2 functions:
+1. Prometheus will prefer looking up the alertmanagers through k8s service
+   discovery if the alertmanager is running in the same cluster, this will be done
+   by comparing `cluster_name`.
+2. If the `cluster_name` does not match, then this will be used to construct the
+   URLs to the alertmanager pods to fill the static_configs.
+
+Example `alertmanagers` object:
+
+```jsonnet
+alertmanagers: {
+  alertmanager_name: {
+    // path prefix where the alertmanager is running
+    path: '/alertmanager/',
+
+    // for service discovery and global static config
+    namespace: 'alertmanager',
+    port: 9093,
+
+    // `global` is set to 'true' if the alertmanager is participating in the global alertmanager über-cluster
+    global: true,
+
+    // for global static config
+    replicas: 2,
+    cluster_name: 'us-central1',
+    cluster_dns_tld: 'local.',
+
+    // used by `buildPeers` in addition to fields above
+    gossip_port: 9094,
+  },
+}
+```
 
