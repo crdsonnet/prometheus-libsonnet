@@ -4,7 +4,7 @@ schemas:
 		ln -sfn $$GOPATH/pkg/mod/github.com/prometheus/common@v0.42.0 go/common && \
 		cd go && go run . && \
 		mv config.json ../prometheusConfig/schema.json && \
-		mv rulegroups.json ../prometheusConfig/schema.json
+		mv rulegroups.json ../prometheusRules/schema.json
 
 .PHONY: docs
 docs:
