@@ -31,7 +31,7 @@ prometheusKube.new()
 * [`fn withHighAvailability(replicas=2)`](#fn-withhighavailability)
 * [`fn withMixins(mixins)`](#fn-withmixins)
 * [`obj util`](#obj-util)
-  * [`fn buildAlertmanagers()`](#fn-utilbuildalertmanagers)
+  * [`fn buildAlertmanagers(alertmanagers, cluster_name)`](#fn-utilbuildalertmanagers)
 
 ## Fields
 
@@ -123,7 +123,7 @@ withMixins(mixins)
 #### fn util.buildAlertmanagers
 
 ```ts
-buildAlertmanagers()
+buildAlertmanagers(alertmanagers, cluster_name)
 ```
 
 `buildAlertmanagers` constructs an array of alertmanager configurations for

@@ -48,6 +48,10 @@ local relabelConfig = prometheusConfig.alerting.alertmanagers.relabel_configs;
         }
         ```
       |||,
+      args=[
+        d.arg('alertmanagers', d.T.object),
+        d.arg('cluster_name', d.T.string),
+      ],
     ),
   buildAlertmanagers(alertmanagers, cluster_name): [
     local alertmanager = alertmanagers[am];
