@@ -25,12 +25,15 @@ local prometheusRules = import "github.com/crdsonnet/prometheus-libsonnet/promet
 * [`fn withGroups(value)`](#fn-withgroups)
 * [`fn withGroupsMixin(value)`](#fn-withgroupsmixin)
 * [`obj group`](#obj-group)
+  * [`fn new(name, rules)`](#fn-groupnew)
   * [`fn withInterval(value)`](#fn-groupwithinterval)
   * [`fn withLimit(value)`](#fn-groupwithlimit)
   * [`fn withName(value)`](#fn-groupwithname)
   * [`fn withRules(value)`](#fn-groupwithrules)
   * [`fn withRulesMixin(value)`](#fn-groupwithrulesmixin)
 * [`obj rule`](#obj-rule)
+  * [`fn newAlert(name, expr)`](#fn-rulenewalert)
+  * [`fn newRule(name, expr)`](#fn-rulenewrule)
   * [`fn withAlert(value)`](#fn-rulewithalert)
   * [`fn withAnnotations(value)`](#fn-rulewithannotations)
   * [`fn withAnnotationsMixin(value)`](#fn-rulewithannotationsmixin)
@@ -60,6 +63,15 @@ withGroupsMixin(value)
 
 
 ### obj group
+
+
+#### fn group.new
+
+```ts
+new(name, rules)
+```
+
+`new` creates a new rule group.
 
 
 #### fn group.withInterval
@@ -103,6 +115,24 @@ withRulesMixin(value)
 
 
 ### obj rule
+
+
+#### fn rule.newAlert
+
+```ts
+newAlert(name, expr)
+```
+
+`newAlert` creates a new alert.
+
+
+#### fn rule.newRule
+
+```ts
+newRule(name, expr)
+```
+
+`newRule` creates a new recording rule.
 
 
 #### fn rule.withAlert
