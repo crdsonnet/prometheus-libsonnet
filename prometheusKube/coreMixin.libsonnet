@@ -1,12 +1,12 @@
 local prometheusRules = import 'github.com/crdsonnet/prometheus-libsonnet/prometheusRules/main.libsonnet';
-local rule = prometheusRules.groups.rules;
+local rule = prometheusRules.rule;
 
 {
   core: {
     prometheusAlerts+:
       prometheusRules.withGroupsMixin([
-        prometheusRules.groups.withName('prometheus-extra')
-        + prometheusRules.groups.withRules([
+        prometheusRules.group.withName('prometheus-extra')
+        + prometheusRules.group.withRules([
           rule.withAlert('PromScrapeFailed')
           + rule.withExpr('up != 1')
           + rule.withFor('15m')

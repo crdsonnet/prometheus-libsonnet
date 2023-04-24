@@ -39,6 +39,14 @@ local parsed = crdsonnet.fromSchema(
           |||,
           filename=std.thisFile,
         ),
+
+      // Expose as non-plural version, easier to read
+      groups: null,
+      group:
+        super.groups
+        + { rules: null },
+      // Expose one level lower for easier access
+      rule: super.groups.rules,
     }
   else ''  // don't bother with docs for static rendering
 )

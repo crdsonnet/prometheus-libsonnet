@@ -24,22 +24,22 @@ local prometheusRules = import "github.com/crdsonnet/prometheus-libsonnet/promet
 
 * [`fn withGroups(value)`](#fn-withgroups)
 * [`fn withGroupsMixin(value)`](#fn-withgroupsmixin)
-* [`obj groups`](#obj-groups)
-  * [`fn withInterval(value)`](#fn-groupswithinterval)
-  * [`fn withLimit(value)`](#fn-groupswithlimit)
-  * [`fn withName(value)`](#fn-groupswithname)
-  * [`fn withRules(value)`](#fn-groupswithrules)
-  * [`fn withRulesMixin(value)`](#fn-groupswithrulesmixin)
-  * [`obj rules`](#obj-groupsrules)
-    * [`fn withAlert(value)`](#fn-groupsruleswithalert)
-    * [`fn withAnnotations(value)`](#fn-groupsruleswithannotations)
-    * [`fn withAnnotationsMixin(value)`](#fn-groupsruleswithannotationsmixin)
-    * [`fn withExpr(value)`](#fn-groupsruleswithexpr)
-    * [`fn withFor(value)`](#fn-groupsruleswithfor)
-    * [`fn withKeepFiringFor(value)`](#fn-groupsruleswithkeepfiringfor)
-    * [`fn withLabels(value)`](#fn-groupsruleswithlabels)
-    * [`fn withLabelsMixin(value)`](#fn-groupsruleswithlabelsmixin)
-    * [`fn withRecord(value)`](#fn-groupsruleswithrecord)
+* [`obj group`](#obj-group)
+  * [`fn withInterval(value)`](#fn-groupwithinterval)
+  * [`fn withLimit(value)`](#fn-groupwithlimit)
+  * [`fn withName(value)`](#fn-groupwithname)
+  * [`fn withRules(value)`](#fn-groupwithrules)
+  * [`fn withRulesMixin(value)`](#fn-groupwithrulesmixin)
+* [`obj rule`](#obj-rule)
+  * [`fn withAlert(value)`](#fn-rulewithalert)
+  * [`fn withAnnotations(value)`](#fn-rulewithannotations)
+  * [`fn withAnnotationsMixin(value)`](#fn-rulewithannotationsmixin)
+  * [`fn withExpr(value)`](#fn-rulewithexpr)
+  * [`fn withFor(value)`](#fn-rulewithfor)
+  * [`fn withKeepFiringFor(value)`](#fn-rulewithkeepfiringfor)
+  * [`fn withLabels(value)`](#fn-rulewithlabels)
+  * [`fn withLabelsMixin(value)`](#fn-rulewithlabelsmixin)
+  * [`fn withRecord(value)`](#fn-rulewithrecord)
 
 ## Fields
 
@@ -59,10 +59,10 @@ withGroupsMixin(value)
 
 
 
-### obj groups
+### obj group
 
 
-#### fn groups.withInterval
+#### fn group.withInterval
 
 ```ts
 withInterval(value)
@@ -70,7 +70,7 @@ withInterval(value)
 
 
 
-#### fn groups.withLimit
+#### fn group.withLimit
 
 ```ts
 withLimit(value)
@@ -78,7 +78,7 @@ withLimit(value)
 
 
 
-#### fn groups.withName
+#### fn group.withName
 
 ```ts
 withName(value)
@@ -86,7 +86,7 @@ withName(value)
 
 
 
-#### fn groups.withRules
+#### fn group.withRules
 
 ```ts
 withRules(value)
@@ -94,7 +94,7 @@ withRules(value)
 
 
 
-#### fn groups.withRulesMixin
+#### fn group.withRulesMixin
 
 ```ts
 withRulesMixin(value)
@@ -102,10 +102,10 @@ withRulesMixin(value)
 
 
 
-#### obj groups.rules
+### obj rule
 
 
-##### fn groups.rules.withAlert
+#### fn rule.withAlert
 
 ```ts
 withAlert(value)
@@ -113,7 +113,7 @@ withAlert(value)
 
 
 
-##### fn groups.rules.withAnnotations
+#### fn rule.withAnnotations
 
 ```ts
 withAnnotations(value)
@@ -121,7 +121,7 @@ withAnnotations(value)
 
 
 
-##### fn groups.rules.withAnnotationsMixin
+#### fn rule.withAnnotationsMixin
 
 ```ts
 withAnnotationsMixin(value)
@@ -129,7 +129,7 @@ withAnnotationsMixin(value)
 
 
 
-##### fn groups.rules.withExpr
+#### fn rule.withExpr
 
 ```ts
 withExpr(value)
@@ -137,7 +137,7 @@ withExpr(value)
 
 
 
-##### fn groups.rules.withFor
+#### fn rule.withFor
 
 ```ts
 withFor(value)
@@ -145,7 +145,7 @@ withFor(value)
 
 
 
-##### fn groups.rules.withKeepFiringFor
+#### fn rule.withKeepFiringFor
 
 ```ts
 withKeepFiringFor(value)
@@ -153,7 +153,7 @@ withKeepFiringFor(value)
 
 
 
-##### fn groups.rules.withLabels
+#### fn rule.withLabels
 
 ```ts
 withLabels(value)
@@ -161,7 +161,7 @@ withLabels(value)
 
 
 
-##### fn groups.rules.withLabelsMixin
+#### fn rule.withLabelsMixin
 
 ```ts
 withLabelsMixin(value)
@@ -169,7 +169,7 @@ withLabelsMixin(value)
 
 
 
-##### fn groups.rules.withRecord
+#### fn rule.withRecord
 
 ```ts
 withRecord(value)
