@@ -5,7 +5,6 @@ Kubernetes.
 
 This library is based on https://github.com/grafana/jsonnet-libs/tree/master/prometheus
 
-
 ## Install
 
 ```
@@ -21,9 +20,10 @@ prometheusKube.new()
 
 ```
 
+
 ## Index
 
-* [`fn new(namespace, name='prometheus', image='prom/prometheus:v2.43.0', watchImage='weaveworks/watch:master-0c44bf6', port=9093, pvcStorage='300Gi')`](#fn-new)
+* [`fn new(namespace, name="prometheus", image="prom/prometheus:v2.43.0", watchImage="weaveworks/watch:master-0c44bf6", port=9093, pvcStorage="300Gi")`](#fn-new)
 * [`fn withAlertmanagers(alertmanagers)`](#fn-withalertmanagers)
 * [`fn withCoreMixin()`](#fn-withcoremixin)
 * [`fn withEnabledFeatures(features)`](#fn-withenabledfeatures)
@@ -37,48 +37,71 @@ prometheusKube.new()
 
 ### fn new
 
-```ts
-new(namespace, name='prometheus', image='prom/prometheus:v2.43.0', watchImage='weaveworks/watch:master-0c44bf6', port=9093, pvcStorage='300Gi')
+```jsonnet
+new(namespace, name="prometheus", image="prom/prometheus:v2.43.0", watchImage="weaveworks/watch:master-0c44bf6", port=9093, pvcStorage="300Gi")
 ```
+
+PARAMETERS:
+
+* **namespace** (`string`)
+* **name** (`string`)
+   - default value: `"prometheus"`
+* **image** (`string`)
+   - default value: `"prom/prometheus:v2.43.0"`
+* **watchImage** (`string`)
+   - default value: `"weaveworks/watch:master-0c44bf6"`
+* **port** (`number`)
+   - default value: `9093`
+* **pvcStorage** (`string`)
+   - default value: `"300Gi"`
 
 `new` initializes a Prometheus instance.
 
 The `namespace` argument is required to properly configure RBAC.
 
-
 ### fn withAlertmanagers
 
-```ts
+```jsonnet
 withAlertmanagers(alertmanagers)
 ```
 
-`withAlertmanagers` configures prometheus with an array of alertmanager.
+PARAMETERS:
 
+* **alertmanagers** (`array`)
+
+`withAlertmanagers` configures prometheus with an array of alertmanager.
 
 ### fn withCoreMixin
 
-```ts
+```jsonnet
 withCoreMixin()
 ```
+
 
 `withCoreMixin` will add a small mixin with alerts to monitor the health of
 Prometheus scrapes.
 
-
 ### fn withEnabledFeatures
 
-```ts
+```jsonnet
 withEnabledFeatures(features)
 ```
 
-`withEnabledFeatures` turns on a list of feature flags.
+PARAMETERS:
 
+* **features** (`array`)
+
+`withEnabledFeatures` turns on a list of feature flags.
 
 ### fn withExternalUrl
 
-```ts
+```jsonnet
 withExternalUrl(config)
 ```
+
+PARAMETERS:
+
+* **config** (`object`)
 
 `withExternalUrl` configures the external URL through which this instance will be
 reachable.
@@ -95,35 +118,46 @@ prometheusKube.new()
 )
 ```
 
-
 ### fn withHighAvailability
 
-```ts
+```jsonnet
 withHighAvailability(replicas=2)
 ```
+
+PARAMETERS:
+
+* **replicas** (`number`)
+   - default value: `2`
 
 `withHighAvailability` will configure the right properties to run multiple
 Prometheus instances in a high availability setup.
 
-
 ### fn withMixins
 
-```ts
+```jsonnet
 withMixins(mixins)
 ```
 
+PARAMETERS:
+
+* **mixins** (`object`)
+
 `withMixins` will create configMaps and configure Prometheus with the given
 'Monitoring mixin'.
-
 
 ### obj util
 
 
 #### fn util.buildAlertmanagers
 
-```ts
-buildAlertmanagers(alertmanagers, cluster_name)
+```jsonnet
+util.buildAlertmanagers(alertmanagers, cluster_name)
 ```
+
+PARAMETERS:
+
+* **alertmanagers** (`object`)
+* **cluster_name** (`string`)
 
 `buildAlertmanagers` constructs an array of alertmanager configurations for
 prometheus. It is intended to work with [`buildPeers`](https://github.com/crdsonnet/alertmanager-libsonnet/blob/master/alertmanagerKube/docs/README.md#fn-utilbuildpeers)
@@ -163,4 +197,3 @@ alertmanagers: {
   },
 }
 ```
-
