@@ -3,9 +3,8 @@
 This project provides a jsonnet library for configuring
 [prometheus](https://github.com/prometheus/prometheus) and installing it on Kubernetes.
 
-The prometheusConfig and prometheusRules libraries are generated at runtime from JSON
-schemas derived from the Go structs in Prometheus. The prometheusKube library is manually
-curated.
+The prometheusConfig and prometheusRules libraries are generated from JSON schemas derived
+from the Go structs in Prometheus. The prometheusKube library is manually curated.
 
 ## Docs
 
