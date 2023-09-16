@@ -9,7 +9,7 @@
 * [`fn withEndpoint(value)`](#fn-withendpoint)
 * [`fn withHeaders(value)`](#fn-withheaders)
 * [`fn withHeadersMixin(value)`](#fn-withheadersmixin)
-* [`fn withInsecure(value)`](#fn-withinsecure)
+* [`fn withInsecure(value=true)`](#fn-withinsecure)
 * [`fn withSamplingFraction(value)`](#fn-withsamplingfraction)
 * [`fn withTimeout(value)`](#fn-withtimeout)
 * [`fn withTlsConfig(value)`](#fn-withtlsconfig)
@@ -17,7 +17,7 @@
 * [`obj tls_config`](#obj-tls_config)
   * [`fn withCaFile(value)`](#fn-tls_configwithcafile)
   * [`fn withCertFile(value)`](#fn-tls_configwithcertfile)
-  * [`fn withInsecureSkipVerify(value)`](#fn-tls_configwithinsecureskipverify)
+  * [`fn withInsecureSkipVerify(value=true)`](#fn-tls_configwithinsecureskipverify)
   * [`fn withKeyFile(value)`](#fn-tls_configwithkeyfile)
   * [`fn withMaxVersion(value)`](#fn-tls_configwithmaxversion)
   * [`fn withMinVersion(value)`](#fn-tls_configwithminversion)
@@ -68,7 +68,7 @@ withHeadersMixin(value)
 ### fn withInsecure
 
 ```ts
-withInsecure(value)
+withInsecure(value=true)
 ```
 
 
@@ -127,7 +127,7 @@ The client cert file for the targets.
 #### fn tls_config.withInsecureSkipVerify
 
 ```ts
-withInsecureSkipVerify(value)
+withInsecureSkipVerify(value=true)
 ```
 
 Disable target certificate validation.

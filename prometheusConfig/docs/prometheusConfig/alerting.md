@@ -34,14 +34,14 @@
     * [`fn withBasicAuthMixin(value)`](#fn-alertmanagershttpclientconfigwithbasicauthmixin)
     * [`fn withBearerToken(value)`](#fn-alertmanagershttpclientconfigwithbearertoken)
     * [`fn withBearerTokenFile(value)`](#fn-alertmanagershttpclientconfigwithbearertokenfile)
-    * [`fn withEnableHttp2(value)`](#fn-alertmanagershttpclientconfigwithenablehttp2)
-    * [`fn withFollowRedirects(value)`](#fn-alertmanagershttpclientconfigwithfollowredirects)
+    * [`fn withEnableHttp2(value=true)`](#fn-alertmanagershttpclientconfigwithenablehttp2)
+    * [`fn withFollowRedirects(value=true)`](#fn-alertmanagershttpclientconfigwithfollowredirects)
     * [`fn withNoProxy(value)`](#fn-alertmanagershttpclientconfigwithnoproxy)
     * [`fn withOauth2(value)`](#fn-alertmanagershttpclientconfigwithoauth2)
     * [`fn withOauth2Mixin(value)`](#fn-alertmanagershttpclientconfigwithoauth2mixin)
     * [`fn withProxyConnectHeader(value)`](#fn-alertmanagershttpclientconfigwithproxyconnectheader)
     * [`fn withProxyConnectHeaderMixin(value)`](#fn-alertmanagershttpclientconfigwithproxyconnectheadermixin)
-    * [`fn withProxyFromEnvironment(value)`](#fn-alertmanagershttpclientconfigwithproxyfromenvironment)
+    * [`fn withProxyFromEnvironment(value=true)`](#fn-alertmanagershttpclientconfigwithproxyfromenvironment)
     * [`fn withProxyUrl(value)`](#fn-alertmanagershttpclientconfigwithproxyurl)
     * [`fn withProxyUrlMixin(value)`](#fn-alertmanagershttpclientconfigwithproxyurlmixin)
     * [`fn withTlsConfig(value)`](#fn-alertmanagershttpclientconfigwithtlsconfig)
@@ -63,7 +63,7 @@
       * [`fn withNoProxy(value)`](#fn-alertmanagershttpclientconfigoauth2withnoproxy)
       * [`fn withProxyConnectHeader(value)`](#fn-alertmanagershttpclientconfigoauth2withproxyconnectheader)
       * [`fn withProxyConnectHeaderMixin(value)`](#fn-alertmanagershttpclientconfigoauth2withproxyconnectheadermixin)
-      * [`fn withProxyFromEnvironment(value)`](#fn-alertmanagershttpclientconfigoauth2withproxyfromenvironment)
+      * [`fn withProxyFromEnvironment(value=true)`](#fn-alertmanagershttpclientconfigoauth2withproxyfromenvironment)
       * [`fn withProxyUrl(value)`](#fn-alertmanagershttpclientconfigoauth2withproxyurl)
       * [`fn withProxyUrlMixin(value)`](#fn-alertmanagershttpclientconfigoauth2withproxyurlmixin)
       * [`fn withScopes(value)`](#fn-alertmanagershttpclientconfigoauth2withscopes)
@@ -72,10 +72,10 @@
       * [`fn withTlsConfigMixin(value)`](#fn-alertmanagershttpclientconfigoauth2withtlsconfigmixin)
       * [`fn withTokenUrl(value)`](#fn-alertmanagershttpclientconfigoauth2withtokenurl)
       * [`obj proxy_url`](#obj-alertmanagershttpclientconfigoauth2proxy_url)
-        * [`fn withForceQuery(value)`](#fn-alertmanagershttpclientconfigoauth2proxy_urlwithforcequery)
+        * [`fn withForceQuery(value=true)`](#fn-alertmanagershttpclientconfigoauth2proxy_urlwithforcequery)
         * [`fn withFragment(value)`](#fn-alertmanagershttpclientconfigoauth2proxy_urlwithfragment)
         * [`fn withHost(value)`](#fn-alertmanagershttpclientconfigoauth2proxy_urlwithhost)
-        * [`fn withOmitHost(value)`](#fn-alertmanagershttpclientconfigoauth2proxy_urlwithomithost)
+        * [`fn withOmitHost(value=true)`](#fn-alertmanagershttpclientconfigoauth2proxy_urlwithomithost)
         * [`fn withOpaque(value)`](#fn-alertmanagershttpclientconfigoauth2proxy_urlwithopaque)
         * [`fn withPath(value)`](#fn-alertmanagershttpclientconfigoauth2proxy_urlwithpath)
         * [`fn withRawFragment(value)`](#fn-alertmanagershttpclientconfigoauth2proxy_urlwithrawfragment)
@@ -87,16 +87,16 @@
       * [`obj tls_config`](#obj-alertmanagershttpclientconfigoauth2tls_config)
         * [`fn withCaFile(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithcafile)
         * [`fn withCertFile(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithcertfile)
-        * [`fn withInsecureSkipVerify(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithinsecureskipverify)
+        * [`fn withInsecureSkipVerify(value=true)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithinsecureskipverify)
         * [`fn withKeyFile(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithkeyfile)
         * [`fn withMaxVersion(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithmaxversion)
         * [`fn withMinVersion(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithminversion)
         * [`fn withServerName(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithservername)
     * [`obj proxy_url`](#obj-alertmanagershttpclientconfigproxy_url)
-      * [`fn withForceQuery(value)`](#fn-alertmanagershttpclientconfigproxy_urlwithforcequery)
+      * [`fn withForceQuery(value=true)`](#fn-alertmanagershttpclientconfigproxy_urlwithforcequery)
       * [`fn withFragment(value)`](#fn-alertmanagershttpclientconfigproxy_urlwithfragment)
       * [`fn withHost(value)`](#fn-alertmanagershttpclientconfigproxy_urlwithhost)
-      * [`fn withOmitHost(value)`](#fn-alertmanagershttpclientconfigproxy_urlwithomithost)
+      * [`fn withOmitHost(value=true)`](#fn-alertmanagershttpclientconfigproxy_urlwithomithost)
       * [`fn withOpaque(value)`](#fn-alertmanagershttpclientconfigproxy_urlwithopaque)
       * [`fn withPath(value)`](#fn-alertmanagershttpclientconfigproxy_urlwithpath)
       * [`fn withRawFragment(value)`](#fn-alertmanagershttpclientconfigproxy_urlwithrawfragment)
@@ -108,7 +108,7 @@
     * [`obj tls_config`](#obj-alertmanagershttpclientconfigtls_config)
       * [`fn withCaFile(value)`](#fn-alertmanagershttpclientconfigtls_configwithcafile)
       * [`fn withCertFile(value)`](#fn-alertmanagershttpclientconfigtls_configwithcertfile)
-      * [`fn withInsecureSkipVerify(value)`](#fn-alertmanagershttpclientconfigtls_configwithinsecureskipverify)
+      * [`fn withInsecureSkipVerify(value=true)`](#fn-alertmanagershttpclientconfigtls_configwithinsecureskipverify)
       * [`fn withKeyFile(value)`](#fn-alertmanagershttpclientconfigtls_configwithkeyfile)
       * [`fn withMaxVersion(value)`](#fn-alertmanagershttpclientconfigtls_configwithmaxversion)
       * [`fn withMinVersion(value)`](#fn-alertmanagershttpclientconfigtls_configwithminversion)
@@ -357,7 +357,7 @@ Authorization.CredentialsFile.
 ##### fn alertmanagers.HTTPClientConfig.withEnableHttp2
 
 ```ts
-withEnableHttp2(value)
+withEnableHttp2(value=true)
 ```
 
 EnableHTTP2 specifies whether the client should configure HTTP2.
@@ -367,7 +367,7 @@ marshalled configuration when set to false.
 ##### fn alertmanagers.HTTPClientConfig.withFollowRedirects
 
 ```ts
-withFollowRedirects(value)
+withFollowRedirects(value=true)
 ```
 
 FollowRedirects specifies whether the client should follow HTTP 3xx redirects.
@@ -417,7 +417,7 @@ withProxyConnectHeaderMixin(value)
 ##### fn alertmanagers.HTTPClientConfig.withProxyFromEnvironment
 
 ```ts
-withProxyFromEnvironment(value)
+withProxyFromEnvironment(value=true)
 ```
 
 ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function
@@ -579,7 +579,7 @@ withProxyConnectHeaderMixin(value)
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withProxyFromEnvironment
 
 ```ts
-withProxyFromEnvironment(value)
+withProxyFromEnvironment(value=true)
 ```
 
 ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function
@@ -647,7 +647,7 @@ withTokenUrl(value)
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withForceQuery
 
 ```ts
-withForceQuery(value)
+withForceQuery(value=true)
 ```
 
 
@@ -671,7 +671,7 @@ withHost(value)
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withOmitHost
 
 ```ts
-withOmitHost(value)
+withOmitHost(value=true)
 ```
 
 
@@ -762,7 +762,7 @@ The client cert file for the targets.
 ####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withInsecureSkipVerify
 
 ```ts
-withInsecureSkipVerify(value)
+withInsecureSkipVerify(value=true)
 ```
 
 Disable target certificate validation.
@@ -805,7 +805,7 @@ Used to verify the hostname for the targets.
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withForceQuery
 
 ```ts
-withForceQuery(value)
+withForceQuery(value=true)
 ```
 
 
@@ -829,7 +829,7 @@ withHost(value)
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withOmitHost
 
 ```ts
-withOmitHost(value)
+withOmitHost(value=true)
 ```
 
 
@@ -920,7 +920,7 @@ The client cert file for the targets.
 ###### fn alertmanagers.HTTPClientConfig.tls_config.withInsecureSkipVerify
 
 ```ts
-withInsecureSkipVerify(value)
+withInsecureSkipVerify(value=true)
 ```
 
 Disable target certificate validation.

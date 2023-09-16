@@ -14,8 +14,8 @@
 * [`fn withQueueConfig(value)`](#fn-withqueueconfig)
 * [`fn withQueueConfigMixin(value)`](#fn-withqueueconfigmixin)
 * [`fn withRemoteTimeout(value)`](#fn-withremotetimeout)
-* [`fn withSendExemplars(value)`](#fn-withsendexemplars)
-* [`fn withSendNativeHistograms(value)`](#fn-withsendnativehistograms)
+* [`fn withSendExemplars(value=true)`](#fn-withsendexemplars)
+* [`fn withSendNativeHistograms(value=true)`](#fn-withsendnativehistograms)
 * [`fn withSigv4(value)`](#fn-withsigv4)
 * [`fn withSigv4Mixin(value)`](#fn-withsigv4mixin)
 * [`fn withUrl(value)`](#fn-withurl)
@@ -29,14 +29,14 @@
   * [`fn withBasicAuthMixin(value)`](#fn-httpclientconfigwithbasicauthmixin)
   * [`fn withBearerToken(value)`](#fn-httpclientconfigwithbearertoken)
   * [`fn withBearerTokenFile(value)`](#fn-httpclientconfigwithbearertokenfile)
-  * [`fn withEnableHttp2(value)`](#fn-httpclientconfigwithenablehttp2)
-  * [`fn withFollowRedirects(value)`](#fn-httpclientconfigwithfollowredirects)
+  * [`fn withEnableHttp2(value=true)`](#fn-httpclientconfigwithenablehttp2)
+  * [`fn withFollowRedirects(value=true)`](#fn-httpclientconfigwithfollowredirects)
   * [`fn withNoProxy(value)`](#fn-httpclientconfigwithnoproxy)
   * [`fn withOauth2(value)`](#fn-httpclientconfigwithoauth2)
   * [`fn withOauth2Mixin(value)`](#fn-httpclientconfigwithoauth2mixin)
   * [`fn withProxyConnectHeader(value)`](#fn-httpclientconfigwithproxyconnectheader)
   * [`fn withProxyConnectHeaderMixin(value)`](#fn-httpclientconfigwithproxyconnectheadermixin)
-  * [`fn withProxyFromEnvironment(value)`](#fn-httpclientconfigwithproxyfromenvironment)
+  * [`fn withProxyFromEnvironment(value=true)`](#fn-httpclientconfigwithproxyfromenvironment)
   * [`fn withProxyUrl(value)`](#fn-httpclientconfigwithproxyurl)
   * [`fn withProxyUrlMixin(value)`](#fn-httpclientconfigwithproxyurlmixin)
   * [`fn withTlsConfig(value)`](#fn-httpclientconfigwithtlsconfig)
@@ -58,7 +58,7 @@
     * [`fn withNoProxy(value)`](#fn-httpclientconfigoauth2withnoproxy)
     * [`fn withProxyConnectHeader(value)`](#fn-httpclientconfigoauth2withproxyconnectheader)
     * [`fn withProxyConnectHeaderMixin(value)`](#fn-httpclientconfigoauth2withproxyconnectheadermixin)
-    * [`fn withProxyFromEnvironment(value)`](#fn-httpclientconfigoauth2withproxyfromenvironment)
+    * [`fn withProxyFromEnvironment(value=true)`](#fn-httpclientconfigoauth2withproxyfromenvironment)
     * [`fn withProxyUrl(value)`](#fn-httpclientconfigoauth2withproxyurl)
     * [`fn withProxyUrlMixin(value)`](#fn-httpclientconfigoauth2withproxyurlmixin)
     * [`fn withScopes(value)`](#fn-httpclientconfigoauth2withscopes)
@@ -67,10 +67,10 @@
     * [`fn withTlsConfigMixin(value)`](#fn-httpclientconfigoauth2withtlsconfigmixin)
     * [`fn withTokenUrl(value)`](#fn-httpclientconfigoauth2withtokenurl)
     * [`obj proxy_url`](#obj-httpclientconfigoauth2proxy_url)
-      * [`fn withForceQuery(value)`](#fn-httpclientconfigoauth2proxy_urlwithforcequery)
+      * [`fn withForceQuery(value=true)`](#fn-httpclientconfigoauth2proxy_urlwithforcequery)
       * [`fn withFragment(value)`](#fn-httpclientconfigoauth2proxy_urlwithfragment)
       * [`fn withHost(value)`](#fn-httpclientconfigoauth2proxy_urlwithhost)
-      * [`fn withOmitHost(value)`](#fn-httpclientconfigoauth2proxy_urlwithomithost)
+      * [`fn withOmitHost(value=true)`](#fn-httpclientconfigoauth2proxy_urlwithomithost)
       * [`fn withOpaque(value)`](#fn-httpclientconfigoauth2proxy_urlwithopaque)
       * [`fn withPath(value)`](#fn-httpclientconfigoauth2proxy_urlwithpath)
       * [`fn withRawFragment(value)`](#fn-httpclientconfigoauth2proxy_urlwithrawfragment)
@@ -82,16 +82,16 @@
     * [`obj tls_config`](#obj-httpclientconfigoauth2tls_config)
       * [`fn withCaFile(value)`](#fn-httpclientconfigoauth2tls_configwithcafile)
       * [`fn withCertFile(value)`](#fn-httpclientconfigoauth2tls_configwithcertfile)
-      * [`fn withInsecureSkipVerify(value)`](#fn-httpclientconfigoauth2tls_configwithinsecureskipverify)
+      * [`fn withInsecureSkipVerify(value=true)`](#fn-httpclientconfigoauth2tls_configwithinsecureskipverify)
       * [`fn withKeyFile(value)`](#fn-httpclientconfigoauth2tls_configwithkeyfile)
       * [`fn withMaxVersion(value)`](#fn-httpclientconfigoauth2tls_configwithmaxversion)
       * [`fn withMinVersion(value)`](#fn-httpclientconfigoauth2tls_configwithminversion)
       * [`fn withServerName(value)`](#fn-httpclientconfigoauth2tls_configwithservername)
   * [`obj proxy_url`](#obj-httpclientconfigproxy_url)
-    * [`fn withForceQuery(value)`](#fn-httpclientconfigproxy_urlwithforcequery)
+    * [`fn withForceQuery(value=true)`](#fn-httpclientconfigproxy_urlwithforcequery)
     * [`fn withFragment(value)`](#fn-httpclientconfigproxy_urlwithfragment)
     * [`fn withHost(value)`](#fn-httpclientconfigproxy_urlwithhost)
-    * [`fn withOmitHost(value)`](#fn-httpclientconfigproxy_urlwithomithost)
+    * [`fn withOmitHost(value=true)`](#fn-httpclientconfigproxy_urlwithomithost)
     * [`fn withOpaque(value)`](#fn-httpclientconfigproxy_urlwithopaque)
     * [`fn withPath(value)`](#fn-httpclientconfigproxy_urlwithpath)
     * [`fn withRawFragment(value)`](#fn-httpclientconfigproxy_urlwithrawfragment)
@@ -103,14 +103,14 @@
   * [`obj tls_config`](#obj-httpclientconfigtls_config)
     * [`fn withCaFile(value)`](#fn-httpclientconfigtls_configwithcafile)
     * [`fn withCertFile(value)`](#fn-httpclientconfigtls_configwithcertfile)
-    * [`fn withInsecureSkipVerify(value)`](#fn-httpclientconfigtls_configwithinsecureskipverify)
+    * [`fn withInsecureSkipVerify(value=true)`](#fn-httpclientconfigtls_configwithinsecureskipverify)
     * [`fn withKeyFile(value)`](#fn-httpclientconfigtls_configwithkeyfile)
     * [`fn withMaxVersion(value)`](#fn-httpclientconfigtls_configwithmaxversion)
     * [`fn withMinVersion(value)`](#fn-httpclientconfigtls_configwithminversion)
     * [`fn withServerName(value)`](#fn-httpclientconfigtls_configwithservername)
 * [`obj metadata_config`](#obj-metadata_config)
   * [`fn withMaxSamplesPerSend(value)`](#fn-metadata_configwithmaxsamplespersend)
-  * [`fn withSend(value)`](#fn-metadata_configwithsend)
+  * [`fn withSend(value=true)`](#fn-metadata_configwithsend)
   * [`fn withSendInterval(value)`](#fn-metadata_configwithsendinterval)
 * [`obj queue_config`](#obj-queue_config)
   * [`fn withBatchSendDeadline(value)`](#fn-queue_configwithbatchsenddeadline)
@@ -120,7 +120,7 @@
   * [`fn withMaxShards(value)`](#fn-queue_configwithmaxshards)
   * [`fn withMinBackoff(value)`](#fn-queue_configwithminbackoff)
   * [`fn withMinShards(value)`](#fn-queue_configwithminshards)
-  * [`fn withRetryOnHttp429(value)`](#fn-queue_configwithretryonhttp429)
+  * [`fn withRetryOnHttp429(value=true)`](#fn-queue_configwithretryonhttp429)
 * [`obj sigv4`](#obj-sigv4)
   * [`fn withAccessKey(value)`](#fn-sigv4withaccesskey)
   * [`fn withProfile(value)`](#fn-sigv4withprofile)
@@ -128,10 +128,10 @@
   * [`fn withRoleArn(value)`](#fn-sigv4withrolearn)
   * [`fn withSecretKey(value)`](#fn-sigv4withsecretkey)
 * [`obj url`](#obj-url)
-  * [`fn withForceQuery(value)`](#fn-urlwithforcequery)
+  * [`fn withForceQuery(value=true)`](#fn-urlwithforcequery)
   * [`fn withFragment(value)`](#fn-urlwithfragment)
   * [`fn withHost(value)`](#fn-urlwithhost)
-  * [`fn withOmitHost(value)`](#fn-urlwithomithost)
+  * [`fn withOmitHost(value=true)`](#fn-urlwithomithost)
   * [`fn withOpaque(value)`](#fn-urlwithopaque)
   * [`fn withPath(value)`](#fn-urlwithpath)
   * [`fn withRawFragment(value)`](#fn-urlwithrawfragment)
@@ -236,7 +236,7 @@ withRemoteTimeout(value)
 ### fn withSendExemplars
 
 ```ts
-withSendExemplars(value)
+withSendExemplars(value=true)
 ```
 
 
@@ -244,7 +244,7 @@ withSendExemplars(value)
 ### fn withSendNativeHistograms
 
 ```ts
-withSendNativeHistograms(value)
+withSendNativeHistograms(value=true)
 ```
 
 
@@ -353,7 +353,7 @@ Authorization.CredentialsFile.
 #### fn HTTPClientConfig.withEnableHttp2
 
 ```ts
-withEnableHttp2(value)
+withEnableHttp2(value=true)
 ```
 
 EnableHTTP2 specifies whether the client should configure HTTP2.
@@ -363,7 +363,7 @@ marshalled configuration when set to false.
 #### fn HTTPClientConfig.withFollowRedirects
 
 ```ts
-withFollowRedirects(value)
+withFollowRedirects(value=true)
 ```
 
 FollowRedirects specifies whether the client should follow HTTP 3xx redirects.
@@ -413,7 +413,7 @@ withProxyConnectHeaderMixin(value)
 #### fn HTTPClientConfig.withProxyFromEnvironment
 
 ```ts
-withProxyFromEnvironment(value)
+withProxyFromEnvironment(value=true)
 ```
 
 ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function
@@ -575,7 +575,7 @@ withProxyConnectHeaderMixin(value)
 ##### fn HTTPClientConfig.oauth2.withProxyFromEnvironment
 
 ```ts
-withProxyFromEnvironment(value)
+withProxyFromEnvironment(value=true)
 ```
 
 ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function
@@ -643,7 +643,7 @@ withTokenUrl(value)
 ###### fn HTTPClientConfig.oauth2.proxy_url.withForceQuery
 
 ```ts
-withForceQuery(value)
+withForceQuery(value=true)
 ```
 
 
@@ -667,7 +667,7 @@ withHost(value)
 ###### fn HTTPClientConfig.oauth2.proxy_url.withOmitHost
 
 ```ts
-withOmitHost(value)
+withOmitHost(value=true)
 ```
 
 
@@ -758,7 +758,7 @@ The client cert file for the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withInsecureSkipVerify
 
 ```ts
-withInsecureSkipVerify(value)
+withInsecureSkipVerify(value=true)
 ```
 
 Disable target certificate validation.
@@ -801,7 +801,7 @@ Used to verify the hostname for the targets.
 ##### fn HTTPClientConfig.proxy_url.withForceQuery
 
 ```ts
-withForceQuery(value)
+withForceQuery(value=true)
 ```
 
 
@@ -825,7 +825,7 @@ withHost(value)
 ##### fn HTTPClientConfig.proxy_url.withOmitHost
 
 ```ts
-withOmitHost(value)
+withOmitHost(value=true)
 ```
 
 
@@ -916,7 +916,7 @@ The client cert file for the targets.
 ##### fn HTTPClientConfig.tls_config.withInsecureSkipVerify
 
 ```ts
-withInsecureSkipVerify(value)
+withInsecureSkipVerify(value=true)
 ```
 
 Disable target certificate validation.
@@ -967,7 +967,7 @@ Maximum number of samples per send.
 #### fn metadata_config.withSend
 
 ```ts
-withSend(value)
+withSend(value=true)
 ```
 
 Send controls whether we send metric metadata to remote storage.
@@ -1043,7 +1043,7 @@ Min number of shards, i.e. amount of concurrency.
 #### fn queue_config.withRetryOnHttp429
 
 ```ts
-withRetryOnHttp429(value)
+withRetryOnHttp429(value=true)
 ```
 
 
@@ -1097,7 +1097,7 @@ withSecretKey(value)
 #### fn url.withForceQuery
 
 ```ts
-withForceQuery(value)
+withForceQuery(value=true)
 ```
 
 
@@ -1121,7 +1121,7 @@ withHost(value)
 #### fn url.withOmitHost
 
 ```ts
-withOmitHost(value)
+withOmitHost(value=true)
 ```
 
 

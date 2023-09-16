@@ -3,8 +3,22 @@ schemas:
 	@ln -sfn $$GOPATH/pkg/mod/github.com/prometheus/prometheus@v0.43.0 go/prometheus && \
 		ln -sfn $$GOPATH/pkg/mod/github.com/prometheus/common@v0.42.0 go/common && \
 		cd go && go run . && \
-		mv config.json ../prometheusConfig/schema.json && \
-		mv rulegroups.json ../prometheusRules/schema.json
+		mv config.json ../generator/config.json && \
+		mv rulegroups.json ../generator/rulegroups.json
+
+prometheusConfig/raw.libsonnet:
+	jsonnet -S \
+		-J generator/vendor \
+		--tla-code-file schema=generator/config.json \
+		generator/main.libsonnet \
+		| jsonnetfmt - > prometheusConfig/raw.libsonnet
+
+prometheusRules/raw.libsonnet:
+	jsonnet -S \
+		-J generator/vendor \
+		--tla-code-file schema=generator/rulegroups.json \
+		generator/main.libsonnet \
+		| jsonnetfmt - > prometheusRules/raw.libsonnet
 
 .PHONY: docs
 docs:
