@@ -277,14 +277,11 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       ]
     ),
   withPodDisruptionBudget(maxUnavailable=1): {
-    local pdbForStatefulset(sts, maxUnavailable) =
-      local podDisruptionBudget = k.policy.v1.podDisruptionBudget;
-      podDisruptionBudget.new(sts.metadata.name + '-pdb')
-      + podDisruptionBudget.metadata.withLabels({ name: sts.metadata.name + '-pdb' })
-      + podDisruptionBudget.spec.selector.withMatchLabels(sts.spec.template.metadata.labels)
+    local podDisruptionBudget = k.policy.v1.podDisruptionBudget,
+    pdb:
+      podDisruptionBudget.new(self.statefulset.metadata.name)
+      + podDisruptionBudget.spec.selector.withMatchLabels(self.statefulset.spec.template.metadata.labels)
       + podDisruptionBudget.spec.withMaxUnavailable(maxUnavailable),
-
-    pdb: pdbForStatefulset(self.statefulset, maxUnavailable),
   },
 
   pvc: {
