@@ -68,7 +68,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       ])
       + container.withArgs([
         '--config.file=%s' % std.join('/', [self.config_path, self.config_file]),
-        '--web.listen-address=%s' % port,
+        '--web.listen-address=:%s' % port,
         '--web.enable-admin-api',
         '--web.enable-lifecycle',
         '--web.route-prefix=%s' % this.path,
