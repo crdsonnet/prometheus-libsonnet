@@ -18,67 +18,91 @@
 
 ### fn withEvaluationInterval
 
-```ts
+```jsonnet
 withEvaluationInterval(value)
 ```
 
-How frequently to evaluate rules by default.
+PARAMETERS:
 
+* **value** (`integer`)
+
+How frequently to evaluate rules by default.
 ### fn withExternalLabels
 
-```ts
+```jsonnet
 withExternalLabels(value)
 ```
 
-Labels is implemented by a single flat string holding name/value pairs.
+PARAMETERS:
 
+* **value** (`array`)
+
+Labels is implemented by a single flat string holding name/value pairs.
 ### fn withExternalLabelsMixin
 
-```ts
+```jsonnet
 withExternalLabelsMixin(value)
 ```
 
-Labels is implemented by a single flat string holding name/value pairs.
+PARAMETERS:
 
+* **value** (`array`)
+
+Labels is implemented by a single flat string holding name/value pairs.
 ### fn withQueryLogFile
 
-```ts
+```jsonnet
 withQueryLogFile(value)
 ```
 
-File to which PromQL queries are logged.
+PARAMETERS:
 
+* **value** (`string`)
+
+File to which PromQL queries are logged.
 ### fn withScrapeInterval
 
-```ts
+```jsonnet
 withScrapeInterval(value)
 ```
 
-How frequently to scrape targets by default.
+PARAMETERS:
 
+* **value** (`integer`)
+
+How frequently to scrape targets by default.
 ### fn withScrapeTimeout
 
-```ts
+```jsonnet
 withScrapeTimeout(value)
 ```
 
-The default timeout when scraping targets.
+PARAMETERS:
 
+* **value** (`integer`)
+
+The default timeout when scraping targets.
 ### obj external_labels
 
 
 #### fn external_labels.withName
 
-```ts
-withName(value)
+```jsonnet
+external_labels.withName(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn external_labels.withValue
 
-```ts
-withValue(value)
+```jsonnet
+external_labels.withValue(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 

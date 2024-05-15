@@ -128,358 +128,487 @@
 
 ### fn withAlertRelabelConfigs
 
-```ts
+```jsonnet
 withAlertRelabelConfigs(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withAlertRelabelConfigsMixin
 
-```ts
+```jsonnet
 withAlertRelabelConfigsMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withAlertmanagers
 
-```ts
+```jsonnet
 withAlertmanagers(value)
 ```
 
-AlertmanagerConfigs is a slice of *AlertmanagerConfig.
+PARAMETERS:
 
+* **value** (`array`)
+
+AlertmanagerConfigs is a slice of *AlertmanagerConfig.
 ### fn withAlertmanagersMixin
 
-```ts
+```jsonnet
 withAlertmanagersMixin(value)
 ```
 
-AlertmanagerConfigs is a slice of *AlertmanagerConfig.
+PARAMETERS:
 
+* **value** (`array`)
+
+AlertmanagerConfigs is a slice of *AlertmanagerConfig.
 ### obj alert_relabel_configs
 
 
 #### fn alert_relabel_configs.withAction
 
-```ts
-withAction(value)
+```jsonnet
+alert_relabel_configs.withAction(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 Action is the action to be performed for the relabeling.
-
 #### fn alert_relabel_configs.withModulus
 
-```ts
-withModulus(value)
+```jsonnet
+alert_relabel_configs.withModulus(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Modulus to take of the hash of concatenated values from the source labels.
-
 #### fn alert_relabel_configs.withRegex
 
-```ts
-withRegex(value)
+```jsonnet
+alert_relabel_configs.withRegex(value)
 ```
 
-Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
+PARAMETERS:
 
+* **value** (`object`)
+
+Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
 #### fn alert_relabel_configs.withRegexMixin
 
-```ts
-withRegexMixin(value)
+```jsonnet
+alert_relabel_configs.withRegexMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
-
 #### fn alert_relabel_configs.withReplacement
 
-```ts
-withReplacement(value)
+```jsonnet
+alert_relabel_configs.withReplacement(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 Replacement is the regex replacement pattern to be used.
-
 #### fn alert_relabel_configs.withSeparator
 
-```ts
-withSeparator(value)
+```jsonnet
+alert_relabel_configs.withSeparator(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 Separator is the string between concatenated values from the source labels.
-
 #### fn alert_relabel_configs.withSourceLabels
 
-```ts
-withSourceLabels(value)
+```jsonnet
+alert_relabel_configs.withSourceLabels(value)
 ```
 
-LabelNames is a sortable LabelName slice.
+PARAMETERS:
 
+* **value** (`array`)
+
+LabelNames is a sortable LabelName slice.
 #### fn alert_relabel_configs.withSourceLabelsMixin
 
-```ts
-withSourceLabelsMixin(value)
+```jsonnet
+alert_relabel_configs.withSourceLabelsMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`array`)
 
 LabelNames is a sortable LabelName slice.
-
 #### fn alert_relabel_configs.withTargetLabel
 
-```ts
-withTargetLabel(value)
+```jsonnet
+alert_relabel_configs.withTargetLabel(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 TargetLabel is the label to which the resulting string is written in a replacement.
 Regexp interpolation is allowed for the replace action.
-
 ### obj alertmanagers
 
 
 #### fn alertmanagers.withApiVersion
 
-```ts
-withApiVersion(value)
+```jsonnet
+alertmanagers.withApiVersion(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The api version of Alertmanager.
-
 #### fn alertmanagers.withHTTPClientConfig
 
-```ts
-withHTTPClientConfig(value)
+```jsonnet
+alertmanagers.withHTTPClientConfig(value)
 ```
 
-HTTPClientConfig configures an HTTP client.
+PARAMETERS:
 
+* **value** (`object`)
+
+HTTPClientConfig configures an HTTP client.
 #### fn alertmanagers.withHTTPClientConfigMixin
 
-```ts
-withHTTPClientConfigMixin(value)
+```jsonnet
+alertmanagers.withHTTPClientConfigMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 HTTPClientConfig configures an HTTP client.
-
 #### fn alertmanagers.withPathPrefix
 
-```ts
-withPathPrefix(value)
+```jsonnet
+alertmanagers.withPathPrefix(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 Path prefix to add in front of the push endpoint path.
-
 #### fn alertmanagers.withRelabelConfigs
 
-```ts
-withRelabelConfigs(value)
+```jsonnet
+alertmanagers.withRelabelConfigs(value)
 ```
 
-List of Alertmanager relabel configurations.
+PARAMETERS:
 
+* **value** (`array`)
+
+List of Alertmanager relabel configurations.
 #### fn alertmanagers.withRelabelConfigsMixin
 
-```ts
-withRelabelConfigsMixin(value)
+```jsonnet
+alertmanagers.withRelabelConfigsMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`array`)
 
 List of Alertmanager relabel configurations.
-
 #### fn alertmanagers.withScheme
 
-```ts
-withScheme(value)
+```jsonnet
+alertmanagers.withScheme(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The URL scheme to use when talking to Alertmanagers.
-
 #### fn alertmanagers.withTimeout
 
-```ts
-withTimeout(value)
+```jsonnet
+alertmanagers.withTimeout(value)
 ```
 
-The timeout used when sending alerts.
+PARAMETERS:
 
+* **value** (`integer`)
+
+The timeout used when sending alerts.
 #### obj alertmanagers.HTTPClientConfig
 
 
 ##### fn alertmanagers.HTTPClientConfig.withAuthorization
 
-```ts
-withAuthorization(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withAuthorization(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ##### fn alertmanagers.HTTPClientConfig.withAuthorizationMixin
 
-```ts
-withAuthorizationMixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withAuthorizationMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ##### fn alertmanagers.HTTPClientConfig.withBasicAuth
 
-```ts
-withBasicAuth(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withBasicAuth(value)
 ```
 
-BasicAuth contains basic HTTP authentication credentials.
+PARAMETERS:
 
+* **value** (`object`)
+
+BasicAuth contains basic HTTP authentication credentials.
 ##### fn alertmanagers.HTTPClientConfig.withBasicAuthMixin
 
-```ts
-withBasicAuthMixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withBasicAuthMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 BasicAuth contains basic HTTP authentication credentials.
-
 ##### fn alertmanagers.HTTPClientConfig.withBearerToken
 
-```ts
-withBearerToken(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withBearerToken(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The bearer token for the targets. Deprecated in favour of
 Authorization.Credentials.
-
 ##### fn alertmanagers.HTTPClientConfig.withBearerTokenFile
 
-```ts
-withBearerTokenFile(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withBearerTokenFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The bearer token file for the targets. Deprecated in favour of
 Authorization.CredentialsFile.
-
 ##### fn alertmanagers.HTTPClientConfig.withEnableHttp2
 
-```ts
-withEnableHttp2(value=true)
+```jsonnet
+alertmanagers.HTTPClientConfig.withEnableHttp2(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 EnableHTTP2 specifies whether the client should configure HTTP2.
 The omitempty flag is not set, because it would be hidden from the
 marshalled configuration when set to false.
-
 ##### fn alertmanagers.HTTPClientConfig.withFollowRedirects
 
-```ts
-withFollowRedirects(value=true)
+```jsonnet
+alertmanagers.HTTPClientConfig.withFollowRedirects(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 FollowRedirects specifies whether the client should follow HTTP 3xx redirects.
 The omitempty flag is not set, because it would be hidden from the
 marshalled configuration when set to false.
-
 ##### fn alertmanagers.HTTPClientConfig.withNoProxy
 
-```ts
-withNoProxy(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withNoProxy(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 NoProxy contains addresses that should not use a proxy.
-
 ##### fn alertmanagers.HTTPClientConfig.withOauth2
 
-```ts
-withOauth2(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withOauth2(value)
 ```
 
-OAuth2 is the oauth2 client configuration.
+PARAMETERS:
 
+* **value** (`object`)
+
+OAuth2 is the oauth2 client configuration.
 ##### fn alertmanagers.HTTPClientConfig.withOauth2Mixin
 
-```ts
-withOauth2Mixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withOauth2Mixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 OAuth2 is the oauth2 client configuration.
-
 ##### fn alertmanagers.HTTPClientConfig.withProxyConnectHeader
 
-```ts
-withProxyConnectHeader(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withProxyConnectHeader(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ##### fn alertmanagers.HTTPClientConfig.withProxyConnectHeaderMixin
 
-```ts
-withProxyConnectHeaderMixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withProxyConnectHeaderMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ##### fn alertmanagers.HTTPClientConfig.withProxyFromEnvironment
 
-```ts
-withProxyFromEnvironment(value=true)
+```jsonnet
+alertmanagers.HTTPClientConfig.withProxyFromEnvironment(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function
 to determine proxies.
-
 ##### fn alertmanagers.HTTPClientConfig.withProxyUrl
 
-```ts
-withProxyUrl(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withProxyUrl(value)
 ```
 
-URL is a custom URL type that allows validation at configuration load time.
+PARAMETERS:
 
+* **value** (`object`)
+
+URL is a custom URL type that allows validation at configuration load time.
 ##### fn alertmanagers.HTTPClientConfig.withProxyUrlMixin
 
-```ts
-withProxyUrlMixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withProxyUrlMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 URL is a custom URL type that allows validation at configuration load time.
-
 ##### fn alertmanagers.HTTPClientConfig.withTlsConfig
 
-```ts
-withTlsConfig(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withTlsConfig(value)
 ```
 
-TLSConfig configures the options for TLS connections.
+PARAMETERS:
 
+* **value** (`object`)
+
+TLSConfig configures the options for TLS connections.
 ##### fn alertmanagers.HTTPClientConfig.withTlsConfigMixin
 
-```ts
-withTlsConfigMixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.withTlsConfigMixin(value)
 ```
 
-TLSConfig configures the options for TLS connections.
+PARAMETERS:
 
+* **value** (`object`)
+
+TLSConfig configures the options for TLS connections.
 ##### obj alertmanagers.HTTPClientConfig.authorization
 
 
 ###### fn alertmanagers.HTTPClientConfig.authorization.withCredentials
 
-```ts
-withCredentials(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.authorization.withCredentials(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.authorization.withCredentialsFile
 
-```ts
-withCredentialsFile(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.authorization.withCredentialsFile(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.authorization.withType
 
-```ts
-withType(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.authorization.withType(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### obj alertmanagers.HTTPClientConfig.basic_auth
@@ -487,26 +616,35 @@ withType(value)
 
 ###### fn alertmanagers.HTTPClientConfig.basic_auth.withPassword
 
-```ts
-withPassword(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.basic_auth.withPassword(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.basic_auth.withPasswordFile
 
-```ts
-withPasswordFile(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.basic_auth.withPasswordFile(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.basic_auth.withUsername
 
-```ts
-withUsername(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.basic_auth.withUsername(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### obj alertmanagers.HTTPClientConfig.oauth2
@@ -514,131 +652,180 @@ withUsername(value)
 
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withClientId
 
-```ts
-withClientId(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withClientId(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withClientSecret
 
-```ts
-withClientSecret(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withClientSecret(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withClientSecretFile
 
-```ts
-withClientSecretFile(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withClientSecretFile(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withEndpointParams
 
-```ts
-withEndpointParams(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withEndpointParams(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withEndpointParamsMixin
 
-```ts
-withEndpointParamsMixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withEndpointParamsMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withNoProxy
 
-```ts
-withNoProxy(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withNoProxy(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 NoProxy contains addresses that should not use a proxy.
-
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withProxyConnectHeader
 
-```ts
-withProxyConnectHeader(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withProxyConnectHeader(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withProxyConnectHeaderMixin
 
-```ts
-withProxyConnectHeaderMixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withProxyConnectHeaderMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withProxyFromEnvironment
 
-```ts
-withProxyFromEnvironment(value=true)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withProxyFromEnvironment(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function
 to determine proxies.
-
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withProxyUrl
 
-```ts
-withProxyUrl(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withProxyUrl(value)
 ```
 
-URL is a custom URL type that allows validation at configuration load time.
+PARAMETERS:
 
+* **value** (`object`)
+
+URL is a custom URL type that allows validation at configuration load time.
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withProxyUrlMixin
 
-```ts
-withProxyUrlMixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withProxyUrlMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 URL is a custom URL type that allows validation at configuration load time.
-
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withScopes
 
-```ts
-withScopes(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withScopes(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withScopesMixin
 
-```ts
-withScopesMixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withScopesMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withTlsConfig
 
-```ts
-withTlsConfig(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withTlsConfig(value)
 ```
 
-TLSConfig configures the options for TLS connections.
+PARAMETERS:
 
+* **value** (`object`)
+
+TLSConfig configures the options for TLS connections.
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withTlsConfigMixin
 
-```ts
-withTlsConfigMixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withTlsConfigMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 TLSConfig configures the options for TLS connections.
-
 ###### fn alertmanagers.HTTPClientConfig.oauth2.withTokenUrl
 
-```ts
-withTokenUrl(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.withTokenUrl(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### obj alertmanagers.HTTPClientConfig.oauth2.proxy_url
@@ -646,98 +833,136 @@ withTokenUrl(value)
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withForceQuery
 
-```ts
-withForceQuery(value=true)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.proxy_url.withForceQuery(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withFragment
 
-```ts
-withFragment(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.proxy_url.withFragment(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withHost
 
-```ts
-withHost(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.proxy_url.withHost(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withOmitHost
 
-```ts
-withOmitHost(value=true)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.proxy_url.withOmitHost(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withOpaque
 
-```ts
-withOpaque(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.proxy_url.withOpaque(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withPath
 
-```ts
-withPath(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.proxy_url.withPath(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withRawFragment
 
-```ts
-withRawFragment(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.proxy_url.withRawFragment(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withRawPath
 
-```ts
-withRawPath(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.proxy_url.withRawPath(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withRawQuery
 
-```ts
-withRawQuery(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.proxy_url.withRawQuery(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withScheme
 
-```ts
-withScheme(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.proxy_url.withScheme(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withUser
 
-```ts
-withUser(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.proxy_url.withUser(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.proxy_url.withUserMixin
 
-```ts
-withUserMixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.proxy_url.withUserMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ###### obj alertmanagers.HTTPClientConfig.oauth2.tls_config
@@ -745,157 +970,217 @@ withUserMixin(value)
 
 ####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withCaFile
 
-```ts
-withCaFile(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.tls_config.withCaFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The CA cert to use for the targets.
-
 ####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withCertFile
 
-```ts
-withCertFile(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.tls_config.withCertFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The client cert file for the targets.
-
 ####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withInsecureSkipVerify
 
-```ts
-withInsecureSkipVerify(value=true)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.tls_config.withInsecureSkipVerify(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 Disable target certificate validation.
-
 ####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withKeyFile
 
-```ts
-withKeyFile(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.tls_config.withKeyFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The client key file for the targets.
-
 ####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withMaxVersion
 
-```ts
-withMaxVersion(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.tls_config.withMaxVersion(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Maximum TLS version.
-
 ####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withMinVersion
 
-```ts
-withMinVersion(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.tls_config.withMinVersion(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Minimum TLS version.
-
 ####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withServerName
 
-```ts
-withServerName(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.tls_config.withServerName(value)
 ```
 
-Used to verify the hostname for the targets.
+PARAMETERS:
 
+* **value** (`string`)
+
+Used to verify the hostname for the targets.
 ##### obj alertmanagers.HTTPClientConfig.proxy_url
 
 
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withForceQuery
 
-```ts
-withForceQuery(value=true)
+```jsonnet
+alertmanagers.HTTPClientConfig.proxy_url.withForceQuery(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withFragment
 
-```ts
-withFragment(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.proxy_url.withFragment(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withHost
 
-```ts
-withHost(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.proxy_url.withHost(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withOmitHost
 
-```ts
-withOmitHost(value=true)
+```jsonnet
+alertmanagers.HTTPClientConfig.proxy_url.withOmitHost(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withOpaque
 
-```ts
-withOpaque(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.proxy_url.withOpaque(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withPath
 
-```ts
-withPath(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.proxy_url.withPath(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withRawFragment
 
-```ts
-withRawFragment(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.proxy_url.withRawFragment(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withRawPath
 
-```ts
-withRawPath(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.proxy_url.withRawPath(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withRawQuery
 
-```ts
-withRawQuery(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.proxy_url.withRawQuery(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withScheme
 
-```ts
-withScheme(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.proxy_url.withScheme(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withUser
 
-```ts
-withUser(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.proxy_url.withUser(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ###### fn alertmanagers.HTTPClientConfig.proxy_url.withUserMixin
 
-```ts
-withUserMixin(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.proxy_url.withUserMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ##### obj alertmanagers.HTTPClientConfig.tls_config
@@ -903,132 +1188,182 @@ withUserMixin(value)
 
 ###### fn alertmanagers.HTTPClientConfig.tls_config.withCaFile
 
-```ts
-withCaFile(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.tls_config.withCaFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The CA cert to use for the targets.
-
 ###### fn alertmanagers.HTTPClientConfig.tls_config.withCertFile
 
-```ts
-withCertFile(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.tls_config.withCertFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The client cert file for the targets.
-
 ###### fn alertmanagers.HTTPClientConfig.tls_config.withInsecureSkipVerify
 
-```ts
-withInsecureSkipVerify(value=true)
+```jsonnet
+alertmanagers.HTTPClientConfig.tls_config.withInsecureSkipVerify(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 Disable target certificate validation.
-
 ###### fn alertmanagers.HTTPClientConfig.tls_config.withKeyFile
 
-```ts
-withKeyFile(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.tls_config.withKeyFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The client key file for the targets.
-
 ###### fn alertmanagers.HTTPClientConfig.tls_config.withMaxVersion
 
-```ts
-withMaxVersion(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.tls_config.withMaxVersion(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Maximum TLS version.
-
 ###### fn alertmanagers.HTTPClientConfig.tls_config.withMinVersion
 
-```ts
-withMinVersion(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.tls_config.withMinVersion(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Minimum TLS version.
-
 ###### fn alertmanagers.HTTPClientConfig.tls_config.withServerName
 
-```ts
-withServerName(value)
+```jsonnet
+alertmanagers.HTTPClientConfig.tls_config.withServerName(value)
 ```
 
-Used to verify the hostname for the targets.
+PARAMETERS:
 
+* **value** (`string`)
+
+Used to verify the hostname for the targets.
 #### obj alertmanagers.relabel_configs
 
 
 ##### fn alertmanagers.relabel_configs.withAction
 
-```ts
-withAction(value)
+```jsonnet
+alertmanagers.relabel_configs.withAction(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 Action is the action to be performed for the relabeling.
-
 ##### fn alertmanagers.relabel_configs.withModulus
 
-```ts
-withModulus(value)
+```jsonnet
+alertmanagers.relabel_configs.withModulus(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Modulus to take of the hash of concatenated values from the source labels.
-
 ##### fn alertmanagers.relabel_configs.withRegex
 
-```ts
-withRegex(value)
+```jsonnet
+alertmanagers.relabel_configs.withRegex(value)
 ```
 
-Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
+PARAMETERS:
 
+* **value** (`object`)
+
+Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
 ##### fn alertmanagers.relabel_configs.withRegexMixin
 
-```ts
-withRegexMixin(value)
+```jsonnet
+alertmanagers.relabel_configs.withRegexMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
-
 ##### fn alertmanagers.relabel_configs.withReplacement
 
-```ts
-withReplacement(value)
+```jsonnet
+alertmanagers.relabel_configs.withReplacement(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 Replacement is the regex replacement pattern to be used.
-
 ##### fn alertmanagers.relabel_configs.withSeparator
 
-```ts
-withSeparator(value)
+```jsonnet
+alertmanagers.relabel_configs.withSeparator(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 Separator is the string between concatenated values from the source labels.
-
 ##### fn alertmanagers.relabel_configs.withSourceLabels
 
-```ts
-withSourceLabels(value)
+```jsonnet
+alertmanagers.relabel_configs.withSourceLabels(value)
 ```
 
-LabelNames is a sortable LabelName slice.
+PARAMETERS:
 
+* **value** (`array`)
+
+LabelNames is a sortable LabelName slice.
 ##### fn alertmanagers.relabel_configs.withSourceLabelsMixin
 
-```ts
-withSourceLabelsMixin(value)
+```jsonnet
+alertmanagers.relabel_configs.withSourceLabelsMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`array`)
 
 LabelNames is a sortable LabelName slice.
-
 ##### fn alertmanagers.relabel_configs.withTargetLabel
 
-```ts
-withTargetLabel(value)
+```jsonnet
+alertmanagers.relabel_configs.withTargetLabel(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 TargetLabel is the label to which the resulting string is written in a replacement.
 Regexp interpolation is allowed for the replace action.

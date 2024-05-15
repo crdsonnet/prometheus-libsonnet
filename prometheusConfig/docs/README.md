@@ -5,7 +5,6 @@
 Additional information about the configuration options can be found in the
 [official docs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/).
 
-
 ## Install
 
 ```
@@ -18,15 +17,16 @@ jb install github.com/crdsonnet/prometheus-libsonnet/prometheusConfig@master
 local prometheusConfig = import "github.com/crdsonnet/prometheus-libsonnet/prometheusConfig/main.libsonnet"
 ```
 
+
 ## Subpackages
 
-* [alerting](prometheusConfig/alerting.md)
-* [global](prometheusConfig/global.md)
-* [remote_read](prometheusConfig/remote_read.md)
-* [remote_write](prometheusConfig/remote_write.md)
-* [scrape_configs](prometheusConfig/scrape_configs.md)
-* [storage](prometheusConfig/storage.md)
-* [tracing](prometheusConfig/tracing.md)
+* [alerting](alerting.md)
+* [global](global.md)
+* [remote_read](remote_read.md)
+* [remote_write](remote_write.md)
+* [scrape_configs](scrape_configs.md)
+* [storage](storage.md)
+* [tracing](tracing.md)
 
 ## Index
 
@@ -53,144 +53,199 @@ local prometheusConfig = import "github.com/crdsonnet/prometheus-libsonnet/prome
 
 ### fn withAlerting
 
-```ts
+```jsonnet
 withAlerting(value)
 ```
 
-AlertingConfig configures alerting and alertmanager related configs.
+PARAMETERS:
 
+* **value** (`object`)
+
+AlertingConfig configures alerting and alertmanager related configs.
 ### fn withAlertingMixin
 
-```ts
+```jsonnet
 withAlertingMixin(value)
 ```
 
-AlertingConfig configures alerting and alertmanager related configs.
+PARAMETERS:
 
+* **value** (`object`)
+
+AlertingConfig configures alerting and alertmanager related configs.
 ### fn withGlobal
 
-```ts
+```jsonnet
 withGlobal(value)
 ```
 
-GlobalConfig configures values that are used across other configuration objects.
+PARAMETERS:
 
+* **value** (`object`)
+
+GlobalConfig configures values that are used across other configuration objects.
 ### fn withGlobalMixin
 
-```ts
+```jsonnet
 withGlobalMixin(value)
 ```
 
-GlobalConfig configures values that are used across other configuration objects.
+PARAMETERS:
 
+* **value** (`object`)
+
+GlobalConfig configures values that are used across other configuration objects.
 ### fn withRemoteRead
 
-```ts
+```jsonnet
 withRemoteRead(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withRemoteReadMixin
 
-```ts
+```jsonnet
 withRemoteReadMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withRemoteWrite
 
-```ts
+```jsonnet
 withRemoteWrite(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withRemoteWriteMixin
 
-```ts
+```jsonnet
 withRemoteWriteMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withRuleFiles
 
-```ts
+```jsonnet
 withRuleFiles(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withRuleFilesMixin
 
-```ts
+```jsonnet
 withRuleFilesMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withScrapeConfigFiles
 
-```ts
+```jsonnet
 withScrapeConfigFiles(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withScrapeConfigFilesMixin
 
-```ts
+```jsonnet
 withScrapeConfigFilesMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withScrapeConfigs
 
-```ts
+```jsonnet
 withScrapeConfigs(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withScrapeConfigsMixin
 
-```ts
+```jsonnet
 withScrapeConfigsMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withStorage
 
-```ts
+```jsonnet
 withStorage(value)
 ```
 
-StorageConfig configures runtime reloadable configuration options.
+PARAMETERS:
 
+* **value** (`object`)
+
+StorageConfig configures runtime reloadable configuration options.
 ### fn withStorageMixin
 
-```ts
+```jsonnet
 withStorageMixin(value)
 ```
 
-StorageConfig configures runtime reloadable configuration options.
+PARAMETERS:
 
+* **value** (`object`)
+
+StorageConfig configures runtime reloadable configuration options.
 ### fn withTracing
 
-```ts
+```jsonnet
 withTracing(value)
 ```
 
-TracingConfig configures the tracing options.
+PARAMETERS:
 
+* **value** (`object`)
+
+TracingConfig configures the tracing options.
 ### fn withTracingMixin
 
-```ts
+```jsonnet
 withTracingMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 TracingConfig configures the tracing options.

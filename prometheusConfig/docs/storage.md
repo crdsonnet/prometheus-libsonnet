@@ -17,56 +17,75 @@
 
 ### fn withExemplars
 
-```ts
+```jsonnet
 withExemplars(value)
 ```
 
-ExemplarsConfig configures runtime reloadable configuration options.
+PARAMETERS:
 
+* **value** (`object`)
+
+ExemplarsConfig configures runtime reloadable configuration options.
 ### fn withExemplarsMixin
 
-```ts
+```jsonnet
 withExemplarsMixin(value)
 ```
 
-ExemplarsConfig configures runtime reloadable configuration options.
+PARAMETERS:
 
+* **value** (`object`)
+
+ExemplarsConfig configures runtime reloadable configuration options.
 ### fn withTsdb
 
-```ts
+```jsonnet
 withTsdb(value)
 ```
 
-TSDBConfig configures runtime reloadable configuration options.
+PARAMETERS:
 
+* **value** (`object`)
+
+TSDBConfig configures runtime reloadable configuration options.
 ### fn withTsdbMixin
 
-```ts
+```jsonnet
 withTsdbMixin(value)
 ```
 
-TSDBConfig configures runtime reloadable configuration options.
+PARAMETERS:
 
+* **value** (`object`)
+
+TSDBConfig configures runtime reloadable configuration options.
 ### obj exemplars
 
 
 #### fn exemplars.withMaxExemplars
 
-```ts
-withMaxExemplars(value)
+```jsonnet
+exemplars.withMaxExemplars(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 MaxExemplars sets the size, in # of exemplars stored, of the single circular buffer used to store exemplars in memory.
 Use a value of 0 or less than 0 to disable the storage without having to restart Prometheus.
-
 ### obj tsdb
 
 
 #### fn tsdb.withOutOfOrderTimeWindow
 
-```ts
-withOutOfOrderTimeWindow(value)
+```jsonnet
+tsdb.withOutOfOrderTimeWindow(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 OutOfOrderTimeWindowFlag holds the parsed duration from the config file.
 During unmarshall, this is converted into milliseconds and stored in OutOfOrderTimeWindow.

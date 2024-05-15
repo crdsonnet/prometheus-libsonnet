@@ -155,146 +155,202 @@
 
 ### fn withHTTPClientConfig
 
-```ts
+```jsonnet
 withHTTPClientConfig(value)
 ```
 
-HTTPClientConfig configures an HTTP client.
+PARAMETERS:
 
+* **value** (`object`)
+
+HTTPClientConfig configures an HTTP client.
 ### fn withHTTPClientConfigMixin
 
-```ts
+```jsonnet
 withHTTPClientConfigMixin(value)
 ```
 
-HTTPClientConfig configures an HTTP client.
+PARAMETERS:
 
+* **value** (`object`)
+
+HTTPClientConfig configures an HTTP client.
 ### fn withHeaders
 
-```ts
+```jsonnet
 withHeaders(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ### fn withHeadersMixin
 
-```ts
+```jsonnet
 withHeadersMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ### fn withMetadataConfig
 
-```ts
+```jsonnet
 withMetadataConfig(value)
 ```
 
-MetadataConfig is the configuration for sending metadata to remote storage.
+PARAMETERS:
 
+* **value** (`object`)
+
+MetadataConfig is the configuration for sending metadata to remote storage.
 ### fn withMetadataConfigMixin
 
-```ts
+```jsonnet
 withMetadataConfigMixin(value)
 ```
 
-MetadataConfig is the configuration for sending metadata to remote storage.
+PARAMETERS:
 
+* **value** (`object`)
+
+MetadataConfig is the configuration for sending metadata to remote storage.
 ### fn withName
 
-```ts
+```jsonnet
 withName(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ### fn withQueueConfig
 
-```ts
+```jsonnet
 withQueueConfig(value)
 ```
 
-QueueConfig is the configuration for the queue used to write to remote storage.
+PARAMETERS:
 
+* **value** (`object`)
+
+QueueConfig is the configuration for the queue used to write to remote storage.
 ### fn withQueueConfigMixin
 
-```ts
+```jsonnet
 withQueueConfigMixin(value)
 ```
 
-QueueConfig is the configuration for the queue used to write to remote storage.
+PARAMETERS:
 
+* **value** (`object`)
+
+QueueConfig is the configuration for the queue used to write to remote storage.
 ### fn withRemoteTimeout
 
-```ts
+```jsonnet
 withRemoteTimeout(value)
 ```
 
+PARAMETERS:
+
+* **value** (`integer`)
 
 
 ### fn withSendExemplars
 
-```ts
+```jsonnet
 withSendExemplars(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 ### fn withSendNativeHistograms
 
-```ts
+```jsonnet
 withSendNativeHistograms(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 ### fn withSigv4
 
-```ts
+```jsonnet
 withSigv4(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ### fn withSigv4Mixin
 
-```ts
+```jsonnet
 withSigv4Mixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ### fn withUrl
 
-```ts
+```jsonnet
 withUrl(value)
 ```
 
-URL is a custom URL type that allows validation at configuration load time.
+PARAMETERS:
 
+* **value** (`object`)
+
+URL is a custom URL type that allows validation at configuration load time.
 ### fn withUrlMixin
 
-```ts
+```jsonnet
 withUrlMixin(value)
 ```
 
-URL is a custom URL type that allows validation at configuration load time.
+PARAMETERS:
 
+* **value** (`object`)
+
+URL is a custom URL type that allows validation at configuration load time.
 ### fn withWriteRelabelConfigs
 
-```ts
+```jsonnet
 withWriteRelabelConfigs(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withWriteRelabelConfigsMixin
 
-```ts
+```jsonnet
 withWriteRelabelConfigsMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### obj HTTPClientConfig
@@ -302,180 +358,246 @@ withWriteRelabelConfigsMixin(value)
 
 #### fn HTTPClientConfig.withAuthorization
 
-```ts
-withAuthorization(value)
+```jsonnet
+HTTPClientConfig.withAuthorization(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 #### fn HTTPClientConfig.withAuthorizationMixin
 
-```ts
-withAuthorizationMixin(value)
+```jsonnet
+HTTPClientConfig.withAuthorizationMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 #### fn HTTPClientConfig.withBasicAuth
 
-```ts
-withBasicAuth(value)
+```jsonnet
+HTTPClientConfig.withBasicAuth(value)
 ```
 
-BasicAuth contains basic HTTP authentication credentials.
+PARAMETERS:
 
+* **value** (`object`)
+
+BasicAuth contains basic HTTP authentication credentials.
 #### fn HTTPClientConfig.withBasicAuthMixin
 
-```ts
-withBasicAuthMixin(value)
+```jsonnet
+HTTPClientConfig.withBasicAuthMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 BasicAuth contains basic HTTP authentication credentials.
-
 #### fn HTTPClientConfig.withBearerToken
 
-```ts
-withBearerToken(value)
+```jsonnet
+HTTPClientConfig.withBearerToken(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The bearer token for the targets. Deprecated in favour of
 Authorization.Credentials.
-
 #### fn HTTPClientConfig.withBearerTokenFile
 
-```ts
-withBearerTokenFile(value)
+```jsonnet
+HTTPClientConfig.withBearerTokenFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The bearer token file for the targets. Deprecated in favour of
 Authorization.CredentialsFile.
-
 #### fn HTTPClientConfig.withEnableHttp2
 
-```ts
-withEnableHttp2(value=true)
+```jsonnet
+HTTPClientConfig.withEnableHttp2(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 EnableHTTP2 specifies whether the client should configure HTTP2.
 The omitempty flag is not set, because it would be hidden from the
 marshalled configuration when set to false.
-
 #### fn HTTPClientConfig.withFollowRedirects
 
-```ts
-withFollowRedirects(value=true)
+```jsonnet
+HTTPClientConfig.withFollowRedirects(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 FollowRedirects specifies whether the client should follow HTTP 3xx redirects.
 The omitempty flag is not set, because it would be hidden from the
 marshalled configuration when set to false.
-
 #### fn HTTPClientConfig.withNoProxy
 
-```ts
-withNoProxy(value)
+```jsonnet
+HTTPClientConfig.withNoProxy(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 NoProxy contains addresses that should not use a proxy.
-
 #### fn HTTPClientConfig.withOauth2
 
-```ts
-withOauth2(value)
+```jsonnet
+HTTPClientConfig.withOauth2(value)
 ```
 
-OAuth2 is the oauth2 client configuration.
+PARAMETERS:
 
+* **value** (`object`)
+
+OAuth2 is the oauth2 client configuration.
 #### fn HTTPClientConfig.withOauth2Mixin
 
-```ts
-withOauth2Mixin(value)
+```jsonnet
+HTTPClientConfig.withOauth2Mixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 OAuth2 is the oauth2 client configuration.
-
 #### fn HTTPClientConfig.withProxyConnectHeader
 
-```ts
-withProxyConnectHeader(value)
+```jsonnet
+HTTPClientConfig.withProxyConnectHeader(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 #### fn HTTPClientConfig.withProxyConnectHeaderMixin
 
-```ts
-withProxyConnectHeaderMixin(value)
+```jsonnet
+HTTPClientConfig.withProxyConnectHeaderMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 #### fn HTTPClientConfig.withProxyFromEnvironment
 
-```ts
-withProxyFromEnvironment(value=true)
+```jsonnet
+HTTPClientConfig.withProxyFromEnvironment(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function
 to determine proxies.
-
 #### fn HTTPClientConfig.withProxyUrl
 
-```ts
-withProxyUrl(value)
+```jsonnet
+HTTPClientConfig.withProxyUrl(value)
 ```
 
-URL is a custom URL type that allows validation at configuration load time.
+PARAMETERS:
 
+* **value** (`object`)
+
+URL is a custom URL type that allows validation at configuration load time.
 #### fn HTTPClientConfig.withProxyUrlMixin
 
-```ts
-withProxyUrlMixin(value)
+```jsonnet
+HTTPClientConfig.withProxyUrlMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 URL is a custom URL type that allows validation at configuration load time.
-
 #### fn HTTPClientConfig.withTlsConfig
 
-```ts
-withTlsConfig(value)
+```jsonnet
+HTTPClientConfig.withTlsConfig(value)
 ```
 
-TLSConfig configures the options for TLS connections.
+PARAMETERS:
 
+* **value** (`object`)
+
+TLSConfig configures the options for TLS connections.
 #### fn HTTPClientConfig.withTlsConfigMixin
 
-```ts
-withTlsConfigMixin(value)
+```jsonnet
+HTTPClientConfig.withTlsConfigMixin(value)
 ```
 
-TLSConfig configures the options for TLS connections.
+PARAMETERS:
 
+* **value** (`object`)
+
+TLSConfig configures the options for TLS connections.
 #### obj HTTPClientConfig.authorization
 
 
 ##### fn HTTPClientConfig.authorization.withCredentials
 
-```ts
-withCredentials(value)
+```jsonnet
+HTTPClientConfig.authorization.withCredentials(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.authorization.withCredentialsFile
 
-```ts
-withCredentialsFile(value)
+```jsonnet
+HTTPClientConfig.authorization.withCredentialsFile(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.authorization.withType
 
-```ts
-withType(value)
+```jsonnet
+HTTPClientConfig.authorization.withType(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### obj HTTPClientConfig.basic_auth
@@ -483,26 +605,35 @@ withType(value)
 
 ##### fn HTTPClientConfig.basic_auth.withPassword
 
-```ts
-withPassword(value)
+```jsonnet
+HTTPClientConfig.basic_auth.withPassword(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.basic_auth.withPasswordFile
 
-```ts
-withPasswordFile(value)
+```jsonnet
+HTTPClientConfig.basic_auth.withPasswordFile(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.basic_auth.withUsername
 
-```ts
-withUsername(value)
+```jsonnet
+HTTPClientConfig.basic_auth.withUsername(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### obj HTTPClientConfig.oauth2
@@ -510,131 +641,180 @@ withUsername(value)
 
 ##### fn HTTPClientConfig.oauth2.withClientId
 
-```ts
-withClientId(value)
+```jsonnet
+HTTPClientConfig.oauth2.withClientId(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.oauth2.withClientSecret
 
-```ts
-withClientSecret(value)
+```jsonnet
+HTTPClientConfig.oauth2.withClientSecret(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.oauth2.withClientSecretFile
 
-```ts
-withClientSecretFile(value)
+```jsonnet
+HTTPClientConfig.oauth2.withClientSecretFile(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.oauth2.withEndpointParams
 
-```ts
-withEndpointParams(value)
+```jsonnet
+HTTPClientConfig.oauth2.withEndpointParams(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ##### fn HTTPClientConfig.oauth2.withEndpointParamsMixin
 
-```ts
-withEndpointParamsMixin(value)
+```jsonnet
+HTTPClientConfig.oauth2.withEndpointParamsMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ##### fn HTTPClientConfig.oauth2.withNoProxy
 
-```ts
-withNoProxy(value)
+```jsonnet
+HTTPClientConfig.oauth2.withNoProxy(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 NoProxy contains addresses that should not use a proxy.
-
 ##### fn HTTPClientConfig.oauth2.withProxyConnectHeader
 
-```ts
-withProxyConnectHeader(value)
+```jsonnet
+HTTPClientConfig.oauth2.withProxyConnectHeader(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ##### fn HTTPClientConfig.oauth2.withProxyConnectHeaderMixin
 
-```ts
-withProxyConnectHeaderMixin(value)
+```jsonnet
+HTTPClientConfig.oauth2.withProxyConnectHeaderMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ##### fn HTTPClientConfig.oauth2.withProxyFromEnvironment
 
-```ts
-withProxyFromEnvironment(value=true)
+```jsonnet
+HTTPClientConfig.oauth2.withProxyFromEnvironment(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function
 to determine proxies.
-
 ##### fn HTTPClientConfig.oauth2.withProxyUrl
 
-```ts
-withProxyUrl(value)
+```jsonnet
+HTTPClientConfig.oauth2.withProxyUrl(value)
 ```
 
-URL is a custom URL type that allows validation at configuration load time.
+PARAMETERS:
 
+* **value** (`object`)
+
+URL is a custom URL type that allows validation at configuration load time.
 ##### fn HTTPClientConfig.oauth2.withProxyUrlMixin
 
-```ts
-withProxyUrlMixin(value)
+```jsonnet
+HTTPClientConfig.oauth2.withProxyUrlMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 URL is a custom URL type that allows validation at configuration load time.
-
 ##### fn HTTPClientConfig.oauth2.withScopes
 
-```ts
-withScopes(value)
+```jsonnet
+HTTPClientConfig.oauth2.withScopes(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ##### fn HTTPClientConfig.oauth2.withScopesMixin
 
-```ts
-withScopesMixin(value)
+```jsonnet
+HTTPClientConfig.oauth2.withScopesMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ##### fn HTTPClientConfig.oauth2.withTlsConfig
 
-```ts
-withTlsConfig(value)
+```jsonnet
+HTTPClientConfig.oauth2.withTlsConfig(value)
 ```
 
-TLSConfig configures the options for TLS connections.
+PARAMETERS:
 
+* **value** (`object`)
+
+TLSConfig configures the options for TLS connections.
 ##### fn HTTPClientConfig.oauth2.withTlsConfigMixin
 
-```ts
-withTlsConfigMixin(value)
+```jsonnet
+HTTPClientConfig.oauth2.withTlsConfigMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 TLSConfig configures the options for TLS connections.
-
 ##### fn HTTPClientConfig.oauth2.withTokenUrl
 
-```ts
-withTokenUrl(value)
+```jsonnet
+HTTPClientConfig.oauth2.withTokenUrl(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### obj HTTPClientConfig.oauth2.proxy_url
@@ -642,98 +822,136 @@ withTokenUrl(value)
 
 ###### fn HTTPClientConfig.oauth2.proxy_url.withForceQuery
 
-```ts
-withForceQuery(value=true)
+```jsonnet
+HTTPClientConfig.oauth2.proxy_url.withForceQuery(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 ###### fn HTTPClientConfig.oauth2.proxy_url.withFragment
 
-```ts
-withFragment(value)
+```jsonnet
+HTTPClientConfig.oauth2.proxy_url.withFragment(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn HTTPClientConfig.oauth2.proxy_url.withHost
 
-```ts
-withHost(value)
+```jsonnet
+HTTPClientConfig.oauth2.proxy_url.withHost(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn HTTPClientConfig.oauth2.proxy_url.withOmitHost
 
-```ts
-withOmitHost(value=true)
+```jsonnet
+HTTPClientConfig.oauth2.proxy_url.withOmitHost(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 ###### fn HTTPClientConfig.oauth2.proxy_url.withOpaque
 
-```ts
-withOpaque(value)
+```jsonnet
+HTTPClientConfig.oauth2.proxy_url.withOpaque(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn HTTPClientConfig.oauth2.proxy_url.withPath
 
-```ts
-withPath(value)
+```jsonnet
+HTTPClientConfig.oauth2.proxy_url.withPath(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn HTTPClientConfig.oauth2.proxy_url.withRawFragment
 
-```ts
-withRawFragment(value)
+```jsonnet
+HTTPClientConfig.oauth2.proxy_url.withRawFragment(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn HTTPClientConfig.oauth2.proxy_url.withRawPath
 
-```ts
-withRawPath(value)
+```jsonnet
+HTTPClientConfig.oauth2.proxy_url.withRawPath(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn HTTPClientConfig.oauth2.proxy_url.withRawQuery
 
-```ts
-withRawQuery(value)
+```jsonnet
+HTTPClientConfig.oauth2.proxy_url.withRawQuery(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn HTTPClientConfig.oauth2.proxy_url.withScheme
 
-```ts
-withScheme(value)
+```jsonnet
+HTTPClientConfig.oauth2.proxy_url.withScheme(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ###### fn HTTPClientConfig.oauth2.proxy_url.withUser
 
-```ts
-withUser(value)
+```jsonnet
+HTTPClientConfig.oauth2.proxy_url.withUser(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ###### fn HTTPClientConfig.oauth2.proxy_url.withUserMixin
 
-```ts
-withUserMixin(value)
+```jsonnet
+HTTPClientConfig.oauth2.proxy_url.withUserMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ##### obj HTTPClientConfig.oauth2.tls_config
@@ -741,157 +959,217 @@ withUserMixin(value)
 
 ###### fn HTTPClientConfig.oauth2.tls_config.withCaFile
 
-```ts
-withCaFile(value)
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withCaFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The CA cert to use for the targets.
-
 ###### fn HTTPClientConfig.oauth2.tls_config.withCertFile
 
-```ts
-withCertFile(value)
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withCertFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The client cert file for the targets.
-
 ###### fn HTTPClientConfig.oauth2.tls_config.withInsecureSkipVerify
 
-```ts
-withInsecureSkipVerify(value=true)
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withInsecureSkipVerify(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 Disable target certificate validation.
-
 ###### fn HTTPClientConfig.oauth2.tls_config.withKeyFile
 
-```ts
-withKeyFile(value)
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withKeyFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The client key file for the targets.
-
 ###### fn HTTPClientConfig.oauth2.tls_config.withMaxVersion
 
-```ts
-withMaxVersion(value)
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withMaxVersion(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Maximum TLS version.
-
 ###### fn HTTPClientConfig.oauth2.tls_config.withMinVersion
 
-```ts
-withMinVersion(value)
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withMinVersion(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Minimum TLS version.
-
 ###### fn HTTPClientConfig.oauth2.tls_config.withServerName
 
-```ts
-withServerName(value)
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withServerName(value)
 ```
 
-Used to verify the hostname for the targets.
+PARAMETERS:
 
+* **value** (`string`)
+
+Used to verify the hostname for the targets.
 #### obj HTTPClientConfig.proxy_url
 
 
 ##### fn HTTPClientConfig.proxy_url.withForceQuery
 
-```ts
-withForceQuery(value=true)
+```jsonnet
+HTTPClientConfig.proxy_url.withForceQuery(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 ##### fn HTTPClientConfig.proxy_url.withFragment
 
-```ts
-withFragment(value)
+```jsonnet
+HTTPClientConfig.proxy_url.withFragment(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.proxy_url.withHost
 
-```ts
-withHost(value)
+```jsonnet
+HTTPClientConfig.proxy_url.withHost(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.proxy_url.withOmitHost
 
-```ts
-withOmitHost(value=true)
+```jsonnet
+HTTPClientConfig.proxy_url.withOmitHost(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 ##### fn HTTPClientConfig.proxy_url.withOpaque
 
-```ts
-withOpaque(value)
+```jsonnet
+HTTPClientConfig.proxy_url.withOpaque(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.proxy_url.withPath
 
-```ts
-withPath(value)
+```jsonnet
+HTTPClientConfig.proxy_url.withPath(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.proxy_url.withRawFragment
 
-```ts
-withRawFragment(value)
+```jsonnet
+HTTPClientConfig.proxy_url.withRawFragment(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.proxy_url.withRawPath
 
-```ts
-withRawPath(value)
+```jsonnet
+HTTPClientConfig.proxy_url.withRawPath(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.proxy_url.withRawQuery
 
-```ts
-withRawQuery(value)
+```jsonnet
+HTTPClientConfig.proxy_url.withRawQuery(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.proxy_url.withScheme
 
-```ts
-withScheme(value)
+```jsonnet
+HTTPClientConfig.proxy_url.withScheme(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ##### fn HTTPClientConfig.proxy_url.withUser
 
-```ts
-withUser(value)
+```jsonnet
+HTTPClientConfig.proxy_url.withUser(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ##### fn HTTPClientConfig.proxy_url.withUserMixin
 
-```ts
-withUserMixin(value)
+```jsonnet
+HTTPClientConfig.proxy_url.withUserMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 #### obj HTTPClientConfig.tls_config
@@ -899,153 +1177,210 @@ withUserMixin(value)
 
 ##### fn HTTPClientConfig.tls_config.withCaFile
 
-```ts
-withCaFile(value)
+```jsonnet
+HTTPClientConfig.tls_config.withCaFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The CA cert to use for the targets.
-
 ##### fn HTTPClientConfig.tls_config.withCertFile
 
-```ts
-withCertFile(value)
+```jsonnet
+HTTPClientConfig.tls_config.withCertFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The client cert file for the targets.
-
 ##### fn HTTPClientConfig.tls_config.withInsecureSkipVerify
 
-```ts
-withInsecureSkipVerify(value=true)
+```jsonnet
+HTTPClientConfig.tls_config.withInsecureSkipVerify(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 Disable target certificate validation.
-
 ##### fn HTTPClientConfig.tls_config.withKeyFile
 
-```ts
-withKeyFile(value)
+```jsonnet
+HTTPClientConfig.tls_config.withKeyFile(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 The client key file for the targets.
-
 ##### fn HTTPClientConfig.tls_config.withMaxVersion
 
-```ts
-withMaxVersion(value)
+```jsonnet
+HTTPClientConfig.tls_config.withMaxVersion(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Maximum TLS version.
-
 ##### fn HTTPClientConfig.tls_config.withMinVersion
 
-```ts
-withMinVersion(value)
+```jsonnet
+HTTPClientConfig.tls_config.withMinVersion(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Minimum TLS version.
-
 ##### fn HTTPClientConfig.tls_config.withServerName
 
-```ts
-withServerName(value)
+```jsonnet
+HTTPClientConfig.tls_config.withServerName(value)
 ```
 
-Used to verify the hostname for the targets.
+PARAMETERS:
 
+* **value** (`string`)
+
+Used to verify the hostname for the targets.
 ### obj metadata_config
 
 
 #### fn metadata_config.withMaxSamplesPerSend
 
-```ts
-withMaxSamplesPerSend(value)
+```jsonnet
+metadata_config.withMaxSamplesPerSend(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Maximum number of samples per send.
-
 #### fn metadata_config.withSend
 
-```ts
-withSend(value=true)
+```jsonnet
+metadata_config.withSend(value=true)
 ```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 Send controls whether we send metric metadata to remote storage.
-
 #### fn metadata_config.withSendInterval
 
-```ts
-withSendInterval(value)
+```jsonnet
+metadata_config.withSendInterval(value)
 ```
 
-SendInterval controls how frequently we send metric metadata.
+PARAMETERS:
 
+* **value** (`integer`)
+
+SendInterval controls how frequently we send metric metadata.
 ### obj queue_config
 
 
 #### fn queue_config.withBatchSendDeadline
 
-```ts
-withBatchSendDeadline(value)
+```jsonnet
+queue_config.withBatchSendDeadline(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Maximum time sample will wait in buffer.
-
 #### fn queue_config.withCapacity
 
-```ts
-withCapacity(value)
+```jsonnet
+queue_config.withCapacity(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Number of samples to buffer per shard before we block. Defaults to
 MaxSamplesPerSend.
-
 #### fn queue_config.withMaxBackoff
 
-```ts
-withMaxBackoff(value)
+```jsonnet
+queue_config.withMaxBackoff(value)
 ```
 
+PARAMETERS:
+
+* **value** (`integer`)
 
 
 #### fn queue_config.withMaxSamplesPerSend
 
-```ts
-withMaxSamplesPerSend(value)
+```jsonnet
+queue_config.withMaxSamplesPerSend(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Maximum number of samples per send.
-
 #### fn queue_config.withMaxShards
 
-```ts
-withMaxShards(value)
+```jsonnet
+queue_config.withMaxShards(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Max number of shards, i.e. amount of concurrency.
-
 #### fn queue_config.withMinBackoff
 
-```ts
-withMinBackoff(value)
+```jsonnet
+queue_config.withMinBackoff(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 On recoverable errors, backoff exponentially.
-
 #### fn queue_config.withMinShards
 
-```ts
-withMinShards(value)
+```jsonnet
+queue_config.withMinShards(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Min number of shards, i.e. amount of concurrency.
-
 #### fn queue_config.withRetryOnHttp429
 
-```ts
-withRetryOnHttp429(value=true)
+```jsonnet
+queue_config.withRetryOnHttp429(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 ### obj sigv4
@@ -1053,42 +1388,57 @@ withRetryOnHttp429(value=true)
 
 #### fn sigv4.withAccessKey
 
-```ts
-withAccessKey(value)
+```jsonnet
+sigv4.withAccessKey(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn sigv4.withProfile
 
-```ts
-withProfile(value)
+```jsonnet
+sigv4.withProfile(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn sigv4.withRegion
 
-```ts
-withRegion(value)
+```jsonnet
+sigv4.withRegion(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn sigv4.withRoleArn
 
-```ts
-withRoleArn(value)
+```jsonnet
+sigv4.withRoleArn(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn sigv4.withSecretKey
 
-```ts
-withSecretKey(value)
+```jsonnet
+sigv4.withSecretKey(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 ### obj url
@@ -1096,98 +1446,136 @@ withSecretKey(value)
 
 #### fn url.withForceQuery
 
-```ts
-withForceQuery(value=true)
+```jsonnet
+url.withForceQuery(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 #### fn url.withFragment
 
-```ts
-withFragment(value)
+```jsonnet
+url.withFragment(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn url.withHost
 
-```ts
-withHost(value)
+```jsonnet
+url.withHost(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn url.withOmitHost
 
-```ts
-withOmitHost(value=true)
+```jsonnet
+url.withOmitHost(value=true)
 ```
 
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
 
 
 #### fn url.withOpaque
 
-```ts
-withOpaque(value)
+```jsonnet
+url.withOpaque(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn url.withPath
 
-```ts
-withPath(value)
+```jsonnet
+url.withPath(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn url.withRawFragment
 
-```ts
-withRawFragment(value)
+```jsonnet
+url.withRawFragment(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn url.withRawPath
 
-```ts
-withRawPath(value)
+```jsonnet
+url.withRawPath(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn url.withRawQuery
 
-```ts
-withRawQuery(value)
+```jsonnet
+url.withRawQuery(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn url.withScheme
 
-```ts
-withScheme(value)
+```jsonnet
+url.withScheme(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn url.withUser
 
-```ts
-withUser(value)
+```jsonnet
+url.withUser(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 #### fn url.withUserMixin
 
-```ts
-withUserMixin(value)
+```jsonnet
+url.withUserMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 ### obj write_relabel_configs
@@ -1195,73 +1583,101 @@ withUserMixin(value)
 
 #### fn write_relabel_configs.withAction
 
-```ts
-withAction(value)
+```jsonnet
+write_relabel_configs.withAction(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 Action is the action to be performed for the relabeling.
-
 #### fn write_relabel_configs.withModulus
 
-```ts
-withModulus(value)
+```jsonnet
+write_relabel_configs.withModulus(value)
 ```
+
+PARAMETERS:
+
+* **value** (`integer`)
 
 Modulus to take of the hash of concatenated values from the source labels.
-
 #### fn write_relabel_configs.withRegex
 
-```ts
-withRegex(value)
+```jsonnet
+write_relabel_configs.withRegex(value)
 ```
 
-Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
+PARAMETERS:
 
+* **value** (`object`)
+
+Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
 #### fn write_relabel_configs.withRegexMixin
 
-```ts
-withRegexMixin(value)
+```jsonnet
+write_relabel_configs.withRegexMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
-
 #### fn write_relabel_configs.withReplacement
 
-```ts
-withReplacement(value)
+```jsonnet
+write_relabel_configs.withReplacement(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 Replacement is the regex replacement pattern to be used.
-
 #### fn write_relabel_configs.withSeparator
 
-```ts
-withSeparator(value)
+```jsonnet
+write_relabel_configs.withSeparator(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 Separator is the string between concatenated values from the source labels.
-
 #### fn write_relabel_configs.withSourceLabels
 
-```ts
-withSourceLabels(value)
+```jsonnet
+write_relabel_configs.withSourceLabels(value)
 ```
 
-LabelNames is a sortable LabelName slice.
+PARAMETERS:
 
+* **value** (`array`)
+
+LabelNames is a sortable LabelName slice.
 #### fn write_relabel_configs.withSourceLabelsMixin
 
-```ts
-withSourceLabelsMixin(value)
+```jsonnet
+write_relabel_configs.withSourceLabelsMixin(value)
 ```
+
+PARAMETERS:
+
+* **value** (`array`)
 
 LabelNames is a sortable LabelName slice.
-
 #### fn write_relabel_configs.withTargetLabel
 
-```ts
-withTargetLabel(value)
+```jsonnet
+write_relabel_configs.withTargetLabel(value)
 ```
+
+PARAMETERS:
+
+* **value** (`string`)
 
 TargetLabel is the label to which the resulting string is written in a replacement.
 Regexp interpolation is allowed for the replace action.

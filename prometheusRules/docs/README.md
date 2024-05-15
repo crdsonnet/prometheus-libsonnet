@@ -7,7 +7,6 @@ Additional information about the configuration options can be found in the
 [official](https://prometheus.io/docs/prometheus/latest/configuration/recording_rules/)
 [docs](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/).
 
-
 ## Install
 
 ```
@@ -19,6 +18,7 @@ jb install github.com/crdsonnet/prometheus-libsonnet/prometheusRules@master
 ```jsonnet
 local prometheusRules = import "github.com/crdsonnet/prometheus-libsonnet/prometheusRules/main.libsonnet"
 ```
+
 
 ## Index
 
@@ -48,18 +48,24 @@ local prometheusRules = import "github.com/crdsonnet/prometheus-libsonnet/promet
 
 ### fn withGroups
 
-```ts
+```jsonnet
 withGroups(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### fn withGroupsMixin
 
-```ts
+```jsonnet
 withGroupsMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### obj group
@@ -67,51 +73,70 @@ withGroupsMixin(value)
 
 #### fn group.new
 
-```ts
-new(name, rules)
+```jsonnet
+group.new(name, rules)
 ```
+
+PARAMETERS:
+
+* **name** (`string`)
+* **rules** (`array`)
 
 `new` creates a new rule group.
 
-
 #### fn group.withInterval
 
-```ts
-withInterval(value)
+```jsonnet
+group.withInterval(value)
 ```
 
+PARAMETERS:
+
+* **value** (`integer`)
 
 
 #### fn group.withLimit
 
-```ts
-withLimit(value)
+```jsonnet
+group.withLimit(value)
 ```
 
+PARAMETERS:
+
+* **value** (`integer`)
 
 
 #### fn group.withName
 
-```ts
-withName(value)
+```jsonnet
+group.withName(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn group.withRules
 
-```ts
-withRules(value)
+```jsonnet
+group.withRules(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 #### fn group.withRulesMixin
 
-```ts
-withRulesMixin(value)
+```jsonnet
+group.withRulesMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`array`)
 
 
 ### obj rule
@@ -119,90 +144,125 @@ withRulesMixin(value)
 
 #### fn rule.newAlert
 
-```ts
-newAlert(name, expr)
+```jsonnet
+rule.newAlert(name, expr)
 ```
+
+PARAMETERS:
+
+* **name** (`string`)
+* **expr** (`string`)
 
 `newAlert` creates a new alert.
 
-
 #### fn rule.newRule
 
-```ts
-newRule(name, expr)
+```jsonnet
+rule.newRule(name, expr)
 ```
+
+PARAMETERS:
+
+* **name** (`string`)
+* **expr** (`string`)
 
 `newRule` creates a new recording rule.
 
-
 #### fn rule.withAlert
 
-```ts
-withAlert(value)
+```jsonnet
+rule.withAlert(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn rule.withAnnotations
 
-```ts
-withAnnotations(value)
+```jsonnet
+rule.withAnnotations(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 #### fn rule.withAnnotationsMixin
 
-```ts
-withAnnotationsMixin(value)
+```jsonnet
+rule.withAnnotationsMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 #### fn rule.withExpr
 
-```ts
-withExpr(value)
+```jsonnet
+rule.withExpr(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
 
 #### fn rule.withFor
 
-```ts
-withFor(value)
+```jsonnet
+rule.withFor(value)
 ```
 
+PARAMETERS:
+
+* **value** (`integer`)
 
 
 #### fn rule.withKeepFiringFor
 
-```ts
-withKeepFiringFor(value)
+```jsonnet
+rule.withKeepFiringFor(value)
 ```
 
+PARAMETERS:
+
+* **value** (`integer`)
 
 
 #### fn rule.withLabels
 
-```ts
-withLabels(value)
+```jsonnet
+rule.withLabels(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 #### fn rule.withLabelsMixin
 
-```ts
-withLabelsMixin(value)
+```jsonnet
+rule.withLabelsMixin(value)
 ```
 
+PARAMETERS:
+
+* **value** (`object`)
 
 
 #### fn rule.withRecord
 
-```ts
-withRecord(value)
+```jsonnet
+rule.withRecord(value)
 ```
 
+PARAMETERS:
+
+* **value** (`string`)
 
