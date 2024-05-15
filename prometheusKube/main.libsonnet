@@ -236,11 +236,13 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         ```
       |||,
       args=[
-        d.arg('config', d.T.object),
+        d.arg('hostname', d.T.string),
+        d.arg('path', d.T.string, default='/prometheus/'),
       ]
     ),
   withExternalUrl(hostname, path='/prometheus/'): {
     hostname:: hostname,
+    // `path` needs to be passed seperately to configure '--web.route-prefix'
     path:: path,
 
     local container = k.core.v1.container,
