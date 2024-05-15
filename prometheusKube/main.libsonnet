@@ -33,8 +33,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         d.arg('name', d.T.string, default='prometheus'),
         d.arg('image', d.T.string, default='prom/prometheus:v2.43.0'),
         d.arg('watchImage', d.T.string, default='weaveworks/watch:master-0c44bf6'),
-        d.arg('port', d.T.number, default=9093),
-        d.arg('pvcStorage', d.T.string, default='300Gi'),
+        d.arg('port', d.T.number, default=9090),
       ]
     ),
   new(
@@ -43,7 +42,6 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
     image='prom/prometheus:v2.43.0',
     watchImage='weaveworks/watch:master-0c44bf6',
     port=9090,
-    pvcStorage='300Gi',
   ): {
     local this = self,
 
@@ -129,7 +127,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
     pvc::
       pvc.new('%s-data' % (name))
       + pvc.spec.withAccessModes('ReadWriteOnce')
-      + pvc.spec.resources.withRequests({ storage: pvcStorage }),
+      + pvc.spec.resources.withRequests({ storage: '10Gi' }),
 
     local statefulset = k.apps.v1.statefulSet,
     statefulset:
@@ -284,6 +282,36 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       + podDisruptionBudget.spec.withMaxUnavailable(maxUnavailable),
 
     pdb: pdbForStatefulset(self.statefulset, maxUnavailable),
+  },
+
+  pvc: {
+    '#withSize':
+      d.func.new(
+        |||
+          `pvc.withSize` configures the PVC volume size. By default the Prometheus StatefulSet is configured with a 10Gi PVC.
+        |||,
+        args=[
+          d.arg('size', d.T.string),
+        ]
+      ),
+    withSize(size): {
+      pvc+:
+        k.core.v1.persistentVolumeClaim.spec.resources.withRequests({ storage: size }),
+    },
+
+    '#withStorageClassName':
+      d.func.new(
+        |||
+          `pvc.withStorageClassName` configures the PVC StorageClassName.
+        |||,
+        args=[
+          d.arg('class', d.T.string),
+        ]
+      ),
+    withStorageClassName(class): {
+      pvc+:
+        k.core.v1.persistentVolumeClaim.spec.withStorageClassName(class),
+    },
   },
 
   '#withMixins'::
