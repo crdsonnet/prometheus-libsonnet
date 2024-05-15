@@ -236,6 +236,26 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
     ),
   withHighAvailability(replicas=2): (import './ha.libsonnet')(replicas=2),
 
+  '#withPodDisruptionBudget':
+    d.func.new(
+      |||
+        `withPodDisruptionBudget` configures a pod disruption budget for the Prometheus StatefulSet. Generally only useful in a high availability context.
+      |||,
+      args=[
+        d.arg('maxUnavailable', d.T.number, default=1),
+      ]
+    ),
+  withPodDisruptionBudget(maxUnavailable=1): {
+    local pdbForStatefulset(sts, maxUnavailable) =
+      local podDisruptionBudget = k.policy.v1.podDisruptionBudget;
+      podDisruptionBudget.new(sts.metadata.name + '-pdb')
+      + podDisruptionBudget.metadata.withLabels({ name: sts.metadata.name + '-pdb' })
+      + podDisruptionBudget.spec.selector.withMatchLabels(sts.spec.template.metadata.labels)
+      + podDisruptionBudget.spec.withMaxUnavailable(maxUnavailable),
+
+    pdb: pdbForStatefulset(self.statefulset, maxUnavailable),
+  },
+
   '#withMixins'::
     d.func.new(
       |||
