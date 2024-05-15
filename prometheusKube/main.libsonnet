@@ -172,6 +172,36 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       ]),
   },
 
+  '#withConfig'::
+    d.func.new(
+      |||
+        `withConfig` sets the content of the Prometheus configuration.
+
+        Tip: The Prometheus configuration can be created with the prometheusConfig jsonnet lib that comes along with this library.
+      |||,
+      args=[
+        d.arg('config', d.T.object),
+      ]
+    ),
+  withConfig(config): {
+    config:: config,
+  },
+
+  '#withConfigMixin'::
+    d.func.new(
+      |||
+        `withConfigMixin` extends the Prometheus configuration, this function can be called multiple times to merge various configuration options.
+
+        Tip: The Prometheus configuration can be created with the prometheusConfig jsonnet lib that comes along with this library.
+      |||,
+      args=[
+        d.arg('config', d.T.object),
+      ]
+    ),
+  withConfigMixin(config): {
+    config+: config,
+  },
+
   '#withEnabledFeatures'::
     d.func.new(
       |||
