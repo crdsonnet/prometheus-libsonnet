@@ -161,6 +161,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
     local servicePort = k.core.v1.servicePort,
     service:
       k.util.serviceFor(self.statefulset)
+      + service.spec.withSessionAffinity('ClientIP')
       + service.spec.withPortsMixin([
         servicePort.newNamed(
           name='http',
