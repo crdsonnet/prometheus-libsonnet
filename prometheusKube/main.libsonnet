@@ -147,7 +147,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         self.config_path,
       )
       + statefulset.spec.withPodManagementPolicy('Parallel')
-      + statefulset.spec.withServiceName('prometheus')
+      + statefulset.spec.withServiceName(self.service.metadata.name)
       + statefulset.spec.template.metadata.withAnnotations({
         'prometheus.io.path': '%smetrics' % this.path,
       })
@@ -211,10 +211,11 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       ]
     ),
   withExternalUrl(hostname, path='/prometheus/'): {
+    hostname:: hostname,
     path:: path,
 
     local container = k.core.v1.container,
-    container::
+    container+:
       container.withArgsMixin([
         '--web.external-url=%s%s' % [
           self.hostname,
