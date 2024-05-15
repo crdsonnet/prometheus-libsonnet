@@ -5,26 +5,34 @@
 ## Index
 
 * [`fn withBodySizeLimit(value)`](#fn-withbodysizelimit)
+* [`fn withEnableCompression(value=true)`](#fn-withenablecompression)
 * [`fn withHTTPClientConfig(value)`](#fn-withhttpclientconfig)
 * [`fn withHTTPClientConfigMixin(value)`](#fn-withhttpclientconfigmixin)
 * [`fn withHonorLabels(value=true)`](#fn-withhonorlabels)
 * [`fn withHonorTimestamps(value=true)`](#fn-withhonortimestamps)
 * [`fn withJobName(value)`](#fn-withjobname)
+* [`fn withKeepDroppedTargets(value)`](#fn-withkeepdroppedtargets)
 * [`fn withLabelLimit(value)`](#fn-withlabellimit)
 * [`fn withLabelNameLengthLimit(value)`](#fn-withlabelnamelengthlimit)
 * [`fn withLabelValueLengthLimit(value)`](#fn-withlabelvaluelengthlimit)
 * [`fn withMetricRelabelConfigs(value)`](#fn-withmetricrelabelconfigs)
 * [`fn withMetricRelabelConfigsMixin(value)`](#fn-withmetricrelabelconfigsmixin)
 * [`fn withMetricsPath(value)`](#fn-withmetricspath)
+* [`fn withNativeHistogramBucketLimit(value)`](#fn-withnativehistogrambucketlimit)
+* [`fn withNativeHistogramMinBucketFactor(value)`](#fn-withnativehistogramminbucketfactor)
 * [`fn withParams(value)`](#fn-withparams)
 * [`fn withParamsMixin(value)`](#fn-withparamsmixin)
 * [`fn withRelabelConfigs(value)`](#fn-withrelabelconfigs)
 * [`fn withRelabelConfigsMixin(value)`](#fn-withrelabelconfigsmixin)
 * [`fn withSampleLimit(value)`](#fn-withsamplelimit)
 * [`fn withScheme(value)`](#fn-withscheme)
+* [`fn withScrapeClassicHistograms(value=true)`](#fn-withscrapeclassichistograms)
 * [`fn withScrapeInterval(value)`](#fn-withscrapeinterval)
+* [`fn withScrapeProtocols(value)`](#fn-withscrapeprotocols)
+* [`fn withScrapeProtocolsMixin(value)`](#fn-withscrapeprotocolsmixin)
 * [`fn withScrapeTimeout(value)`](#fn-withscrapetimeout)
 * [`fn withTargetLimit(value)`](#fn-withtargetlimit)
+* [`fn withTrackTimestampsStaleness(value=true)`](#fn-withtracktimestampsstaleness)
 * [`obj HTTPClientConfig`](#obj-httpclientconfig)
   * [`fn withAuthorization(value)`](#fn-httpclientconfigwithauthorization)
   * [`fn withAuthorizationMixin(value)`](#fn-httpclientconfigwithauthorizationmixin)
@@ -52,6 +60,7 @@
     * [`fn withPassword(value)`](#fn-httpclientconfigbasic_authwithpassword)
     * [`fn withPasswordFile(value)`](#fn-httpclientconfigbasic_authwithpasswordfile)
     * [`fn withUsername(value)`](#fn-httpclientconfigbasic_authwithusername)
+    * [`fn withUsernameFile(value)`](#fn-httpclientconfigbasic_authwithusernamefile)
   * [`obj oauth2`](#obj-httpclientconfigoauth2)
     * [`fn withClientId(value)`](#fn-httpclientconfigoauth2withclientid)
     * [`fn withClientSecret(value)`](#fn-httpclientconfigoauth2withclientsecret)
@@ -83,9 +92,12 @@
       * [`fn withUser(value)`](#fn-httpclientconfigoauth2proxy_urlwithuser)
       * [`fn withUserMixin(value)`](#fn-httpclientconfigoauth2proxy_urlwithusermixin)
     * [`obj tls_config`](#obj-httpclientconfigoauth2tls_config)
+      * [`fn withCa(value)`](#fn-httpclientconfigoauth2tls_configwithca)
       * [`fn withCaFile(value)`](#fn-httpclientconfigoauth2tls_configwithcafile)
+      * [`fn withCert(value)`](#fn-httpclientconfigoauth2tls_configwithcert)
       * [`fn withCertFile(value)`](#fn-httpclientconfigoauth2tls_configwithcertfile)
       * [`fn withInsecureSkipVerify(value=true)`](#fn-httpclientconfigoauth2tls_configwithinsecureskipverify)
+      * [`fn withKey(value)`](#fn-httpclientconfigoauth2tls_configwithkey)
       * [`fn withKeyFile(value)`](#fn-httpclientconfigoauth2tls_configwithkeyfile)
       * [`fn withMaxVersion(value)`](#fn-httpclientconfigoauth2tls_configwithmaxversion)
       * [`fn withMinVersion(value)`](#fn-httpclientconfigoauth2tls_configwithminversion)
@@ -104,9 +116,12 @@
     * [`fn withUser(value)`](#fn-httpclientconfigproxy_urlwithuser)
     * [`fn withUserMixin(value)`](#fn-httpclientconfigproxy_urlwithusermixin)
   * [`obj tls_config`](#obj-httpclientconfigtls_config)
+    * [`fn withCa(value)`](#fn-httpclientconfigtls_configwithca)
     * [`fn withCaFile(value)`](#fn-httpclientconfigtls_configwithcafile)
+    * [`fn withCert(value)`](#fn-httpclientconfigtls_configwithcert)
     * [`fn withCertFile(value)`](#fn-httpclientconfigtls_configwithcertfile)
     * [`fn withInsecureSkipVerify(value=true)`](#fn-httpclientconfigtls_configwithinsecureskipverify)
+    * [`fn withKey(value)`](#fn-httpclientconfigtls_configwithkey)
     * [`fn withKeyFile(value)`](#fn-httpclientconfigtls_configwithkeyfile)
     * [`fn withMaxVersion(value)`](#fn-httpclientconfigtls_configwithmaxversion)
     * [`fn withMinVersion(value)`](#fn-httpclientconfigtls_configwithminversion)
@@ -146,6 +161,18 @@ PARAMETERS:
 
 An uncompressed response body larger than this many bytes will cause the
 scrape to fail. 0 means no limit.
+### fn withEnableCompression
+
+```jsonnet
+withEnableCompression(value=true)
+```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
+
+Indicator whether to request compressed response from the target.
 ### fn withHTTPClientConfig
 
 ```jsonnet
@@ -203,6 +230,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The job name to which the job label is set by default.
+### fn withKeepDroppedTargets
+
+```jsonnet
+withKeepDroppedTargets(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+Keep no more than this many dropped targets per job.
+0 means no limit.
 ### fn withLabelLimit
 
 ```jsonnet
@@ -214,7 +253,7 @@ PARAMETERS:
 * **value** (`integer`)
 
 More than this many labels post metric-relabeling will cause the scrape to
-fail.
+fail. 0 means no limit.
 ### fn withLabelNameLengthLimit
 
 ```jsonnet
@@ -226,7 +265,7 @@ PARAMETERS:
 * **value** (`integer`)
 
 More than this label name length post metric-relabeling will cause the
-scrape to fail.
+scrape to fail. 0 means no limit.
 ### fn withLabelValueLengthLimit
 
 ```jsonnet
@@ -238,7 +277,7 @@ PARAMETERS:
 * **value** (`integer`)
 
 More than this label value length post metric-relabeling will cause the
-scrape to fail.
+scrape to fail. 0 means no limit.
 ### fn withMetricRelabelConfigs
 
 ```jsonnet
@@ -272,6 +311,30 @@ PARAMETERS:
 * **value** (`string`)
 
 The HTTP resource path on which to fetch metrics from targets.
+### fn withNativeHistogramBucketLimit
+
+```jsonnet
+withNativeHistogramBucketLimit(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+If there are more than this many buckets in a native histogram,
+buckets will be merged to stay within the limit.
+### fn withNativeHistogramMinBucketFactor
+
+```jsonnet
+withNativeHistogramMinBucketFactor(value)
+```
+
+PARAMETERS:
+
+* **value** (`number`)
+
+If the growth factor of one bucket to the next is smaller than this,
+buckets will be merged to increase the factor sufficiently.
 ### fn withParams
 
 ```jsonnet
@@ -327,7 +390,7 @@ PARAMETERS:
 * **value** (`integer`)
 
 More than this many samples post metric-relabeling will cause the scrape to
-fail.
+fail. 0 means no limit.
 ### fn withScheme
 
 ```jsonnet
@@ -339,6 +402,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The URL scheme with which to fetch metrics from targets.
+### fn withScrapeClassicHistograms
+
+```jsonnet
+withScrapeClassicHistograms(value=true)
+```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
+
+Whether to scrape a classic histogram that is also exposed as a native histogram.
 ### fn withScrapeInterval
 
 ```jsonnet
@@ -350,6 +425,34 @@ PARAMETERS:
 * **value** (`integer`)
 
 How frequently to scrape the targets of this scrape config.
+### fn withScrapeProtocols
+
+```jsonnet
+withScrapeProtocols(value)
+```
+
+PARAMETERS:
+
+* **value** (`array`)
+
+The protocols to negotiate during a scrape. It tells clients what
+protocol are accepted by Prometheus and with what preference (most wanted is first).
+Supported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,
+OpenMetricsText1.0.0, PrometheusText0.0.4.
+### fn withScrapeProtocolsMixin
+
+```jsonnet
+withScrapeProtocolsMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`array`)
+
+The protocols to negotiate during a scrape. It tells clients what
+protocol are accepted by Prometheus and with what preference (most wanted is first).
+Supported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,
+OpenMetricsText1.0.0, PrometheusText0.0.4.
 ### fn withScrapeTimeout
 
 ```jsonnet
@@ -372,7 +475,19 @@ PARAMETERS:
 * **value** (`integer`)
 
 More than this many targets after the target relabeling will cause the
-scrapes to fail.
+scrapes to fail. 0 means no limit.
+### fn withTrackTimestampsStaleness
+
+```jsonnet
+withTrackTimestampsStaleness(value=true)
+```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
+
+Indicator whether to track the staleness of the scraped timestamps.
 ### obj HTTPClientConfig
 
 
@@ -649,6 +764,17 @@ PARAMETERS:
 
 ```jsonnet
 HTTPClientConfig.basic_auth.withUsername(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
+##### fn HTTPClientConfig.basic_auth.withUsernameFile
+
+```jsonnet
+HTTPClientConfig.basic_auth.withUsernameFile(value)
 ```
 
 PARAMETERS:
@@ -977,6 +1103,17 @@ PARAMETERS:
 ##### obj HTTPClientConfig.oauth2.tls_config
 
 
+###### fn HTTPClientConfig.oauth2.tls_config.withCa
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withCa(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the CA cert to use for the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withCaFile
 
 ```jsonnet
@@ -988,6 +1125,17 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+###### fn HTTPClientConfig.oauth2.tls_config.withCert
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withCert(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client cert file for the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withCertFile
 
 ```jsonnet
@@ -1011,6 +1159,17 @@ PARAMETERS:
    - default value: `true`
 
 Disable target certificate validation.
+###### fn HTTPClientConfig.oauth2.tls_config.withKey
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withKey(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client key file for the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withKeyFile
 
 ```jsonnet
@@ -1195,6 +1354,17 @@ PARAMETERS:
 #### obj HTTPClientConfig.tls_config
 
 
+##### fn HTTPClientConfig.tls_config.withCa
+
+```jsonnet
+HTTPClientConfig.tls_config.withCa(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the CA cert to use for the targets.
 ##### fn HTTPClientConfig.tls_config.withCaFile
 
 ```jsonnet
@@ -1206,6 +1376,17 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+##### fn HTTPClientConfig.tls_config.withCert
+
+```jsonnet
+HTTPClientConfig.tls_config.withCert(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client cert file for the targets.
 ##### fn HTTPClientConfig.tls_config.withCertFile
 
 ```jsonnet
@@ -1229,6 +1410,17 @@ PARAMETERS:
    - default value: `true`
 
 Disable target certificate validation.
+##### fn HTTPClientConfig.tls_config.withKey
+
+```jsonnet
+HTTPClientConfig.tls_config.withKey(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client key file for the targets.
 ##### fn HTTPClientConfig.tls_config.withKeyFile
 
 ```jsonnet

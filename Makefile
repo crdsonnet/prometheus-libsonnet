@@ -1,7 +1,7 @@
 .PHONY: schemas
 schemas:
-	@ln -sfn $$GOPATH/pkg/mod/github.com/prometheus/prometheus@v0.43.0 go/prometheus && \
-		ln -sfn $$GOPATH/pkg/mod/github.com/prometheus/common@v0.42.0 go/common && \
+	@ln -sfn $$GOPATH/pkg/mod/github.com/prometheus/prometheus@v0.52.0 go/prometheus && \
+		ln -sfn $$GOPATH/pkg/mod/github.com/prometheus/common@v0.53.0 go/common && \
 		cd go && go run . && \
 		mv config.json ../generator/config.json && \
 		mv rulegroups.json ../generator/rulegroups.json

@@ -15,9 +15,12 @@
 * [`fn withTlsConfig(value)`](#fn-withtlsconfig)
 * [`fn withTlsConfigMixin(value)`](#fn-withtlsconfigmixin)
 * [`obj tls_config`](#obj-tls_config)
+  * [`fn withCa(value)`](#fn-tls_configwithca)
   * [`fn withCaFile(value)`](#fn-tls_configwithcafile)
+  * [`fn withCert(value)`](#fn-tls_configwithcert)
   * [`fn withCertFile(value)`](#fn-tls_configwithcertfile)
   * [`fn withInsecureSkipVerify(value=true)`](#fn-tls_configwithinsecureskipverify)
+  * [`fn withKey(value)`](#fn-tls_configwithkey)
   * [`fn withKeyFile(value)`](#fn-tls_configwithkeyfile)
   * [`fn withMaxVersion(value)`](#fn-tls_configwithmaxversion)
   * [`fn withMinVersion(value)`](#fn-tls_configwithminversion)
@@ -139,6 +142,17 @@ TLSConfig configures the options for TLS connections.
 ### obj tls_config
 
 
+#### fn tls_config.withCa
+
+```jsonnet
+tls_config.withCa(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the CA cert to use for the targets.
 #### fn tls_config.withCaFile
 
 ```jsonnet
@@ -150,6 +164,17 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+#### fn tls_config.withCert
+
+```jsonnet
+tls_config.withCert(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client cert file for the targets.
 #### fn tls_config.withCertFile
 
 ```jsonnet
@@ -173,6 +198,17 @@ PARAMETERS:
    - default value: `true`
 
 Disable target certificate validation.
+#### fn tls_config.withKey
+
+```jsonnet
+tls_config.withKey(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client key file for the targets.
 #### fn tls_config.withKeyFile
 
 ```jsonnet

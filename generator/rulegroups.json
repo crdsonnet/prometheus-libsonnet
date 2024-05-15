@@ -20,18 +20,14 @@
           "type": "integer"
         },
         "labels": {
-          "patternProperties": {
-            ".*": {
-              "type": "string"
-            }
+          "additionalProperties": {
+            "type": "string"
           },
           "type": "object"
         },
         "annotations": {
-          "patternProperties": {
-            ".*": {
-              "type": "string"
-            }
+          "additionalProperties": {
+            "type": "string"
           },
           "type": "object"
         }

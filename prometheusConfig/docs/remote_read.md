@@ -43,6 +43,7 @@
     * [`fn withPassword(value)`](#fn-httpclientconfigbasic_authwithpassword)
     * [`fn withPasswordFile(value)`](#fn-httpclientconfigbasic_authwithpasswordfile)
     * [`fn withUsername(value)`](#fn-httpclientconfigbasic_authwithusername)
+    * [`fn withUsernameFile(value)`](#fn-httpclientconfigbasic_authwithusernamefile)
   * [`obj oauth2`](#obj-httpclientconfigoauth2)
     * [`fn withClientId(value)`](#fn-httpclientconfigoauth2withclientid)
     * [`fn withClientSecret(value)`](#fn-httpclientconfigoauth2withclientsecret)
@@ -74,9 +75,12 @@
       * [`fn withUser(value)`](#fn-httpclientconfigoauth2proxy_urlwithuser)
       * [`fn withUserMixin(value)`](#fn-httpclientconfigoauth2proxy_urlwithusermixin)
     * [`obj tls_config`](#obj-httpclientconfigoauth2tls_config)
+      * [`fn withCa(value)`](#fn-httpclientconfigoauth2tls_configwithca)
       * [`fn withCaFile(value)`](#fn-httpclientconfigoauth2tls_configwithcafile)
+      * [`fn withCert(value)`](#fn-httpclientconfigoauth2tls_configwithcert)
       * [`fn withCertFile(value)`](#fn-httpclientconfigoauth2tls_configwithcertfile)
       * [`fn withInsecureSkipVerify(value=true)`](#fn-httpclientconfigoauth2tls_configwithinsecureskipverify)
+      * [`fn withKey(value)`](#fn-httpclientconfigoauth2tls_configwithkey)
       * [`fn withKeyFile(value)`](#fn-httpclientconfigoauth2tls_configwithkeyfile)
       * [`fn withMaxVersion(value)`](#fn-httpclientconfigoauth2tls_configwithmaxversion)
       * [`fn withMinVersion(value)`](#fn-httpclientconfigoauth2tls_configwithminversion)
@@ -95,9 +99,12 @@
     * [`fn withUser(value)`](#fn-httpclientconfigproxy_urlwithuser)
     * [`fn withUserMixin(value)`](#fn-httpclientconfigproxy_urlwithusermixin)
   * [`obj tls_config`](#obj-httpclientconfigtls_config)
+    * [`fn withCa(value)`](#fn-httpclientconfigtls_configwithca)
     * [`fn withCaFile(value)`](#fn-httpclientconfigtls_configwithcafile)
+    * [`fn withCert(value)`](#fn-httpclientconfigtls_configwithcert)
     * [`fn withCertFile(value)`](#fn-httpclientconfigtls_configwithcertfile)
     * [`fn withInsecureSkipVerify(value=true)`](#fn-httpclientconfigtls_configwithinsecureskipverify)
+    * [`fn withKey(value)`](#fn-httpclientconfigtls_configwithkey)
     * [`fn withKeyFile(value)`](#fn-httpclientconfigtls_configwithkeyfile)
     * [`fn withMaxVersion(value)`](#fn-httpclientconfigtls_configwithmaxversion)
     * [`fn withMinVersion(value)`](#fn-httpclientconfigtls_configwithminversion)
@@ -535,6 +542,17 @@ PARAMETERS:
 * **value** (`string`)
 
 
+##### fn HTTPClientConfig.basic_auth.withUsernameFile
+
+```jsonnet
+HTTPClientConfig.basic_auth.withUsernameFile(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
 #### obj HTTPClientConfig.oauth2
 
 
@@ -856,6 +874,17 @@ PARAMETERS:
 ##### obj HTTPClientConfig.oauth2.tls_config
 
 
+###### fn HTTPClientConfig.oauth2.tls_config.withCa
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withCa(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the CA cert to use for the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withCaFile
 
 ```jsonnet
@@ -867,6 +896,17 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+###### fn HTTPClientConfig.oauth2.tls_config.withCert
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withCert(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client cert file for the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withCertFile
 
 ```jsonnet
@@ -890,6 +930,17 @@ PARAMETERS:
    - default value: `true`
 
 Disable target certificate validation.
+###### fn HTTPClientConfig.oauth2.tls_config.withKey
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withKey(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client key file for the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withKeyFile
 
 ```jsonnet
@@ -1074,6 +1125,17 @@ PARAMETERS:
 #### obj HTTPClientConfig.tls_config
 
 
+##### fn HTTPClientConfig.tls_config.withCa
+
+```jsonnet
+HTTPClientConfig.tls_config.withCa(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the CA cert to use for the targets.
 ##### fn HTTPClientConfig.tls_config.withCaFile
 
 ```jsonnet
@@ -1085,6 +1147,17 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+##### fn HTTPClientConfig.tls_config.withCert
+
+```jsonnet
+HTTPClientConfig.tls_config.withCert(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client cert file for the targets.
 ##### fn HTTPClientConfig.tls_config.withCertFile
 
 ```jsonnet
@@ -1108,6 +1181,17 @@ PARAMETERS:
    - default value: `true`
 
 Disable target certificate validation.
+##### fn HTTPClientConfig.tls_config.withKey
+
+```jsonnet
+HTTPClientConfig.tls_config.withKey(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client key file for the targets.
 ##### fn HTTPClientConfig.tls_config.withKeyFile
 
 ```jsonnet

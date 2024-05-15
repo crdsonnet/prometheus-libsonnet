@@ -19,6 +19,8 @@
   * [`fn withSourceLabelsMixin(value)`](#fn-alert_relabel_configswithsourcelabelsmixin)
   * [`fn withTargetLabel(value)`](#fn-alert_relabel_configswithtargetlabel)
 * [`obj alertmanagers`](#obj-alertmanagers)
+  * [`fn withAlertRelabelConfigs(value)`](#fn-alertmanagerswithalertrelabelconfigs)
+  * [`fn withAlertRelabelConfigsMixin(value)`](#fn-alertmanagerswithalertrelabelconfigsmixin)
   * [`fn withApiVersion(value)`](#fn-alertmanagerswithapiversion)
   * [`fn withHTTPClientConfig(value)`](#fn-alertmanagerswithhttpclientconfig)
   * [`fn withHTTPClientConfigMixin(value)`](#fn-alertmanagerswithhttpclientconfigmixin)
@@ -26,6 +28,8 @@
   * [`fn withRelabelConfigs(value)`](#fn-alertmanagerswithrelabelconfigs)
   * [`fn withRelabelConfigsMixin(value)`](#fn-alertmanagerswithrelabelconfigsmixin)
   * [`fn withScheme(value)`](#fn-alertmanagerswithscheme)
+  * [`fn withSigv4(value)`](#fn-alertmanagerswithsigv4)
+  * [`fn withSigv4Mixin(value)`](#fn-alertmanagerswithsigv4mixin)
   * [`fn withTimeout(value)`](#fn-alertmanagerswithtimeout)
   * [`obj HTTPClientConfig`](#obj-alertmanagershttpclientconfig)
     * [`fn withAuthorization(value)`](#fn-alertmanagershttpclientconfigwithauthorization)
@@ -54,6 +58,7 @@
       * [`fn withPassword(value)`](#fn-alertmanagershttpclientconfigbasic_authwithpassword)
       * [`fn withPasswordFile(value)`](#fn-alertmanagershttpclientconfigbasic_authwithpasswordfile)
       * [`fn withUsername(value)`](#fn-alertmanagershttpclientconfigbasic_authwithusername)
+      * [`fn withUsernameFile(value)`](#fn-alertmanagershttpclientconfigbasic_authwithusernamefile)
     * [`obj oauth2`](#obj-alertmanagershttpclientconfigoauth2)
       * [`fn withClientId(value)`](#fn-alertmanagershttpclientconfigoauth2withclientid)
       * [`fn withClientSecret(value)`](#fn-alertmanagershttpclientconfigoauth2withclientsecret)
@@ -85,9 +90,12 @@
         * [`fn withUser(value)`](#fn-alertmanagershttpclientconfigoauth2proxy_urlwithuser)
         * [`fn withUserMixin(value)`](#fn-alertmanagershttpclientconfigoauth2proxy_urlwithusermixin)
       * [`obj tls_config`](#obj-alertmanagershttpclientconfigoauth2tls_config)
+        * [`fn withCa(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithca)
         * [`fn withCaFile(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithcafile)
+        * [`fn withCert(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithcert)
         * [`fn withCertFile(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithcertfile)
         * [`fn withInsecureSkipVerify(value=true)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithinsecureskipverify)
+        * [`fn withKey(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithkey)
         * [`fn withKeyFile(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithkeyfile)
         * [`fn withMaxVersion(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithmaxversion)
         * [`fn withMinVersion(value)`](#fn-alertmanagershttpclientconfigoauth2tls_configwithminversion)
@@ -106,13 +114,26 @@
       * [`fn withUser(value)`](#fn-alertmanagershttpclientconfigproxy_urlwithuser)
       * [`fn withUserMixin(value)`](#fn-alertmanagershttpclientconfigproxy_urlwithusermixin)
     * [`obj tls_config`](#obj-alertmanagershttpclientconfigtls_config)
+      * [`fn withCa(value)`](#fn-alertmanagershttpclientconfigtls_configwithca)
       * [`fn withCaFile(value)`](#fn-alertmanagershttpclientconfigtls_configwithcafile)
+      * [`fn withCert(value)`](#fn-alertmanagershttpclientconfigtls_configwithcert)
       * [`fn withCertFile(value)`](#fn-alertmanagershttpclientconfigtls_configwithcertfile)
       * [`fn withInsecureSkipVerify(value=true)`](#fn-alertmanagershttpclientconfigtls_configwithinsecureskipverify)
+      * [`fn withKey(value)`](#fn-alertmanagershttpclientconfigtls_configwithkey)
       * [`fn withKeyFile(value)`](#fn-alertmanagershttpclientconfigtls_configwithkeyfile)
       * [`fn withMaxVersion(value)`](#fn-alertmanagershttpclientconfigtls_configwithmaxversion)
       * [`fn withMinVersion(value)`](#fn-alertmanagershttpclientconfigtls_configwithminversion)
       * [`fn withServerName(value)`](#fn-alertmanagershttpclientconfigtls_configwithservername)
+  * [`obj alert_relabel_configs`](#obj-alertmanagersalert_relabel_configs)
+    * [`fn withAction(value)`](#fn-alertmanagersalert_relabel_configswithaction)
+    * [`fn withModulus(value)`](#fn-alertmanagersalert_relabel_configswithmodulus)
+    * [`fn withRegex(value)`](#fn-alertmanagersalert_relabel_configswithregex)
+    * [`fn withRegexMixin(value)`](#fn-alertmanagersalert_relabel_configswithregexmixin)
+    * [`fn withReplacement(value)`](#fn-alertmanagersalert_relabel_configswithreplacement)
+    * [`fn withSeparator(value)`](#fn-alertmanagersalert_relabel_configswithseparator)
+    * [`fn withSourceLabels(value)`](#fn-alertmanagersalert_relabel_configswithsourcelabels)
+    * [`fn withSourceLabelsMixin(value)`](#fn-alertmanagersalert_relabel_configswithsourcelabelsmixin)
+    * [`fn withTargetLabel(value)`](#fn-alertmanagersalert_relabel_configswithtargetlabel)
   * [`obj relabel_configs`](#obj-alertmanagersrelabel_configs)
     * [`fn withAction(value)`](#fn-alertmanagersrelabel_configswithaction)
     * [`fn withModulus(value)`](#fn-alertmanagersrelabel_configswithmodulus)
@@ -123,6 +144,12 @@
     * [`fn withSourceLabels(value)`](#fn-alertmanagersrelabel_configswithsourcelabels)
     * [`fn withSourceLabelsMixin(value)`](#fn-alertmanagersrelabel_configswithsourcelabelsmixin)
     * [`fn withTargetLabel(value)`](#fn-alertmanagersrelabel_configswithtargetlabel)
+  * [`obj sigv4`](#obj-alertmanagerssigv4)
+    * [`fn withAccessKey(value)`](#fn-alertmanagerssigv4withaccesskey)
+    * [`fn withProfile(value)`](#fn-alertmanagerssigv4withprofile)
+    * [`fn withRegion(value)`](#fn-alertmanagerssigv4withregion)
+    * [`fn withRoleArn(value)`](#fn-alertmanagerssigv4withrolearn)
+    * [`fn withSecretKey(value)`](#fn-alertmanagerssigv4withsecretkey)
 
 ## Fields
 
@@ -276,6 +303,28 @@ Regexp interpolation is allowed for the replace action.
 ### obj alertmanagers
 
 
+#### fn alertmanagers.withAlertRelabelConfigs
+
+```jsonnet
+alertmanagers.withAlertRelabelConfigs(value)
+```
+
+PARAMETERS:
+
+* **value** (`array`)
+
+Relabel alerts before sending to the specific alertmanager.
+#### fn alertmanagers.withAlertRelabelConfigsMixin
+
+```jsonnet
+alertmanagers.withAlertRelabelConfigsMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`array`)
+
+Relabel alerts before sending to the specific alertmanager.
 #### fn alertmanagers.withApiVersion
 
 ```jsonnet
@@ -353,6 +402,28 @@ PARAMETERS:
 * **value** (`string`)
 
 The URL scheme to use when talking to Alertmanagers.
+#### fn alertmanagers.withSigv4
+
+```jsonnet
+alertmanagers.withSigv4(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+#### fn alertmanagers.withSigv4Mixin
+
+```jsonnet
+alertmanagers.withSigv4Mixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
 #### fn alertmanagers.withTimeout
 
 ```jsonnet
@@ -640,6 +711,17 @@ PARAMETERS:
 
 ```jsonnet
 alertmanagers.HTTPClientConfig.basic_auth.withUsername(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
+###### fn alertmanagers.HTTPClientConfig.basic_auth.withUsernameFile
+
+```jsonnet
+alertmanagers.HTTPClientConfig.basic_auth.withUsernameFile(value)
 ```
 
 PARAMETERS:
@@ -968,6 +1050,17 @@ PARAMETERS:
 ###### obj alertmanagers.HTTPClientConfig.oauth2.tls_config
 
 
+####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withCa
+
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.tls_config.withCa(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the CA cert to use for the targets.
 ####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withCaFile
 
 ```jsonnet
@@ -979,6 +1072,17 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withCert
+
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.tls_config.withCert(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client cert file for the targets.
 ####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withCertFile
 
 ```jsonnet
@@ -1002,6 +1106,17 @@ PARAMETERS:
    - default value: `true`
 
 Disable target certificate validation.
+####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withKey
+
+```jsonnet
+alertmanagers.HTTPClientConfig.oauth2.tls_config.withKey(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client key file for the targets.
 ####### fn alertmanagers.HTTPClientConfig.oauth2.tls_config.withKeyFile
 
 ```jsonnet
@@ -1186,6 +1301,17 @@ PARAMETERS:
 ##### obj alertmanagers.HTTPClientConfig.tls_config
 
 
+###### fn alertmanagers.HTTPClientConfig.tls_config.withCa
+
+```jsonnet
+alertmanagers.HTTPClientConfig.tls_config.withCa(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the CA cert to use for the targets.
 ###### fn alertmanagers.HTTPClientConfig.tls_config.withCaFile
 
 ```jsonnet
@@ -1197,6 +1323,17 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+###### fn alertmanagers.HTTPClientConfig.tls_config.withCert
+
+```jsonnet
+alertmanagers.HTTPClientConfig.tls_config.withCert(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client cert file for the targets.
 ###### fn alertmanagers.HTTPClientConfig.tls_config.withCertFile
 
 ```jsonnet
@@ -1220,6 +1357,17 @@ PARAMETERS:
    - default value: `true`
 
 Disable target certificate validation.
+###### fn alertmanagers.HTTPClientConfig.tls_config.withKey
+
+```jsonnet
+alertmanagers.HTTPClientConfig.tls_config.withKey(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client key file for the targets.
 ###### fn alertmanagers.HTTPClientConfig.tls_config.withKeyFile
 
 ```jsonnet
@@ -1264,6 +1412,109 @@ PARAMETERS:
 * **value** (`string`)
 
 Used to verify the hostname for the targets.
+#### obj alertmanagers.alert_relabel_configs
+
+
+##### fn alertmanagers.alert_relabel_configs.withAction
+
+```jsonnet
+alertmanagers.alert_relabel_configs.withAction(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Action is the action to be performed for the relabeling.
+##### fn alertmanagers.alert_relabel_configs.withModulus
+
+```jsonnet
+alertmanagers.alert_relabel_configs.withModulus(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+Modulus to take of the hash of concatenated values from the source labels.
+##### fn alertmanagers.alert_relabel_configs.withRegex
+
+```jsonnet
+alertmanagers.alert_relabel_configs.withRegex(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
+##### fn alertmanagers.alert_relabel_configs.withRegexMixin
+
+```jsonnet
+alertmanagers.alert_relabel_configs.withRegexMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
+##### fn alertmanagers.alert_relabel_configs.withReplacement
+
+```jsonnet
+alertmanagers.alert_relabel_configs.withReplacement(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Replacement is the regex replacement pattern to be used.
+##### fn alertmanagers.alert_relabel_configs.withSeparator
+
+```jsonnet
+alertmanagers.alert_relabel_configs.withSeparator(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Separator is the string between concatenated values from the source labels.
+##### fn alertmanagers.alert_relabel_configs.withSourceLabels
+
+```jsonnet
+alertmanagers.alert_relabel_configs.withSourceLabels(value)
+```
+
+PARAMETERS:
+
+* **value** (`array`)
+
+LabelNames is a sortable LabelName slice.
+##### fn alertmanagers.alert_relabel_configs.withSourceLabelsMixin
+
+```jsonnet
+alertmanagers.alert_relabel_configs.withSourceLabelsMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`array`)
+
+LabelNames is a sortable LabelName slice.
+##### fn alertmanagers.alert_relabel_configs.withTargetLabel
+
+```jsonnet
+alertmanagers.alert_relabel_configs.withTargetLabel(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+TargetLabel is the label to which the resulting string is written in a replacement.
+Regexp interpolation is allowed for the replace action.
 #### obj alertmanagers.relabel_configs
 
 
@@ -1367,3 +1618,60 @@ PARAMETERS:
 
 TargetLabel is the label to which the resulting string is written in a replacement.
 Regexp interpolation is allowed for the replace action.
+#### obj alertmanagers.sigv4
+
+
+##### fn alertmanagers.sigv4.withAccessKey
+
+```jsonnet
+alertmanagers.sigv4.withAccessKey(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
+##### fn alertmanagers.sigv4.withProfile
+
+```jsonnet
+alertmanagers.sigv4.withProfile(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
+##### fn alertmanagers.sigv4.withRegion
+
+```jsonnet
+alertmanagers.sigv4.withRegion(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
+##### fn alertmanagers.sigv4.withRoleArn
+
+```jsonnet
+alertmanagers.sigv4.withRoleArn(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
+##### fn alertmanagers.sigv4.withSecretKey
+
+```jsonnet
+alertmanagers.sigv4.withSecretKey(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+

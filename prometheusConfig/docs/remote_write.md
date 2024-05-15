@@ -4,6 +4,8 @@
 
 ## Index
 
+* [`fn withAzuread(value)`](#fn-withazuread)
+* [`fn withAzureadMixin(value)`](#fn-withazureadmixin)
 * [`fn withHTTPClientConfig(value)`](#fn-withhttpclientconfig)
 * [`fn withHTTPClientConfigMixin(value)`](#fn-withhttpclientconfigmixin)
 * [`fn withHeaders(value)`](#fn-withheaders)
@@ -49,6 +51,7 @@
     * [`fn withPassword(value)`](#fn-httpclientconfigbasic_authwithpassword)
     * [`fn withPasswordFile(value)`](#fn-httpclientconfigbasic_authwithpasswordfile)
     * [`fn withUsername(value)`](#fn-httpclientconfigbasic_authwithusername)
+    * [`fn withUsernameFile(value)`](#fn-httpclientconfigbasic_authwithusernamefile)
   * [`obj oauth2`](#obj-httpclientconfigoauth2)
     * [`fn withClientId(value)`](#fn-httpclientconfigoauth2withclientid)
     * [`fn withClientSecret(value)`](#fn-httpclientconfigoauth2withclientsecret)
@@ -80,9 +83,12 @@
       * [`fn withUser(value)`](#fn-httpclientconfigoauth2proxy_urlwithuser)
       * [`fn withUserMixin(value)`](#fn-httpclientconfigoauth2proxy_urlwithusermixin)
     * [`obj tls_config`](#obj-httpclientconfigoauth2tls_config)
+      * [`fn withCa(value)`](#fn-httpclientconfigoauth2tls_configwithca)
       * [`fn withCaFile(value)`](#fn-httpclientconfigoauth2tls_configwithcafile)
+      * [`fn withCert(value)`](#fn-httpclientconfigoauth2tls_configwithcert)
       * [`fn withCertFile(value)`](#fn-httpclientconfigoauth2tls_configwithcertfile)
       * [`fn withInsecureSkipVerify(value=true)`](#fn-httpclientconfigoauth2tls_configwithinsecureskipverify)
+      * [`fn withKey(value)`](#fn-httpclientconfigoauth2tls_configwithkey)
       * [`fn withKeyFile(value)`](#fn-httpclientconfigoauth2tls_configwithkeyfile)
       * [`fn withMaxVersion(value)`](#fn-httpclientconfigoauth2tls_configwithmaxversion)
       * [`fn withMinVersion(value)`](#fn-httpclientconfigoauth2tls_configwithminversion)
@@ -101,13 +107,32 @@
     * [`fn withUser(value)`](#fn-httpclientconfigproxy_urlwithuser)
     * [`fn withUserMixin(value)`](#fn-httpclientconfigproxy_urlwithusermixin)
   * [`obj tls_config`](#obj-httpclientconfigtls_config)
+    * [`fn withCa(value)`](#fn-httpclientconfigtls_configwithca)
     * [`fn withCaFile(value)`](#fn-httpclientconfigtls_configwithcafile)
+    * [`fn withCert(value)`](#fn-httpclientconfigtls_configwithcert)
     * [`fn withCertFile(value)`](#fn-httpclientconfigtls_configwithcertfile)
     * [`fn withInsecureSkipVerify(value=true)`](#fn-httpclientconfigtls_configwithinsecureskipverify)
+    * [`fn withKey(value)`](#fn-httpclientconfigtls_configwithkey)
     * [`fn withKeyFile(value)`](#fn-httpclientconfigtls_configwithkeyfile)
     * [`fn withMaxVersion(value)`](#fn-httpclientconfigtls_configwithmaxversion)
     * [`fn withMinVersion(value)`](#fn-httpclientconfigtls_configwithminversion)
     * [`fn withServerName(value)`](#fn-httpclientconfigtls_configwithservername)
+* [`obj azuread`](#obj-azuread)
+  * [`fn withCloud(value)`](#fn-azureadwithcloud)
+  * [`fn withManagedIdentity(value)`](#fn-azureadwithmanagedidentity)
+  * [`fn withManagedIdentityMixin(value)`](#fn-azureadwithmanagedidentitymixin)
+  * [`fn withOauth(value)`](#fn-azureadwithoauth)
+  * [`fn withOauthMixin(value)`](#fn-azureadwithoauthmixin)
+  * [`fn withSdk(value)`](#fn-azureadwithsdk)
+  * [`fn withSdkMixin(value)`](#fn-azureadwithsdkmixin)
+  * [`obj managed_identity`](#obj-azureadmanaged_identity)
+    * [`fn withClientId(value)`](#fn-azureadmanaged_identitywithclientid)
+  * [`obj oauth`](#obj-azureadoauth)
+    * [`fn withClientId(value)`](#fn-azureadoauthwithclientid)
+    * [`fn withClientSecret(value)`](#fn-azureadoauthwithclientsecret)
+    * [`fn withTenantId(value)`](#fn-azureadoauthwithtenantid)
+  * [`obj sdk`](#obj-azureadsdk)
+    * [`fn withTenantId(value)`](#fn-azureadsdkwithtenantid)
 * [`obj metadata_config`](#obj-metadata_config)
   * [`fn withMaxSamplesPerSend(value)`](#fn-metadata_configwithmaxsamplespersend)
   * [`fn withSend(value=true)`](#fn-metadata_configwithsend)
@@ -121,6 +146,7 @@
   * [`fn withMinBackoff(value)`](#fn-queue_configwithminbackoff)
   * [`fn withMinShards(value)`](#fn-queue_configwithminshards)
   * [`fn withRetryOnHttp429(value=true)`](#fn-queue_configwithretryonhttp429)
+  * [`fn withSampleAgeLimit(value)`](#fn-queue_configwithsampleagelimit)
 * [`obj sigv4`](#obj-sigv4)
   * [`fn withAccessKey(value)`](#fn-sigv4withaccesskey)
   * [`fn withProfile(value)`](#fn-sigv4withprofile)
@@ -152,6 +178,28 @@
   * [`fn withTargetLabel(value)`](#fn-write_relabel_configswithtargetlabel)
 
 ## Fields
+
+### fn withAzuread
+
+```jsonnet
+withAzuread(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+### fn withAzureadMixin
+
+```jsonnet
+withAzureadMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
 
 ### fn withHTTPClientConfig
 
@@ -636,6 +684,17 @@ PARAMETERS:
 * **value** (`string`)
 
 
+##### fn HTTPClientConfig.basic_auth.withUsernameFile
+
+```jsonnet
+HTTPClientConfig.basic_auth.withUsernameFile(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
 #### obj HTTPClientConfig.oauth2
 
 
@@ -957,6 +1016,17 @@ PARAMETERS:
 ##### obj HTTPClientConfig.oauth2.tls_config
 
 
+###### fn HTTPClientConfig.oauth2.tls_config.withCa
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withCa(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the CA cert to use for the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withCaFile
 
 ```jsonnet
@@ -968,6 +1038,17 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+###### fn HTTPClientConfig.oauth2.tls_config.withCert
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withCert(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client cert file for the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withCertFile
 
 ```jsonnet
@@ -991,6 +1072,17 @@ PARAMETERS:
    - default value: `true`
 
 Disable target certificate validation.
+###### fn HTTPClientConfig.oauth2.tls_config.withKey
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withKey(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client key file for the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withKeyFile
 
 ```jsonnet
@@ -1175,6 +1267,17 @@ PARAMETERS:
 #### obj HTTPClientConfig.tls_config
 
 
+##### fn HTTPClientConfig.tls_config.withCa
+
+```jsonnet
+HTTPClientConfig.tls_config.withCa(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the CA cert to use for the targets.
 ##### fn HTTPClientConfig.tls_config.withCaFile
 
 ```jsonnet
@@ -1186,6 +1289,17 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+##### fn HTTPClientConfig.tls_config.withCert
+
+```jsonnet
+HTTPClientConfig.tls_config.withCert(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client cert file for the targets.
 ##### fn HTTPClientConfig.tls_config.withCertFile
 
 ```jsonnet
@@ -1209,6 +1323,17 @@ PARAMETERS:
    - default value: `true`
 
 Disable target certificate validation.
+##### fn HTTPClientConfig.tls_config.withKey
+
+```jsonnet
+HTTPClientConfig.tls_config.withKey(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Text of the client key file for the targets.
 ##### fn HTTPClientConfig.tls_config.withKeyFile
 
 ```jsonnet
@@ -1253,6 +1378,150 @@ PARAMETERS:
 * **value** (`string`)
 
 Used to verify the hostname for the targets.
+### obj azuread
+
+
+#### fn azuread.withCloud
+
+```jsonnet
+azuread.withCloud(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
+#### fn azuread.withManagedIdentity
+
+```jsonnet
+azuread.withManagedIdentity(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+#### fn azuread.withManagedIdentityMixin
+
+```jsonnet
+azuread.withManagedIdentityMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+#### fn azuread.withOauth
+
+```jsonnet
+azuread.withOauth(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+#### fn azuread.withOauthMixin
+
+```jsonnet
+azuread.withOauthMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+#### fn azuread.withSdk
+
+```jsonnet
+azuread.withSdk(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+#### fn azuread.withSdkMixin
+
+```jsonnet
+azuread.withSdkMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+#### obj azuread.managed_identity
+
+
+##### fn azuread.managed_identity.withClientId
+
+```jsonnet
+azuread.managed_identity.withClientId(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
+#### obj azuread.oauth
+
+
+##### fn azuread.oauth.withClientId
+
+```jsonnet
+azuread.oauth.withClientId(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
+##### fn azuread.oauth.withClientSecret
+
+```jsonnet
+azuread.oauth.withClientSecret(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
+##### fn azuread.oauth.withTenantId
+
+```jsonnet
+azuread.oauth.withTenantId(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
+#### obj azuread.sdk
+
+
+##### fn azuread.sdk.withTenantId
+
+```jsonnet
+azuread.sdk.withTenantId(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
 ### obj metadata_config
 
 
@@ -1383,6 +1652,17 @@ PARAMETERS:
    - default value: `true`
 
 
+#### fn queue_config.withSampleAgeLimit
+
+```jsonnet
+queue_config.withSampleAgeLimit(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+Samples older than the limit will be dropped.
 ### obj sigv4
 
 
