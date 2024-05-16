@@ -23,13 +23,19 @@ prometheusKube.new()
 
 ## Index
 
-* [`fn new(namespace, name="prometheus", image="prom/prometheus:v2.43.0", watchImage="weaveworks/watch:master-0c44bf6", port=9093, pvcStorage="300Gi")`](#fn-new)
+* [`fn new(namespace, name="prometheus", image="prom/prometheus:v2.43.0", watchImage="weaveworks/watch:master-0c44bf6", port=9090)`](#fn-new)
 * [`fn withAlertmanagers(alertmanagers)`](#fn-withalertmanagers)
+* [`fn withConfig(config)`](#fn-withconfig)
+* [`fn withConfigMixin(config)`](#fn-withconfigmixin)
 * [`fn withCoreMixin()`](#fn-withcoremixin)
 * [`fn withEnabledFeatures(features)`](#fn-withenabledfeatures)
-* [`fn withExternalUrl(config)`](#fn-withexternalurl)
+* [`fn withExternalUrl(hostname, path="/prometheus/")`](#fn-withexternalurl)
 * [`fn withHighAvailability(replicas=2)`](#fn-withhighavailability)
 * [`fn withMixins(mixins)`](#fn-withmixins)
+* [`fn withPodDisruptionBudget(maxUnavailable=1)`](#fn-withpoddisruptionbudget)
+* [`obj pvc`](#obj-pvc)
+  * [`fn withSize(size)`](#fn-pvcwithsize)
+  * [`fn withStorageClassName(class)`](#fn-pvcwithstorageclassname)
 * [`obj util`](#obj-util)
   * [`fn buildAlertmanagers(alertmanagers, cluster_name)`](#fn-utilbuildalertmanagers)
 
@@ -38,7 +44,7 @@ prometheusKube.new()
 ### fn new
 
 ```jsonnet
-new(namespace, name="prometheus", image="prom/prometheus:v2.43.0", watchImage="weaveworks/watch:master-0c44bf6", port=9093, pvcStorage="300Gi")
+new(namespace, name="prometheus", image="prom/prometheus:v2.43.0", watchImage="weaveworks/watch:master-0c44bf6", port=9090)
 ```
 
 PARAMETERS:
@@ -51,9 +57,7 @@ PARAMETERS:
 * **watchImage** (`string`)
    - default value: `"weaveworks/watch:master-0c44bf6"`
 * **port** (`number`)
-   - default value: `9093`
-* **pvcStorage** (`string`)
-   - default value: `"300Gi"`
+   - default value: `9090`
 
 `new` initializes a Prometheus instance.
 
@@ -70,6 +74,34 @@ PARAMETERS:
 * **alertmanagers** (`array`)
 
 `withAlertmanagers` configures prometheus with an array of alertmanager.
+
+### fn withConfig
+
+```jsonnet
+withConfig(config)
+```
+
+PARAMETERS:
+
+* **config** (`object`)
+
+`withConfig` sets the content of the Prometheus configuration.
+
+Tip: The Prometheus configuration can be created with the prometheusConfig jsonnet lib that comes along with this library.
+
+### fn withConfigMixin
+
+```jsonnet
+withConfigMixin(config)
+```
+
+PARAMETERS:
+
+* **config** (`object`)
+
+`withConfigMixin` extends the Prometheus configuration, this function can be called multiple times to merge various configuration options.
+
+Tip: The Prometheus configuration can be created with the prometheusConfig jsonnet lib that comes along with this library.
 
 ### fn withCoreMixin
 
@@ -96,12 +128,14 @@ PARAMETERS:
 ### fn withExternalUrl
 
 ```jsonnet
-withExternalUrl(config)
+withExternalUrl(hostname, path="/prometheus/")
 ```
 
 PARAMETERS:
 
-* **config** (`object`)
+* **hostname** (`string`)
+* **path** (`string`)
+   - default value: `"/prometheus/"`
 
 `withExternalUrl` configures the external URL through which this instance will be
 reachable.
@@ -144,6 +178,46 @@ PARAMETERS:
 
 `withMixins` will create configMaps and configure Prometheus with the given
 'Monitoring mixin'.
+
+### fn withPodDisruptionBudget
+
+```jsonnet
+withPodDisruptionBudget(maxUnavailable=1)
+```
+
+PARAMETERS:
+
+* **maxUnavailable** (`number`)
+   - default value: `1`
+
+`withPodDisruptionBudget` configures a pod disruption budget for the Prometheus StatefulSet. Generally only useful in a high availability context.
+
+### obj pvc
+
+
+#### fn pvc.withSize
+
+```jsonnet
+pvc.withSize(size)
+```
+
+PARAMETERS:
+
+* **size** (`string`)
+
+`pvc.withSize` configures the PVC volume size. By default the Prometheus StatefulSet is configured with a 10Gi PVC.
+
+#### fn pvc.withStorageClassName
+
+```jsonnet
+pvc.withStorageClassName(class)
+```
+
+PARAMETERS:
+
+* **class** (`string`)
+
+`pvc.withStorageClassName` configures the PVC StorageClassName.
 
 ### obj util
 

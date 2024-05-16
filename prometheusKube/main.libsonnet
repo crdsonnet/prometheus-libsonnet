@@ -33,8 +33,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         d.arg('name', d.T.string, default='prometheus'),
         d.arg('image', d.T.string, default='prom/prometheus:v2.43.0'),
         d.arg('watchImage', d.T.string, default='weaveworks/watch:master-0c44bf6'),
-        d.arg('port', d.T.number, default=9093),
-        d.arg('pvcStorage', d.T.string, default='300Gi'),
+        d.arg('port', d.T.number, default=9090),
       ]
     ),
   new(
@@ -43,7 +42,6 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
     image='prom/prometheus:v2.43.0',
     watchImage='weaveworks/watch:master-0c44bf6',
     port=9090,
-    pvcStorage='300Gi',
   ): {
     local this = self,
 
@@ -70,7 +68,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       ])
       + container.withArgs([
         '--config.file=%s' % std.join('/', [self.config_path, self.config_file]),
-        '--web.listen-address=%s' % port,
+        '--web.listen-address=:%s' % port,
         '--web.enable-admin-api',
         '--web.enable-lifecycle',
         '--web.route-prefix=%s' % this.path,
@@ -129,7 +127,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
     pvc::
       pvc.new('%s-data' % (name))
       + pvc.spec.withAccessModes('ReadWriteOnce')
-      + pvc.spec.resources.withRequests({ storage: pvcStorage }),
+      + pvc.spec.resources.withRequests({ storage: '10Gi' }),
 
     local statefulset = k.apps.v1.statefulSet,
     statefulset:
@@ -147,7 +145,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         self.config_path,
       )
       + statefulset.spec.withPodManagementPolicy('Parallel')
-      + statefulset.spec.withServiceName('prometheus')
+      + statefulset.spec.withServiceName(self.service.metadata.name)
       + statefulset.spec.template.metadata.withAnnotations({
         'prometheus.io.path': '%smetrics' % this.path,
       })
@@ -163,6 +161,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
     local servicePort = k.core.v1.servicePort,
     service:
       k.util.serviceFor(self.statefulset)
+      + service.spec.withSessionAffinity('ClientIP')
       + service.spec.withPortsMixin([
         servicePort.newNamed(
           name='http',
@@ -170,6 +169,36 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
           targetPort=port,
         ),
       ]),
+  },
+
+  '#withConfig'::
+    d.func.new(
+      |||
+        `withConfig` sets the content of the Prometheus configuration.
+
+        Tip: The Prometheus configuration can be created with the prometheusConfig jsonnet lib that comes along with this library.
+      |||,
+      args=[
+        d.arg('config', d.T.object),
+      ]
+    ),
+  withConfig(config): {
+    config:: config,
+  },
+
+  '#withConfigMixin'::
+    d.func.new(
+      |||
+        `withConfigMixin` extends the Prometheus configuration, this function can be called multiple times to merge various configuration options.
+
+        Tip: The Prometheus configuration can be created with the prometheusConfig jsonnet lib that comes along with this library.
+      |||,
+      args=[
+        d.arg('config', d.T.object),
+      ]
+    ),
+  withConfigMixin(config): {
+    config+: config,
   },
 
   '#withEnabledFeatures'::
@@ -207,14 +236,17 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         ```
       |||,
       args=[
-        d.arg('config', d.T.object),
+        d.arg('hostname', d.T.string),
+        d.arg('path', d.T.string, default='/prometheus/'),
       ]
     ),
   withExternalUrl(hostname, path='/prometheus/'): {
+    hostname:: hostname,
+    // `path` needs to be passed seperately to configure '--web.route-prefix'
     path:: path,
 
     local container = k.core.v1.container,
-    container::
+    container+:
       container.withArgsMixin([
         '--web.external-url=%s%s' % [
           self.hostname,
@@ -234,6 +266,53 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       ]
     ),
   withHighAvailability(replicas=2): (import './ha.libsonnet')(replicas=2),
+
+  '#withPodDisruptionBudget':
+    d.func.new(
+      |||
+        `withPodDisruptionBudget` configures a pod disruption budget for the Prometheus StatefulSet. Generally only useful in a high availability context.
+      |||,
+      args=[
+        d.arg('maxUnavailable', d.T.number, default=1),
+      ]
+    ),
+  withPodDisruptionBudget(maxUnavailable=1): {
+    local podDisruptionBudget = k.policy.v1.podDisruptionBudget,
+    pdb:
+      podDisruptionBudget.new(self.statefulset.metadata.name)
+      + podDisruptionBudget.spec.selector.withMatchLabels(self.statefulset.spec.template.metadata.labels)
+      + podDisruptionBudget.spec.withMaxUnavailable(maxUnavailable),
+  },
+
+  pvc: {
+    '#withSize':
+      d.func.new(
+        |||
+          `pvc.withSize` configures the PVC volume size. By default the Prometheus StatefulSet is configured with a 10Gi PVC.
+        |||,
+        args=[
+          d.arg('size', d.T.string),
+        ]
+      ),
+    withSize(size): {
+      pvc+:
+        k.core.v1.persistentVolumeClaim.spec.resources.withRequests({ storage: size }),
+    },
+
+    '#withStorageClassName':
+      d.func.new(
+        |||
+          `pvc.withStorageClassName` configures the PVC StorageClassName.
+        |||,
+        args=[
+          d.arg('class', d.T.string),
+        ]
+      ),
+    withStorageClassName(class): {
+      pvc+:
+        k.core.v1.persistentVolumeClaim.spec.withStorageClassName(class),
+    },
+  },
 
   '#withMixins'::
     d.func.new(

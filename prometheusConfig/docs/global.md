@@ -56,9 +56,9 @@ withExternalLabels(value)
 
 PARAMETERS:
 
-* **value** (`array`)
+* **value** (`object`)
 
-Labels is implemented by a single flat string holding name/value pairs.
+The labels to add to any time series or alerts when communicating with external systems (federation, remote storage, Alertmanager).
 ### fn withExternalLabelsMixin
 
 ```jsonnet
@@ -67,9 +67,9 @@ withExternalLabelsMixin(value)
 
 PARAMETERS:
 
-* **value** (`array`)
+* **value** (`object`)
 
-Labels is implemented by a single flat string holding name/value pairs.
+The labels to add to any time series or alerts when communicating with external systems (federation, remote storage, Alertmanager).
 ### fn withKeepDroppedTargets
 
 ```jsonnet
