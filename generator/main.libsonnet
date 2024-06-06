@@ -1,9 +1,9 @@
-local jutils = import 'github.com/Duologic/jsonnet-libsonnet/utils.libsonnet';
+local autils = import 'github.com/crdsonnet/astsonnet/utils.libsonnet';
 local crdsonnet = import 'github.com/crdsonnet/crdsonnet/crdsonnet/main.libsonnet';
 
 function(schema)
   local ast =
-    jutils.get(
+    autils.get(
       crdsonnet.schema.render(
         'x',
         schema,
@@ -14,4 +14,4 @@ function(schema)
       default=error "can't get ast",
     ).expr;
 
-  ast.toString(break='\n')
+  ast.toString()
