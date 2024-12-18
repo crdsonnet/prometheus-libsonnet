@@ -1,4 +1,5 @@
 GOPATH ?= $(shell go env GOPATH)
+
 PROMETHEUS_VERSION ?= 0.300.1
 
 .PHONY: schemas
