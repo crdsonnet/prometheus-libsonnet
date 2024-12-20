@@ -1,38 +1,26 @@
-# scrape_configs
+# alertmanagers
 
 
+
+## Subpackages
+
+* [alert_relabel_configs](alert_relabel_configs.md)
+* [relabel_configs](relabel_configs.md)
 
 ## Index
 
-* [`fn withBodySizeLimit(value)`](#fn-withbodysizelimit)
-* [`fn withEnableCompression(value=true)`](#fn-withenablecompression)
+* [`fn withAlertRelabelConfigs(value)`](#fn-withalertrelabelconfigs)
+* [`fn withAlertRelabelConfigsMixin(value)`](#fn-withalertrelabelconfigsmixin)
+* [`fn withApiVersion(value)`](#fn-withapiversion)
 * [`fn withHTTPClientConfig(value)`](#fn-withhttpclientconfig)
 * [`fn withHTTPClientConfigMixin(value)`](#fn-withhttpclientconfigmixin)
-* [`fn withHonorLabels(value=true)`](#fn-withhonorlabels)
-* [`fn withHonorTimestamps(value=true)`](#fn-withhonortimestamps)
-* [`fn withJobName(value)`](#fn-withjobname)
-* [`fn withKeepDroppedTargets(value)`](#fn-withkeepdroppedtargets)
-* [`fn withLabelLimit(value)`](#fn-withlabellimit)
-* [`fn withLabelNameLengthLimit(value)`](#fn-withlabelnamelengthlimit)
-* [`fn withLabelValueLengthLimit(value)`](#fn-withlabelvaluelengthlimit)
-* [`fn withMetricRelabelConfigs(value)`](#fn-withmetricrelabelconfigs)
-* [`fn withMetricRelabelConfigsMixin(value)`](#fn-withmetricrelabelconfigsmixin)
-* [`fn withMetricsPath(value)`](#fn-withmetricspath)
-* [`fn withNativeHistogramBucketLimit(value)`](#fn-withnativehistogrambucketlimit)
-* [`fn withNativeHistogramMinBucketFactor(value)`](#fn-withnativehistogramminbucketfactor)
-* [`fn withParams(value)`](#fn-withparams)
-* [`fn withParamsMixin(value)`](#fn-withparamsmixin)
+* [`fn withPathPrefix(value)`](#fn-withpathprefix)
 * [`fn withRelabelConfigs(value)`](#fn-withrelabelconfigs)
 * [`fn withRelabelConfigsMixin(value)`](#fn-withrelabelconfigsmixin)
-* [`fn withSampleLimit(value)`](#fn-withsamplelimit)
 * [`fn withScheme(value)`](#fn-withscheme)
-* [`fn withScrapeClassicHistograms(value=true)`](#fn-withscrapeclassichistograms)
-* [`fn withScrapeInterval(value)`](#fn-withscrapeinterval)
-* [`fn withScrapeProtocols(value)`](#fn-withscrapeprotocols)
-* [`fn withScrapeProtocolsMixin(value)`](#fn-withscrapeprotocolsmixin)
-* [`fn withScrapeTimeout(value)`](#fn-withscrapetimeout)
-* [`fn withTargetLimit(value)`](#fn-withtargetlimit)
-* [`fn withTrackTimestampsStaleness(value=true)`](#fn-withtracktimestampsstaleness)
+* [`fn withSigv4(value)`](#fn-withsigv4)
+* [`fn withSigv4Mixin(value)`](#fn-withsigv4mixin)
+* [`fn withTimeout(value)`](#fn-withtimeout)
 * [`obj HTTPClientConfig`](#obj-httpclientconfig)
   * [`fn withAuthorization(value)`](#fn-httpclientconfigwithauthorization)
   * [`fn withAuthorizationMixin(value)`](#fn-httpclientconfigwithauthorizationmixin)
@@ -42,6 +30,8 @@
   * [`fn withBearerTokenFile(value)`](#fn-httpclientconfigwithbearertokenfile)
   * [`fn withEnableHttp2(value=true)`](#fn-httpclientconfigwithenablehttp2)
   * [`fn withFollowRedirects(value=true)`](#fn-httpclientconfigwithfollowredirects)
+  * [`fn withHttpHeaders(value)`](#fn-httpclientconfigwithhttpheaders)
+  * [`fn withHttpHeadersMixin(value)`](#fn-httpclientconfigwithhttpheadersmixin)
   * [`fn withNoProxy(value)`](#fn-httpclientconfigwithnoproxy)
   * [`fn withOauth2(value)`](#fn-httpclientconfigwithoauth2)
   * [`fn withOauth2Mixin(value)`](#fn-httpclientconfigwithoauth2mixin)
@@ -55,16 +45,23 @@
   * [`obj authorization`](#obj-httpclientconfigauthorization)
     * [`fn withCredentials(value)`](#fn-httpclientconfigauthorizationwithcredentials)
     * [`fn withCredentialsFile(value)`](#fn-httpclientconfigauthorizationwithcredentialsfile)
+    * [`fn withCredentialsRef(value)`](#fn-httpclientconfigauthorizationwithcredentialsref)
     * [`fn withType(value)`](#fn-httpclientconfigauthorizationwithtype)
   * [`obj basic_auth`](#obj-httpclientconfigbasic_auth)
     * [`fn withPassword(value)`](#fn-httpclientconfigbasic_authwithpassword)
     * [`fn withPasswordFile(value)`](#fn-httpclientconfigbasic_authwithpasswordfile)
+    * [`fn withPasswordRef(value)`](#fn-httpclientconfigbasic_authwithpasswordref)
     * [`fn withUsername(value)`](#fn-httpclientconfigbasic_authwithusername)
     * [`fn withUsernameFile(value)`](#fn-httpclientconfigbasic_authwithusernamefile)
+    * [`fn withUsernameRef(value)`](#fn-httpclientconfigbasic_authwithusernameref)
+  * [`obj http_headers`](#obj-httpclientconfighttp_headers)
+    * [`fn withHeaders(value)`](#fn-httpclientconfighttp_headerswithheaders)
+    * [`fn withHeadersMixin(value)`](#fn-httpclientconfighttp_headerswithheadersmixin)
   * [`obj oauth2`](#obj-httpclientconfigoauth2)
     * [`fn withClientId(value)`](#fn-httpclientconfigoauth2withclientid)
     * [`fn withClientSecret(value)`](#fn-httpclientconfigoauth2withclientsecret)
     * [`fn withClientSecretFile(value)`](#fn-httpclientconfigoauth2withclientsecretfile)
+    * [`fn withClientSecretRef(value)`](#fn-httpclientconfigoauth2withclientsecretref)
     * [`fn withEndpointParams(value)`](#fn-httpclientconfigoauth2withendpointparams)
     * [`fn withEndpointParamsMixin(value)`](#fn-httpclientconfigoauth2withendpointparamsmixin)
     * [`fn withNoProxy(value)`](#fn-httpclientconfigoauth2withnoproxy)
@@ -94,11 +91,14 @@
     * [`obj tls_config`](#obj-httpclientconfigoauth2tls_config)
       * [`fn withCa(value)`](#fn-httpclientconfigoauth2tls_configwithca)
       * [`fn withCaFile(value)`](#fn-httpclientconfigoauth2tls_configwithcafile)
+      * [`fn withCaRef(value)`](#fn-httpclientconfigoauth2tls_configwithcaref)
       * [`fn withCert(value)`](#fn-httpclientconfigoauth2tls_configwithcert)
       * [`fn withCertFile(value)`](#fn-httpclientconfigoauth2tls_configwithcertfile)
+      * [`fn withCertRef(value)`](#fn-httpclientconfigoauth2tls_configwithcertref)
       * [`fn withInsecureSkipVerify(value=true)`](#fn-httpclientconfigoauth2tls_configwithinsecureskipverify)
       * [`fn withKey(value)`](#fn-httpclientconfigoauth2tls_configwithkey)
       * [`fn withKeyFile(value)`](#fn-httpclientconfigoauth2tls_configwithkeyfile)
+      * [`fn withKeyRef(value)`](#fn-httpclientconfigoauth2tls_configwithkeyref)
       * [`fn withMaxVersion(value)`](#fn-httpclientconfigoauth2tls_configwithmaxversion)
       * [`fn withMinVersion(value)`](#fn-httpclientconfigoauth2tls_configwithminversion)
       * [`fn withServerName(value)`](#fn-httpclientconfigoauth2tls_configwithservername)
@@ -118,61 +118,59 @@
   * [`obj tls_config`](#obj-httpclientconfigtls_config)
     * [`fn withCa(value)`](#fn-httpclientconfigtls_configwithca)
     * [`fn withCaFile(value)`](#fn-httpclientconfigtls_configwithcafile)
+    * [`fn withCaRef(value)`](#fn-httpclientconfigtls_configwithcaref)
     * [`fn withCert(value)`](#fn-httpclientconfigtls_configwithcert)
     * [`fn withCertFile(value)`](#fn-httpclientconfigtls_configwithcertfile)
+    * [`fn withCertRef(value)`](#fn-httpclientconfigtls_configwithcertref)
     * [`fn withInsecureSkipVerify(value=true)`](#fn-httpclientconfigtls_configwithinsecureskipverify)
     * [`fn withKey(value)`](#fn-httpclientconfigtls_configwithkey)
     * [`fn withKeyFile(value)`](#fn-httpclientconfigtls_configwithkeyfile)
+    * [`fn withKeyRef(value)`](#fn-httpclientconfigtls_configwithkeyref)
     * [`fn withMaxVersion(value)`](#fn-httpclientconfigtls_configwithmaxversion)
     * [`fn withMinVersion(value)`](#fn-httpclientconfigtls_configwithminversion)
     * [`fn withServerName(value)`](#fn-httpclientconfigtls_configwithservername)
-* [`obj metric_relabel_configs`](#obj-metric_relabel_configs)
-  * [`fn withAction(value)`](#fn-metric_relabel_configswithaction)
-  * [`fn withModulus(value)`](#fn-metric_relabel_configswithmodulus)
-  * [`fn withRegex(value)`](#fn-metric_relabel_configswithregex)
-  * [`fn withRegexMixin(value)`](#fn-metric_relabel_configswithregexmixin)
-  * [`fn withReplacement(value)`](#fn-metric_relabel_configswithreplacement)
-  * [`fn withSeparator(value)`](#fn-metric_relabel_configswithseparator)
-  * [`fn withSourceLabels(value)`](#fn-metric_relabel_configswithsourcelabels)
-  * [`fn withSourceLabelsMixin(value)`](#fn-metric_relabel_configswithsourcelabelsmixin)
-  * [`fn withTargetLabel(value)`](#fn-metric_relabel_configswithtargetlabel)
-* [`obj relabel_configs`](#obj-relabel_configs)
-  * [`fn withAction(value)`](#fn-relabel_configswithaction)
-  * [`fn withModulus(value)`](#fn-relabel_configswithmodulus)
-  * [`fn withRegex(value)`](#fn-relabel_configswithregex)
-  * [`fn withRegexMixin(value)`](#fn-relabel_configswithregexmixin)
-  * [`fn withReplacement(value)`](#fn-relabel_configswithreplacement)
-  * [`fn withSeparator(value)`](#fn-relabel_configswithseparator)
-  * [`fn withSourceLabels(value)`](#fn-relabel_configswithsourcelabels)
-  * [`fn withSourceLabelsMixin(value)`](#fn-relabel_configswithsourcelabelsmixin)
-  * [`fn withTargetLabel(value)`](#fn-relabel_configswithtargetlabel)
+* [`obj sigv4`](#obj-sigv4)
+  * [`fn withAccessKey(value)`](#fn-sigv4withaccesskey)
+  * [`fn withProfile(value)`](#fn-sigv4withprofile)
+  * [`fn withRegion(value)`](#fn-sigv4withregion)
+  * [`fn withRoleArn(value)`](#fn-sigv4withrolearn)
+  * [`fn withSecretKey(value)`](#fn-sigv4withsecretkey)
 
 ## Fields
 
-### fn withBodySizeLimit
+### fn withAlertRelabelConfigs
 
 ```jsonnet
-withBodySizeLimit(value)
+withAlertRelabelConfigs(value)
 ```
 
 PARAMETERS:
 
-* **value** (`integer`)
+* **value** (`array`)
 
-An uncompressed response body larger than this many bytes will cause the
-scrape to fail. 0 means no limit.
-### fn withEnableCompression
+Relabel alerts before sending to the specific alertmanager.
+### fn withAlertRelabelConfigsMixin
 
 ```jsonnet
-withEnableCompression(value=true)
+withAlertRelabelConfigsMixin(value)
 ```
 
 PARAMETERS:
 
-* **value** (`boolean`)
-   - default value: `true`
+* **value** (`array`)
 
-Indicator whether to request compressed response from the target.
+Relabel alerts before sending to the specific alertmanager.
+### fn withApiVersion
+
+```jsonnet
+withApiVersion(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+The api version of Alertmanager.
 ### fn withHTTPClientConfig
 
 ```jsonnet
@@ -195,168 +193,17 @@ PARAMETERS:
 * **value** (`object`)
 
 HTTPClientConfig configures an HTTP client.
-### fn withHonorLabels
+### fn withPathPrefix
 
 ```jsonnet
-withHonorLabels(value=true)
-```
-
-PARAMETERS:
-
-* **value** (`boolean`)
-   - default value: `true`
-
-Indicator whether the scraped metrics should remain unmodified.
-### fn withHonorTimestamps
-
-```jsonnet
-withHonorTimestamps(value=true)
-```
-
-PARAMETERS:
-
-* **value** (`boolean`)
-   - default value: `true`
-
-Indicator whether the scraped timestamps should be respected.
-### fn withJobName
-
-```jsonnet
-withJobName(value)
+withPathPrefix(value)
 ```
 
 PARAMETERS:
 
 * **value** (`string`)
 
-The job name to which the job label is set by default.
-### fn withKeepDroppedTargets
-
-```jsonnet
-withKeepDroppedTargets(value)
-```
-
-PARAMETERS:
-
-* **value** (`integer`)
-
-Keep no more than this many dropped targets per job.
-0 means no limit.
-### fn withLabelLimit
-
-```jsonnet
-withLabelLimit(value)
-```
-
-PARAMETERS:
-
-* **value** (`integer`)
-
-More than this many labels post metric-relabeling will cause the scrape to
-fail. 0 means no limit.
-### fn withLabelNameLengthLimit
-
-```jsonnet
-withLabelNameLengthLimit(value)
-```
-
-PARAMETERS:
-
-* **value** (`integer`)
-
-More than this label name length post metric-relabeling will cause the
-scrape to fail. 0 means no limit.
-### fn withLabelValueLengthLimit
-
-```jsonnet
-withLabelValueLengthLimit(value)
-```
-
-PARAMETERS:
-
-* **value** (`integer`)
-
-More than this label value length post metric-relabeling will cause the
-scrape to fail. 0 means no limit.
-### fn withMetricRelabelConfigs
-
-```jsonnet
-withMetricRelabelConfigs(value)
-```
-
-PARAMETERS:
-
-* **value** (`array`)
-
-List of metric relabel configurations.
-### fn withMetricRelabelConfigsMixin
-
-```jsonnet
-withMetricRelabelConfigsMixin(value)
-```
-
-PARAMETERS:
-
-* **value** (`array`)
-
-List of metric relabel configurations.
-### fn withMetricsPath
-
-```jsonnet
-withMetricsPath(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-The HTTP resource path on which to fetch metrics from targets.
-### fn withNativeHistogramBucketLimit
-
-```jsonnet
-withNativeHistogramBucketLimit(value)
-```
-
-PARAMETERS:
-
-* **value** (`integer`)
-
-If there are more than this many buckets in a native histogram,
-buckets will be merged to stay within the limit.
-### fn withNativeHistogramMinBucketFactor
-
-```jsonnet
-withNativeHistogramMinBucketFactor(value)
-```
-
-PARAMETERS:
-
-* **value** (`number`)
-
-If the growth factor of one bucket to the next is smaller than this,
-buckets will be merged to increase the factor sufficiently.
-### fn withParams
-
-```jsonnet
-withParams(value)
-```
-
-PARAMETERS:
-
-* **value** (`object`)
-
-
-### fn withParamsMixin
-
-```jsonnet
-withParamsMixin(value)
-```
-
-PARAMETERS:
-
-* **value** (`object`)
-
-
+Path prefix to add in front of the push endpoint path.
 ### fn withRelabelConfigs
 
 ```jsonnet
@@ -367,7 +214,7 @@ PARAMETERS:
 
 * **value** (`array`)
 
-List of target relabel configurations.
+List of Alertmanager relabel configurations.
 ### fn withRelabelConfigsMixin
 
 ```jsonnet
@@ -378,19 +225,7 @@ PARAMETERS:
 
 * **value** (`array`)
 
-List of target relabel configurations.
-### fn withSampleLimit
-
-```jsonnet
-withSampleLimit(value)
-```
-
-PARAMETERS:
-
-* **value** (`integer`)
-
-More than this many samples post metric-relabeling will cause the scrape to
-fail. 0 means no limit.
+List of Alertmanager relabel configurations.
 ### fn withScheme
 
 ```jsonnet
@@ -401,93 +236,40 @@ PARAMETERS:
 
 * **value** (`string`)
 
-The URL scheme with which to fetch metrics from targets.
-### fn withScrapeClassicHistograms
+The URL scheme to use when talking to Alertmanagers.
+### fn withSigv4
 
 ```jsonnet
-withScrapeClassicHistograms(value=true)
+withSigv4(value)
 ```
 
 PARAMETERS:
 
-* **value** (`boolean`)
-   - default value: `true`
+* **value** (`object`)
 
-Whether to scrape a classic histogram that is also exposed as a native histogram.
-### fn withScrapeInterval
+
+### fn withSigv4Mixin
 
 ```jsonnet
-withScrapeInterval(value)
+withSigv4Mixin(value)
 ```
 
 PARAMETERS:
 
-* **value** (`integer`)
+* **value** (`object`)
 
-How frequently to scrape the targets of this scrape config.
-### fn withScrapeProtocols
 
-```jsonnet
-withScrapeProtocols(value)
-```
-
-PARAMETERS:
-
-* **value** (`array`)
-
-The protocols to negotiate during a scrape. It tells clients what
-protocol are accepted by Prometheus and with what preference (most wanted is first).
-Supported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,
-OpenMetricsText1.0.0, PrometheusText0.0.4.
-### fn withScrapeProtocolsMixin
+### fn withTimeout
 
 ```jsonnet
-withScrapeProtocolsMixin(value)
-```
-
-PARAMETERS:
-
-* **value** (`array`)
-
-The protocols to negotiate during a scrape. It tells clients what
-protocol are accepted by Prometheus and with what preference (most wanted is first).
-Supported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,
-OpenMetricsText1.0.0, PrometheusText0.0.4.
-### fn withScrapeTimeout
-
-```jsonnet
-withScrapeTimeout(value)
+withTimeout(value)
 ```
 
 PARAMETERS:
 
 * **value** (`integer`)
 
-The timeout for scraping targets of this config.
-### fn withTargetLimit
-
-```jsonnet
-withTargetLimit(value)
-```
-
-PARAMETERS:
-
-* **value** (`integer`)
-
-More than this many targets after the target relabeling will cause the
-scrapes to fail. 0 means no limit.
-### fn withTrackTimestampsStaleness
-
-```jsonnet
-withTrackTimestampsStaleness(value=true)
-```
-
-PARAMETERS:
-
-* **value** (`boolean`)
-   - default value: `true`
-
-Indicator whether to track the staleness of the scraped timestamps.
+The timeout used when sending alerts.
 ### obj HTTPClientConfig
 
 
@@ -501,7 +283,7 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
+The HTTP authorization credentials for the targets.
 #### fn HTTPClientConfig.withAuthorizationMixin
 
 ```jsonnet
@@ -512,7 +294,7 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
+The HTTP authorization credentials for the targets.
 #### fn HTTPClientConfig.withBasicAuth
 
 ```jsonnet
@@ -587,6 +369,28 @@ PARAMETERS:
 FollowRedirects specifies whether the client should follow HTTP 3xx redirects.
 The omitempty flag is not set, because it would be hidden from the
 marshalled configuration when set to false.
+#### fn HTTPClientConfig.withHttpHeaders
+
+```jsonnet
+HTTPClientConfig.withHttpHeaders(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+Headers represents the configuration for HTTP headers.
+#### fn HTTPClientConfig.withHttpHeadersMixin
+
+```jsonnet
+HTTPClientConfig.withHttpHeadersMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+Headers represents the configuration for HTTP headers.
 #### fn HTTPClientConfig.withNoProxy
 
 ```jsonnet
@@ -630,7 +434,10 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
+ProxyConnectHeader optionally specifies headers to send to
+proxies during CONNECT requests. Assume that at least _some_ of
+these headers are going to contain secrets and use Secret as the
+value type instead of string.
 #### fn HTTPClientConfig.withProxyConnectHeaderMixin
 
 ```jsonnet
@@ -641,7 +448,10 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
+ProxyConnectHeader optionally specifies headers to send to
+proxies during CONNECT requests. Assume that at least _some_ of
+these headers are going to contain secrets and use Secret as the
+value type instead of string.
 #### fn HTTPClientConfig.withProxyFromEnvironment
 
 ```jsonnet
@@ -724,6 +534,17 @@ PARAMETERS:
 * **value** (`string`)
 
 
+##### fn HTTPClientConfig.authorization.withCredentialsRef
+
+```jsonnet
+HTTPClientConfig.authorization.withCredentialsRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+CredentialsRef is the name of the secret within the secret manager to use as credentials.
 ##### fn HTTPClientConfig.authorization.withType
 
 ```jsonnet
@@ -760,6 +581,17 @@ PARAMETERS:
 * **value** (`string`)
 
 
+##### fn HTTPClientConfig.basic_auth.withPasswordRef
+
+```jsonnet
+HTTPClientConfig.basic_auth.withPasswordRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+PasswordRef is the name of the secret within the secret manager to use as the password.
 ##### fn HTTPClientConfig.basic_auth.withUsername
 
 ```jsonnet
@@ -780,6 +612,42 @@ HTTPClientConfig.basic_auth.withUsernameFile(value)
 PARAMETERS:
 
 * **value** (`string`)
+
+
+##### fn HTTPClientConfig.basic_auth.withUsernameRef
+
+```jsonnet
+HTTPClientConfig.basic_auth.withUsernameRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+UsernameRef is the name of the secret within the secret manager to use as the username.
+#### obj HTTPClientConfig.http_headers
+
+
+##### fn HTTPClientConfig.http_headers.withHeaders
+
+```jsonnet
+HTTPClientConfig.http_headers.withHeaders(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+##### fn HTTPClientConfig.http_headers.withHeadersMixin
+
+```jsonnet
+HTTPClientConfig.http_headers.withHeadersMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 
 #### obj HTTPClientConfig.oauth2
@@ -818,6 +686,18 @@ PARAMETERS:
 * **value** (`string`)
 
 
+##### fn HTTPClientConfig.oauth2.withClientSecretRef
+
+```jsonnet
+HTTPClientConfig.oauth2.withClientSecretRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+ClientSecretRef is the name of the secret within the secret manager to use as the client
+secret.
 ##### fn HTTPClientConfig.oauth2.withEndpointParams
 
 ```jsonnet
@@ -861,7 +741,10 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
+ProxyConnectHeader optionally specifies headers to send to
+proxies during CONNECT requests. Assume that at least _some_ of
+these headers are going to contain secrets and use Secret as the
+value type instead of string.
 ##### fn HTTPClientConfig.oauth2.withProxyConnectHeaderMixin
 
 ```jsonnet
@@ -872,7 +755,10 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
+ProxyConnectHeader optionally specifies headers to send to
+proxies during CONNECT requests. Assume that at least _some_ of
+these headers are going to contain secrets and use Secret as the
+value type instead of string.
 ##### fn HTTPClientConfig.oauth2.withProxyFromEnvironment
 
 ```jsonnet
@@ -1125,6 +1011,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+###### fn HTTPClientConfig.oauth2.tls_config.withCaRef
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withCaRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+CARef is the name of the secret within the secret manager to use as the CA cert for the
+targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withCert
 
 ```jsonnet
@@ -1147,6 +1045,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The client cert file for the targets.
+###### fn HTTPClientConfig.oauth2.tls_config.withCertRef
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withCertRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+CertRef is the name of the secret within the secret manager to use as the client cert for
+the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withInsecureSkipVerify
 
 ```jsonnet
@@ -1181,6 +1091,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The client key file for the targets.
+###### fn HTTPClientConfig.oauth2.tls_config.withKeyRef
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withKeyRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+KeyRef is the name of the secret within the secret manager to use as the client key for
+the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withMaxVersion
 
 ```jsonnet
@@ -1376,6 +1298,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+##### fn HTTPClientConfig.tls_config.withCaRef
+
+```jsonnet
+HTTPClientConfig.tls_config.withCaRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+CARef is the name of the secret within the secret manager to use as the CA cert for the
+targets.
 ##### fn HTTPClientConfig.tls_config.withCert
 
 ```jsonnet
@@ -1398,6 +1332,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The client cert file for the targets.
+##### fn HTTPClientConfig.tls_config.withCertRef
+
+```jsonnet
+HTTPClientConfig.tls_config.withCertRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+CertRef is the name of the secret within the secret manager to use as the client cert for
+the targets.
 ##### fn HTTPClientConfig.tls_config.withInsecureSkipVerify
 
 ```jsonnet
@@ -1432,6 +1378,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The client key file for the targets.
+##### fn HTTPClientConfig.tls_config.withKeyRef
+
+```jsonnet
+HTTPClientConfig.tls_config.withKeyRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+KeyRef is the name of the secret within the secret manager to use as the client key for
+the targets.
 ##### fn HTTPClientConfig.tls_config.withMaxVersion
 
 ```jsonnet
@@ -1465,209 +1423,60 @@ PARAMETERS:
 * **value** (`string`)
 
 Used to verify the hostname for the targets.
-### obj metric_relabel_configs
+### obj sigv4
 
 
-#### fn metric_relabel_configs.withAction
+#### fn sigv4.withAccessKey
 
 ```jsonnet
-metric_relabel_configs.withAction(value)
+sigv4.withAccessKey(value)
 ```
 
 PARAMETERS:
 
 * **value** (`string`)
 
-Action is the action to be performed for the relabeling.
-#### fn metric_relabel_configs.withModulus
+
+#### fn sigv4.withProfile
 
 ```jsonnet
-metric_relabel_configs.withModulus(value)
-```
-
-PARAMETERS:
-
-* **value** (`integer`)
-
-Modulus to take of the hash of concatenated values from the source labels.
-#### fn metric_relabel_configs.withRegex
-
-```jsonnet
-metric_relabel_configs.withRegex(value)
-```
-
-PARAMETERS:
-
-* **value** (`object`)
-
-Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
-#### fn metric_relabel_configs.withRegexMixin
-
-```jsonnet
-metric_relabel_configs.withRegexMixin(value)
-```
-
-PARAMETERS:
-
-* **value** (`object`)
-
-Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
-#### fn metric_relabel_configs.withReplacement
-
-```jsonnet
-metric_relabel_configs.withReplacement(value)
+sigv4.withProfile(value)
 ```
 
 PARAMETERS:
 
 * **value** (`string`)
 
-Replacement is the regex replacement pattern to be used.
-#### fn metric_relabel_configs.withSeparator
+
+#### fn sigv4.withRegion
 
 ```jsonnet
-metric_relabel_configs.withSeparator(value)
+sigv4.withRegion(value)
 ```
 
 PARAMETERS:
 
 * **value** (`string`)
 
-Separator is the string between concatenated values from the source labels.
-#### fn metric_relabel_configs.withSourceLabels
+
+#### fn sigv4.withRoleArn
 
 ```jsonnet
-metric_relabel_configs.withSourceLabels(value)
-```
-
-PARAMETERS:
-
-* **value** (`array`)
-
-LabelNames is a sortable LabelName slice.
-#### fn metric_relabel_configs.withSourceLabelsMixin
-
-```jsonnet
-metric_relabel_configs.withSourceLabelsMixin(value)
-```
-
-PARAMETERS:
-
-* **value** (`array`)
-
-LabelNames is a sortable LabelName slice.
-#### fn metric_relabel_configs.withTargetLabel
-
-```jsonnet
-metric_relabel_configs.withTargetLabel(value)
+sigv4.withRoleArn(value)
 ```
 
 PARAMETERS:
 
 * **value** (`string`)
 
-TargetLabel is the label to which the resulting string is written in a replacement.
-Regexp interpolation is allowed for the replace action.
-### obj relabel_configs
 
-
-#### fn relabel_configs.withAction
+#### fn sigv4.withSecretKey
 
 ```jsonnet
-relabel_configs.withAction(value)
+sigv4.withSecretKey(value)
 ```
 
 PARAMETERS:
 
 * **value** (`string`)
 
-Action is the action to be performed for the relabeling.
-#### fn relabel_configs.withModulus
-
-```jsonnet
-relabel_configs.withModulus(value)
-```
-
-PARAMETERS:
-
-* **value** (`integer`)
-
-Modulus to take of the hash of concatenated values from the source labels.
-#### fn relabel_configs.withRegex
-
-```jsonnet
-relabel_configs.withRegex(value)
-```
-
-PARAMETERS:
-
-* **value** (`object`)
-
-Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
-#### fn relabel_configs.withRegexMixin
-
-```jsonnet
-relabel_configs.withRegexMixin(value)
-```
-
-PARAMETERS:
-
-* **value** (`object`)
-
-Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
-#### fn relabel_configs.withReplacement
-
-```jsonnet
-relabel_configs.withReplacement(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-Replacement is the regex replacement pattern to be used.
-#### fn relabel_configs.withSeparator
-
-```jsonnet
-relabel_configs.withSeparator(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-Separator is the string between concatenated values from the source labels.
-#### fn relabel_configs.withSourceLabels
-
-```jsonnet
-relabel_configs.withSourceLabels(value)
-```
-
-PARAMETERS:
-
-* **value** (`array`)
-
-LabelNames is a sortable LabelName slice.
-#### fn relabel_configs.withSourceLabelsMixin
-
-```jsonnet
-relabel_configs.withSourceLabelsMixin(value)
-```
-
-PARAMETERS:
-
-* **value** (`array`)
-
-LabelNames is a sortable LabelName slice.
-#### fn relabel_configs.withTargetLabel
-
-```jsonnet
-relabel_configs.withTargetLabel(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-TargetLabel is the label to which the resulting string is written in a replacement.
-Regexp interpolation is allowed for the replace action.

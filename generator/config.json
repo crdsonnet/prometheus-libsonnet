@@ -85,7 +85,8 @@
           "type": "string"
         },
         "credentials_ref": {
-          "type": "string"
+          "type": "string",
+          "description": "CredentialsRef is the name of the secret within the secret manager to use as credentials."
         }
       },
       "additionalProperties": false,
@@ -118,7 +119,8 @@
           "type": "string"
         },
         "username_ref": {
-          "type": "string"
+          "type": "string",
+          "description": "UsernameRef is the name of the secret within the secret manager to use as the username."
         },
         "password": {
           "type": "string"
@@ -127,7 +129,8 @@
           "type": "string"
         },
         "password_ref": {
-          "type": "string"
+          "type": "string",
+          "description": "PasswordRef is the name of the secret within the secret manager to use as the password."
         }
       },
       "additionalProperties": false,
@@ -302,7 +305,8 @@
         }
       },
       "additionalProperties": false,
-      "type": "object"
+      "type": "object",
+      "description": "Header represents the configuration for a single HTTP header."
     },
     "Headers": {
       "properties": {
@@ -317,7 +321,8 @@
       "type": "object",
       "required": [
         "Headers"
-      ]
+      ],
+      "description": "Headers represents the configuration for HTTP headers."
     },
     "HttpclientConfig": {
       "properties": {
@@ -370,7 +375,8 @@
           "description": "ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string."
         },
         "http_headers": {
-          "$ref": "#/$defs/Headers"
+          "$ref": "#/$defs/Headers",
+          "description": "HTTPHeaders specify headers to inject in the requests. Those headers\ncould be marshalled back to the users."
         }
       },
       "additionalProperties": false,
@@ -417,7 +423,7 @@
         "$ref": "#/$defs/Label"
       },
       "type": "array",
-      "description": "Labels is implemented by a SymbolTable and string holding name/value pairs encoded as indexes into the table in varint encoding."
+      "description": "Labels is implemented by a single flat string holding name/value pairs."
     },
     "ManagedIdentityConfig": {
       "properties": {
@@ -479,7 +485,8 @@
           "type": "string"
         },
         "client_secret_ref": {
-          "type": "string"
+          "type": "string",
+          "description": "ClientSecretRef is the name of the secret within the secret manager to use as the client\nsecret."
         },
         "scopes": {
           "items": {
@@ -971,13 +978,16 @@
           "description": "The client key file for the targets."
         },
         "ca_ref": {
-          "type": "string"
+          "type": "string",
+          "description": "CARef is the name of the secret within the secret manager to use as the CA cert for the\ntargets."
         },
         "cert_ref": {
-          "type": "string"
+          "type": "string",
+          "description": "CertRef is the name of the secret within the secret manager to use as the client cert for\nthe targets."
         },
         "key_ref": {
-          "type": "string"
+          "type": "string",
+          "description": "KeyRef is the name of the secret within the secret manager to use as the client key for\nthe targets."
         },
         "server_name": {
           "type": "string",

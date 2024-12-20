@@ -1,22 +1,47 @@
-# remote_read
+# scrape_configs
 
 
+
+## Subpackages
+
+* [metric_relabel_configs](metric_relabel_configs.md)
+* [relabel_configs](relabel_configs.md)
 
 ## Index
 
-* [`fn withChunkedReadLimit(value)`](#fn-withchunkedreadlimit)
-* [`fn withFilterExternalLabels(value=true)`](#fn-withfilterexternallabels)
+* [`fn withAlwaysScrapeClassicHistograms(value=true)`](#fn-withalwaysscrapeclassichistograms)
+* [`fn withBodySizeLimit(value)`](#fn-withbodysizelimit)
+* [`fn withConvertClassicHistogramsToNhcb(value=true)`](#fn-withconvertclassichistogramstonhcb)
+* [`fn withEnableCompression(value=true)`](#fn-withenablecompression)
+* [`fn withFallbackScrapeProtocol(value)`](#fn-withfallbackscrapeprotocol)
 * [`fn withHTTPClientConfig(value)`](#fn-withhttpclientconfig)
 * [`fn withHTTPClientConfigMixin(value)`](#fn-withhttpclientconfigmixin)
-* [`fn withHeaders(value)`](#fn-withheaders)
-* [`fn withHeadersMixin(value)`](#fn-withheadersmixin)
-* [`fn withName(value)`](#fn-withname)
-* [`fn withReadRecent(value=true)`](#fn-withreadrecent)
-* [`fn withRemoteTimeout(value)`](#fn-withremotetimeout)
-* [`fn withRequiredMatchers(value)`](#fn-withrequiredmatchers)
-* [`fn withRequiredMatchersMixin(value)`](#fn-withrequiredmatchersmixin)
-* [`fn withUrl(value)`](#fn-withurl)
-* [`fn withUrlMixin(value)`](#fn-withurlmixin)
+* [`fn withHonorLabels(value=true)`](#fn-withhonorlabels)
+* [`fn withHonorTimestamps(value=true)`](#fn-withhonortimestamps)
+* [`fn withJobName(value)`](#fn-withjobname)
+* [`fn withKeepDroppedTargets(value)`](#fn-withkeepdroppedtargets)
+* [`fn withLabelLimit(value)`](#fn-withlabellimit)
+* [`fn withLabelNameLengthLimit(value)`](#fn-withlabelnamelengthlimit)
+* [`fn withLabelValueLengthLimit(value)`](#fn-withlabelvaluelengthlimit)
+* [`fn withMetricNameValidationScheme(value)`](#fn-withmetricnamevalidationscheme)
+* [`fn withMetricRelabelConfigs(value)`](#fn-withmetricrelabelconfigs)
+* [`fn withMetricRelabelConfigsMixin(value)`](#fn-withmetricrelabelconfigsmixin)
+* [`fn withMetricsPath(value)`](#fn-withmetricspath)
+* [`fn withNativeHistogramBucketLimit(value)`](#fn-withnativehistogrambucketlimit)
+* [`fn withNativeHistogramMinBucketFactor(value)`](#fn-withnativehistogramminbucketfactor)
+* [`fn withParams(value)`](#fn-withparams)
+* [`fn withParamsMixin(value)`](#fn-withparamsmixin)
+* [`fn withRelabelConfigs(value)`](#fn-withrelabelconfigs)
+* [`fn withRelabelConfigsMixin(value)`](#fn-withrelabelconfigsmixin)
+* [`fn withSampleLimit(value)`](#fn-withsamplelimit)
+* [`fn withScheme(value)`](#fn-withscheme)
+* [`fn withScrapeFailureLogFile(value)`](#fn-withscrapefailurelogfile)
+* [`fn withScrapeInterval(value)`](#fn-withscrapeinterval)
+* [`fn withScrapeProtocols(value)`](#fn-withscrapeprotocols)
+* [`fn withScrapeProtocolsMixin(value)`](#fn-withscrapeprotocolsmixin)
+* [`fn withScrapeTimeout(value)`](#fn-withscrapetimeout)
+* [`fn withTargetLimit(value)`](#fn-withtargetlimit)
+* [`fn withTrackTimestampsStaleness(value=true)`](#fn-withtracktimestampsstaleness)
 * [`obj HTTPClientConfig`](#obj-httpclientconfig)
   * [`fn withAuthorization(value)`](#fn-httpclientconfigwithauthorization)
   * [`fn withAuthorizationMixin(value)`](#fn-httpclientconfigwithauthorizationmixin)
@@ -125,37 +150,13 @@
     * [`fn withMaxVersion(value)`](#fn-httpclientconfigtls_configwithmaxversion)
     * [`fn withMinVersion(value)`](#fn-httpclientconfigtls_configwithminversion)
     * [`fn withServerName(value)`](#fn-httpclientconfigtls_configwithservername)
-* [`obj url`](#obj-url)
-  * [`fn withForceQuery(value=true)`](#fn-urlwithforcequery)
-  * [`fn withFragment(value)`](#fn-urlwithfragment)
-  * [`fn withHost(value)`](#fn-urlwithhost)
-  * [`fn withOmitHost(value=true)`](#fn-urlwithomithost)
-  * [`fn withOpaque(value)`](#fn-urlwithopaque)
-  * [`fn withPath(value)`](#fn-urlwithpath)
-  * [`fn withRawFragment(value)`](#fn-urlwithrawfragment)
-  * [`fn withRawPath(value)`](#fn-urlwithrawpath)
-  * [`fn withRawQuery(value)`](#fn-urlwithrawquery)
-  * [`fn withScheme(value)`](#fn-urlwithscheme)
-  * [`fn withUser(value)`](#fn-urlwithuser)
-  * [`fn withUserMixin(value)`](#fn-urlwithusermixin)
 
 ## Fields
 
-### fn withChunkedReadLimit
+### fn withAlwaysScrapeClassicHistograms
 
 ```jsonnet
-withChunkedReadLimit(value)
-```
-
-PARAMETERS:
-
-* **value** (`integer`)
-
-
-### fn withFilterExternalLabels
-
-```jsonnet
-withFilterExternalLabels(value=true)
+withAlwaysScrapeClassicHistograms(value=true)
 ```
 
 PARAMETERS:
@@ -163,7 +164,57 @@ PARAMETERS:
 * **value** (`boolean`)
    - default value: `true`
 
-Whether to use the external labels as selectors for the remote read endpoint.
+Whether to scrape a classic histogram, even if it is also exposed as a native histogram.
+### fn withBodySizeLimit
+
+```jsonnet
+withBodySizeLimit(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+An uncompressed response body larger than this many bytes will cause the
+scrape to fail. 0 means no limit.
+### fn withConvertClassicHistogramsToNhcb
+
+```jsonnet
+withConvertClassicHistogramsToNhcb(value=true)
+```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
+
+Whether to convert all scraped classic histograms into a native histogram with custom buckets.
+### fn withEnableCompression
+
+```jsonnet
+withEnableCompression(value=true)
+```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
+
+Indicator whether to request compressed response from the target.
+### fn withFallbackScrapeProtocol
+
+```jsonnet
+withFallbackScrapeProtocol(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+The fallback protocol to use if the Content-Type provided by the target
+is not provided, blank, or not one of the expected values.
+Supported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,
+OpenMetricsText1.0.0, PrometheusText1.0.0, PrometheusText0.0.4.
 ### fn withHTTPClientConfig
 
 ```jsonnet
@@ -186,43 +237,10 @@ PARAMETERS:
 * **value** (`object`)
 
 HTTPClientConfig configures an HTTP client.
-### fn withHeaders
+### fn withHonorLabels
 
 ```jsonnet
-withHeaders(value)
-```
-
-PARAMETERS:
-
-* **value** (`object`)
-
-
-### fn withHeadersMixin
-
-```jsonnet
-withHeadersMixin(value)
-```
-
-PARAMETERS:
-
-* **value** (`object`)
-
-
-### fn withName
-
-```jsonnet
-withName(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-
-### fn withReadRecent
-
-```jsonnet
-withReadRecent(value=true)
+withHonorLabels(value=true)
 ```
 
 PARAMETERS:
@@ -230,62 +248,298 @@ PARAMETERS:
 * **value** (`boolean`)
    - default value: `true`
 
-
-### fn withRemoteTimeout
+Indicator whether the scraped metrics should remain unmodified.
+### fn withHonorTimestamps
 
 ```jsonnet
-withRemoteTimeout(value)
+withHonorTimestamps(value=true)
+```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
+
+Indicator whether the scraped timestamps should be respected.
+### fn withJobName
+
+```jsonnet
+withJobName(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+The job name to which the job label is set by default.
+### fn withKeepDroppedTargets
+
+```jsonnet
+withKeepDroppedTargets(value)
 ```
 
 PARAMETERS:
 
 * **value** (`integer`)
 
-
-### fn withRequiredMatchers
+Keep no more than this many dropped targets per job.
+0 means no limit.
+### fn withLabelLimit
 
 ```jsonnet
-withRequiredMatchers(value)
+withLabelLimit(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+More than this many labels post metric-relabeling will cause the scrape to
+fail. 0 means no limit.
+### fn withLabelNameLengthLimit
+
+```jsonnet
+withLabelNameLengthLimit(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+More than this label name length post metric-relabeling will cause the
+scrape to fail. 0 means no limit.
+### fn withLabelValueLengthLimit
+
+```jsonnet
+withLabelValueLengthLimit(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+More than this label value length post metric-relabeling will cause the
+scrape to fail. 0 means no limit.
+### fn withMetricNameValidationScheme
+
+```jsonnet
+withMetricNameValidationScheme(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Allow UTF8 Metric and Label Names.
+### fn withMetricRelabelConfigs
+
+```jsonnet
+withMetricRelabelConfigs(value)
+```
+
+PARAMETERS:
+
+* **value** (`array`)
+
+List of metric relabel configurations.
+### fn withMetricRelabelConfigsMixin
+
+```jsonnet
+withMetricRelabelConfigsMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`array`)
+
+List of metric relabel configurations.
+### fn withMetricsPath
+
+```jsonnet
+withMetricsPath(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+The HTTP resource path on which to fetch metrics from targets.
+### fn withNativeHistogramBucketLimit
+
+```jsonnet
+withNativeHistogramBucketLimit(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+If there are more than this many buckets in a native histogram,
+buckets will be merged to stay within the limit.
+### fn withNativeHistogramMinBucketFactor
+
+```jsonnet
+withNativeHistogramMinBucketFactor(value)
+```
+
+PARAMETERS:
+
+* **value** (`number`)
+
+If the growth factor of one bucket to the next is smaller than this,
+buckets will be merged to increase the factor sufficiently.
+### fn withParams
+
+```jsonnet
+withParams(value)
 ```
 
 PARAMETERS:
 
 * **value** (`object`)
 
-A LabelSet is a collection of LabelName and LabelValue pairs.
-### fn withRequiredMatchersMixin
+A set of query parameters with which the target is scraped.
+### fn withParamsMixin
 
 ```jsonnet
-withRequiredMatchersMixin(value)
+withParamsMixin(value)
 ```
 
 PARAMETERS:
 
 * **value** (`object`)
 
-A LabelSet is a collection of LabelName and LabelValue pairs.
-### fn withUrl
+A set of query parameters with which the target is scraped.
+### fn withRelabelConfigs
 
 ```jsonnet
-withUrl(value)
+withRelabelConfigs(value)
 ```
 
 PARAMETERS:
 
-* **value** (`object`)
+* **value** (`array`)
 
-URL is a custom URL type that allows validation at configuration load time.
-### fn withUrlMixin
+List of target relabel configurations.
+### fn withRelabelConfigsMixin
 
 ```jsonnet
-withUrlMixin(value)
+withRelabelConfigsMixin(value)
 ```
 
 PARAMETERS:
 
-* **value** (`object`)
+* **value** (`array`)
 
-URL is a custom URL type that allows validation at configuration load time.
+List of target relabel configurations.
+### fn withSampleLimit
+
+```jsonnet
+withSampleLimit(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+More than this many samples post metric-relabeling will cause the scrape to
+fail. 0 means no limit.
+### fn withScheme
+
+```jsonnet
+withScheme(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+The URL scheme with which to fetch metrics from targets.
+### fn withScrapeFailureLogFile
+
+```jsonnet
+withScrapeFailureLogFile(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+File to which scrape failures are logged.
+### fn withScrapeInterval
+
+```jsonnet
+withScrapeInterval(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+How frequently to scrape the targets of this scrape config.
+### fn withScrapeProtocols
+
+```jsonnet
+withScrapeProtocols(value)
+```
+
+PARAMETERS:
+
+* **value** (`array`)
+
+The protocols to negotiate during a scrape. It tells clients what
+protocol are accepted by Prometheus and with what preference (most wanted is first).
+Supported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,
+OpenMetricsText1.0.0, PrometheusText1.0.0, PrometheusText0.0.4.
+### fn withScrapeProtocolsMixin
+
+```jsonnet
+withScrapeProtocolsMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`array`)
+
+The protocols to negotiate during a scrape. It tells clients what
+protocol are accepted by Prometheus and with what preference (most wanted is first).
+Supported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,
+OpenMetricsText1.0.0, PrometheusText1.0.0, PrometheusText0.0.4.
+### fn withScrapeTimeout
+
+```jsonnet
+withScrapeTimeout(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+The timeout for scraping targets of this config.
+### fn withTargetLimit
+
+```jsonnet
+withTargetLimit(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+More than this many targets after the target relabeling will cause the
+scrapes to fail. 0 means no limit.
+### fn withTrackTimestampsStaleness
+
+```jsonnet
+withTrackTimestampsStaleness(value=true)
+```
+
+PARAMETERS:
+
+* **value** (`boolean`)
+   - default value: `true`
+
+Indicator whether to track the staleness of the scraped timestamps.
 ### obj HTTPClientConfig
 
 
@@ -1439,139 +1693,3 @@ PARAMETERS:
 * **value** (`string`)
 
 Used to verify the hostname for the targets.
-### obj url
-
-
-#### fn url.withForceQuery
-
-```jsonnet
-url.withForceQuery(value=true)
-```
-
-PARAMETERS:
-
-* **value** (`boolean`)
-   - default value: `true`
-
-
-#### fn url.withFragment
-
-```jsonnet
-url.withFragment(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-
-#### fn url.withHost
-
-```jsonnet
-url.withHost(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-
-#### fn url.withOmitHost
-
-```jsonnet
-url.withOmitHost(value=true)
-```
-
-PARAMETERS:
-
-* **value** (`boolean`)
-   - default value: `true`
-
-
-#### fn url.withOpaque
-
-```jsonnet
-url.withOpaque(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-
-#### fn url.withPath
-
-```jsonnet
-url.withPath(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-
-#### fn url.withRawFragment
-
-```jsonnet
-url.withRawFragment(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-
-#### fn url.withRawPath
-
-```jsonnet
-url.withRawPath(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-
-#### fn url.withRawQuery
-
-```jsonnet
-url.withRawQuery(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-
-#### fn url.withScheme
-
-```jsonnet
-url.withScheme(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-
-#### fn url.withUser
-
-```jsonnet
-url.withUser(value)
-```
-
-PARAMETERS:
-
-* **value** (`object`)
-
-
-#### fn url.withUserMixin
-
-```jsonnet
-url.withUserMixin(value)
-```
-
-PARAMETERS:
-
-* **value** (`object`)
-

@@ -2,10 +2,16 @@
 
 
 
+## Subpackages
+
+* [write_relabel_configs](write_relabel_configs.md)
+
 ## Index
 
 * [`fn withAzuread(value)`](#fn-withazuread)
 * [`fn withAzureadMixin(value)`](#fn-withazureadmixin)
+* [`fn withGoogleIam(value)`](#fn-withgoogleiam)
+* [`fn withGoogleIamMixin(value)`](#fn-withgoogleiammixin)
 * [`fn withHTTPClientConfig(value)`](#fn-withhttpclientconfig)
 * [`fn withHTTPClientConfigMixin(value)`](#fn-withhttpclientconfigmixin)
 * [`fn withHeaders(value)`](#fn-withheaders)
@@ -13,6 +19,7 @@
 * [`fn withMetadataConfig(value)`](#fn-withmetadataconfig)
 * [`fn withMetadataConfigMixin(value)`](#fn-withmetadataconfigmixin)
 * [`fn withName(value)`](#fn-withname)
+* [`fn withProtobufMessage(value)`](#fn-withprotobufmessage)
 * [`fn withQueueConfig(value)`](#fn-withqueueconfig)
 * [`fn withQueueConfigMixin(value)`](#fn-withqueueconfigmixin)
 * [`fn withRemoteTimeout(value)`](#fn-withremotetimeout)
@@ -33,6 +40,8 @@
   * [`fn withBearerTokenFile(value)`](#fn-httpclientconfigwithbearertokenfile)
   * [`fn withEnableHttp2(value=true)`](#fn-httpclientconfigwithenablehttp2)
   * [`fn withFollowRedirects(value=true)`](#fn-httpclientconfigwithfollowredirects)
+  * [`fn withHttpHeaders(value)`](#fn-httpclientconfigwithhttpheaders)
+  * [`fn withHttpHeadersMixin(value)`](#fn-httpclientconfigwithhttpheadersmixin)
   * [`fn withNoProxy(value)`](#fn-httpclientconfigwithnoproxy)
   * [`fn withOauth2(value)`](#fn-httpclientconfigwithoauth2)
   * [`fn withOauth2Mixin(value)`](#fn-httpclientconfigwithoauth2mixin)
@@ -46,16 +55,23 @@
   * [`obj authorization`](#obj-httpclientconfigauthorization)
     * [`fn withCredentials(value)`](#fn-httpclientconfigauthorizationwithcredentials)
     * [`fn withCredentialsFile(value)`](#fn-httpclientconfigauthorizationwithcredentialsfile)
+    * [`fn withCredentialsRef(value)`](#fn-httpclientconfigauthorizationwithcredentialsref)
     * [`fn withType(value)`](#fn-httpclientconfigauthorizationwithtype)
   * [`obj basic_auth`](#obj-httpclientconfigbasic_auth)
     * [`fn withPassword(value)`](#fn-httpclientconfigbasic_authwithpassword)
     * [`fn withPasswordFile(value)`](#fn-httpclientconfigbasic_authwithpasswordfile)
+    * [`fn withPasswordRef(value)`](#fn-httpclientconfigbasic_authwithpasswordref)
     * [`fn withUsername(value)`](#fn-httpclientconfigbasic_authwithusername)
     * [`fn withUsernameFile(value)`](#fn-httpclientconfigbasic_authwithusernamefile)
+    * [`fn withUsernameRef(value)`](#fn-httpclientconfigbasic_authwithusernameref)
+  * [`obj http_headers`](#obj-httpclientconfighttp_headers)
+    * [`fn withHeaders(value)`](#fn-httpclientconfighttp_headerswithheaders)
+    * [`fn withHeadersMixin(value)`](#fn-httpclientconfighttp_headerswithheadersmixin)
   * [`obj oauth2`](#obj-httpclientconfigoauth2)
     * [`fn withClientId(value)`](#fn-httpclientconfigoauth2withclientid)
     * [`fn withClientSecret(value)`](#fn-httpclientconfigoauth2withclientsecret)
     * [`fn withClientSecretFile(value)`](#fn-httpclientconfigoauth2withclientsecretfile)
+    * [`fn withClientSecretRef(value)`](#fn-httpclientconfigoauth2withclientsecretref)
     * [`fn withEndpointParams(value)`](#fn-httpclientconfigoauth2withendpointparams)
     * [`fn withEndpointParamsMixin(value)`](#fn-httpclientconfigoauth2withendpointparamsmixin)
     * [`fn withNoProxy(value)`](#fn-httpclientconfigoauth2withnoproxy)
@@ -85,11 +101,14 @@
     * [`obj tls_config`](#obj-httpclientconfigoauth2tls_config)
       * [`fn withCa(value)`](#fn-httpclientconfigoauth2tls_configwithca)
       * [`fn withCaFile(value)`](#fn-httpclientconfigoauth2tls_configwithcafile)
+      * [`fn withCaRef(value)`](#fn-httpclientconfigoauth2tls_configwithcaref)
       * [`fn withCert(value)`](#fn-httpclientconfigoauth2tls_configwithcert)
       * [`fn withCertFile(value)`](#fn-httpclientconfigoauth2tls_configwithcertfile)
+      * [`fn withCertRef(value)`](#fn-httpclientconfigoauth2tls_configwithcertref)
       * [`fn withInsecureSkipVerify(value=true)`](#fn-httpclientconfigoauth2tls_configwithinsecureskipverify)
       * [`fn withKey(value)`](#fn-httpclientconfigoauth2tls_configwithkey)
       * [`fn withKeyFile(value)`](#fn-httpclientconfigoauth2tls_configwithkeyfile)
+      * [`fn withKeyRef(value)`](#fn-httpclientconfigoauth2tls_configwithkeyref)
       * [`fn withMaxVersion(value)`](#fn-httpclientconfigoauth2tls_configwithmaxversion)
       * [`fn withMinVersion(value)`](#fn-httpclientconfigoauth2tls_configwithminversion)
       * [`fn withServerName(value)`](#fn-httpclientconfigoauth2tls_configwithservername)
@@ -109,11 +128,14 @@
   * [`obj tls_config`](#obj-httpclientconfigtls_config)
     * [`fn withCa(value)`](#fn-httpclientconfigtls_configwithca)
     * [`fn withCaFile(value)`](#fn-httpclientconfigtls_configwithcafile)
+    * [`fn withCaRef(value)`](#fn-httpclientconfigtls_configwithcaref)
     * [`fn withCert(value)`](#fn-httpclientconfigtls_configwithcert)
     * [`fn withCertFile(value)`](#fn-httpclientconfigtls_configwithcertfile)
+    * [`fn withCertRef(value)`](#fn-httpclientconfigtls_configwithcertref)
     * [`fn withInsecureSkipVerify(value=true)`](#fn-httpclientconfigtls_configwithinsecureskipverify)
     * [`fn withKey(value)`](#fn-httpclientconfigtls_configwithkey)
     * [`fn withKeyFile(value)`](#fn-httpclientconfigtls_configwithkeyfile)
+    * [`fn withKeyRef(value)`](#fn-httpclientconfigtls_configwithkeyref)
     * [`fn withMaxVersion(value)`](#fn-httpclientconfigtls_configwithmaxversion)
     * [`fn withMinVersion(value)`](#fn-httpclientconfigtls_configwithminversion)
     * [`fn withServerName(value)`](#fn-httpclientconfigtls_configwithservername)
@@ -133,6 +155,11 @@
     * [`fn withTenantId(value)`](#fn-azureadoauthwithtenantid)
   * [`obj sdk`](#obj-azureadsdk)
     * [`fn withTenantId(value)`](#fn-azureadsdkwithtenantid)
+* [`obj google_iam`](#obj-google_iam)
+  * [`fn withConfig(value)`](#fn-google_iamwithconfig)
+  * [`fn withConfigMixin(value)`](#fn-google_iamwithconfigmixin)
+  * [`obj Config`](#obj-google_iamconfig)
+    * [`fn withCredentialsFile(value)`](#fn-google_iamconfigwithcredentialsfile)
 * [`obj metadata_config`](#obj-metadata_config)
   * [`fn withMaxSamplesPerSend(value)`](#fn-metadata_configwithmaxsamplespersend)
   * [`fn withSend(value=true)`](#fn-metadata_configwithsend)
@@ -166,16 +193,6 @@
   * [`fn withScheme(value)`](#fn-urlwithscheme)
   * [`fn withUser(value)`](#fn-urlwithuser)
   * [`fn withUserMixin(value)`](#fn-urlwithusermixin)
-* [`obj write_relabel_configs`](#obj-write_relabel_configs)
-  * [`fn withAction(value)`](#fn-write_relabel_configswithaction)
-  * [`fn withModulus(value)`](#fn-write_relabel_configswithmodulus)
-  * [`fn withRegex(value)`](#fn-write_relabel_configswithregex)
-  * [`fn withRegexMixin(value)`](#fn-write_relabel_configswithregexmixin)
-  * [`fn withReplacement(value)`](#fn-write_relabel_configswithreplacement)
-  * [`fn withSeparator(value)`](#fn-write_relabel_configswithseparator)
-  * [`fn withSourceLabels(value)`](#fn-write_relabel_configswithsourcelabels)
-  * [`fn withSourceLabelsMixin(value)`](#fn-write_relabel_configswithsourcelabelsmixin)
-  * [`fn withTargetLabel(value)`](#fn-write_relabel_configswithtargetlabel)
 
 ## Fields
 
@@ -194,6 +211,28 @@ PARAMETERS:
 
 ```jsonnet
 withAzureadMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+### fn withGoogleIam
+
+```jsonnet
+withGoogleIam(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+### fn withGoogleIamMixin
+
+```jsonnet
+withGoogleIamMixin(value)
 ```
 
 PARAMETERS:
@@ -278,6 +317,18 @@ PARAMETERS:
 * **value** (`string`)
 
 
+### fn withProtobufMessage
+
+```jsonnet
+withProtobufMessage(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+ProtobufMessage specifies the protobuf message to use against the remote
+receiver as specified in https://prometheus.io/docs/specs/remote_write_spec_2_0/
 ### fn withQueueConfig
 
 ```jsonnet
@@ -414,7 +465,7 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
+The HTTP authorization credentials for the targets.
 #### fn HTTPClientConfig.withAuthorizationMixin
 
 ```jsonnet
@@ -425,7 +476,7 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
+The HTTP authorization credentials for the targets.
 #### fn HTTPClientConfig.withBasicAuth
 
 ```jsonnet
@@ -500,6 +551,28 @@ PARAMETERS:
 FollowRedirects specifies whether the client should follow HTTP 3xx redirects.
 The omitempty flag is not set, because it would be hidden from the
 marshalled configuration when set to false.
+#### fn HTTPClientConfig.withHttpHeaders
+
+```jsonnet
+HTTPClientConfig.withHttpHeaders(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+Headers represents the configuration for HTTP headers.
+#### fn HTTPClientConfig.withHttpHeadersMixin
+
+```jsonnet
+HTTPClientConfig.withHttpHeadersMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+Headers represents the configuration for HTTP headers.
 #### fn HTTPClientConfig.withNoProxy
 
 ```jsonnet
@@ -543,7 +616,10 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
+ProxyConnectHeader optionally specifies headers to send to
+proxies during CONNECT requests. Assume that at least _some_ of
+these headers are going to contain secrets and use Secret as the
+value type instead of string.
 #### fn HTTPClientConfig.withProxyConnectHeaderMixin
 
 ```jsonnet
@@ -554,7 +630,10 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
+ProxyConnectHeader optionally specifies headers to send to
+proxies during CONNECT requests. Assume that at least _some_ of
+these headers are going to contain secrets and use Secret as the
+value type instead of string.
 #### fn HTTPClientConfig.withProxyFromEnvironment
 
 ```jsonnet
@@ -637,6 +716,17 @@ PARAMETERS:
 * **value** (`string`)
 
 
+##### fn HTTPClientConfig.authorization.withCredentialsRef
+
+```jsonnet
+HTTPClientConfig.authorization.withCredentialsRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+CredentialsRef is the name of the secret within the secret manager to use as credentials.
 ##### fn HTTPClientConfig.authorization.withType
 
 ```jsonnet
@@ -673,6 +763,17 @@ PARAMETERS:
 * **value** (`string`)
 
 
+##### fn HTTPClientConfig.basic_auth.withPasswordRef
+
+```jsonnet
+HTTPClientConfig.basic_auth.withPasswordRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+PasswordRef is the name of the secret within the secret manager to use as the password.
 ##### fn HTTPClientConfig.basic_auth.withUsername
 
 ```jsonnet
@@ -693,6 +794,42 @@ HTTPClientConfig.basic_auth.withUsernameFile(value)
 PARAMETERS:
 
 * **value** (`string`)
+
+
+##### fn HTTPClientConfig.basic_auth.withUsernameRef
+
+```jsonnet
+HTTPClientConfig.basic_auth.withUsernameRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+UsernameRef is the name of the secret within the secret manager to use as the username.
+#### obj HTTPClientConfig.http_headers
+
+
+##### fn HTTPClientConfig.http_headers.withHeaders
+
+```jsonnet
+HTTPClientConfig.http_headers.withHeaders(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+##### fn HTTPClientConfig.http_headers.withHeadersMixin
+
+```jsonnet
+HTTPClientConfig.http_headers.withHeadersMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
 
 
 #### obj HTTPClientConfig.oauth2
@@ -731,6 +868,18 @@ PARAMETERS:
 * **value** (`string`)
 
 
+##### fn HTTPClientConfig.oauth2.withClientSecretRef
+
+```jsonnet
+HTTPClientConfig.oauth2.withClientSecretRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+ClientSecretRef is the name of the secret within the secret manager to use as the client
+secret.
 ##### fn HTTPClientConfig.oauth2.withEndpointParams
 
 ```jsonnet
@@ -774,7 +923,10 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
+ProxyConnectHeader optionally specifies headers to send to
+proxies during CONNECT requests. Assume that at least _some_ of
+these headers are going to contain secrets and use Secret as the
+value type instead of string.
 ##### fn HTTPClientConfig.oauth2.withProxyConnectHeaderMixin
 
 ```jsonnet
@@ -785,7 +937,10 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
+ProxyConnectHeader optionally specifies headers to send to
+proxies during CONNECT requests. Assume that at least _some_ of
+these headers are going to contain secrets and use Secret as the
+value type instead of string.
 ##### fn HTTPClientConfig.oauth2.withProxyFromEnvironment
 
 ```jsonnet
@@ -1038,6 +1193,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+###### fn HTTPClientConfig.oauth2.tls_config.withCaRef
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withCaRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+CARef is the name of the secret within the secret manager to use as the CA cert for the
+targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withCert
 
 ```jsonnet
@@ -1060,6 +1227,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The client cert file for the targets.
+###### fn HTTPClientConfig.oauth2.tls_config.withCertRef
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withCertRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+CertRef is the name of the secret within the secret manager to use as the client cert for
+the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withInsecureSkipVerify
 
 ```jsonnet
@@ -1094,6 +1273,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The client key file for the targets.
+###### fn HTTPClientConfig.oauth2.tls_config.withKeyRef
+
+```jsonnet
+HTTPClientConfig.oauth2.tls_config.withKeyRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+KeyRef is the name of the secret within the secret manager to use as the client key for
+the targets.
 ###### fn HTTPClientConfig.oauth2.tls_config.withMaxVersion
 
 ```jsonnet
@@ -1289,6 +1480,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+##### fn HTTPClientConfig.tls_config.withCaRef
+
+```jsonnet
+HTTPClientConfig.tls_config.withCaRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+CARef is the name of the secret within the secret manager to use as the CA cert for the
+targets.
 ##### fn HTTPClientConfig.tls_config.withCert
 
 ```jsonnet
@@ -1311,6 +1514,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The client cert file for the targets.
+##### fn HTTPClientConfig.tls_config.withCertRef
+
+```jsonnet
+HTTPClientConfig.tls_config.withCertRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+CertRef is the name of the secret within the secret manager to use as the client cert for
+the targets.
 ##### fn HTTPClientConfig.tls_config.withInsecureSkipVerify
 
 ```jsonnet
@@ -1345,6 +1560,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The client key file for the targets.
+##### fn HTTPClientConfig.tls_config.withKeyRef
+
+```jsonnet
+HTTPClientConfig.tls_config.withKeyRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+KeyRef is the name of the secret within the secret manager to use as the client key for
+the targets.
 ##### fn HTTPClientConfig.tls_config.withMaxVersion
 
 ```jsonnet
@@ -1515,6 +1742,45 @@ PARAMETERS:
 
 ```jsonnet
 azuread.sdk.withTenantId(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+
+### obj google_iam
+
+
+#### fn google_iam.withConfig
+
+```jsonnet
+google_iam.withConfig(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+#### fn google_iam.withConfigMixin
+
+```jsonnet
+google_iam.withConfigMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+
+#### obj google_iam.Config
+
+
+##### fn google_iam.Config.withCredentialsFile
+
+```jsonnet
+google_iam.Config.withCredentialsFile(value)
 ```
 
 PARAMETERS:
@@ -1857,107 +2123,3 @@ PARAMETERS:
 
 * **value** (`object`)
 
-
-### obj write_relabel_configs
-
-
-#### fn write_relabel_configs.withAction
-
-```jsonnet
-write_relabel_configs.withAction(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-Action is the action to be performed for the relabeling.
-#### fn write_relabel_configs.withModulus
-
-```jsonnet
-write_relabel_configs.withModulus(value)
-```
-
-PARAMETERS:
-
-* **value** (`integer`)
-
-Modulus to take of the hash of concatenated values from the source labels.
-#### fn write_relabel_configs.withRegex
-
-```jsonnet
-write_relabel_configs.withRegex(value)
-```
-
-PARAMETERS:
-
-* **value** (`object`)
-
-Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
-#### fn write_relabel_configs.withRegexMixin
-
-```jsonnet
-write_relabel_configs.withRegexMixin(value)
-```
-
-PARAMETERS:
-
-* **value** (`object`)
-
-Regexp encapsulates a regexp.Regexp and makes it YAML marshalable.
-#### fn write_relabel_configs.withReplacement
-
-```jsonnet
-write_relabel_configs.withReplacement(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-Replacement is the regex replacement pattern to be used.
-#### fn write_relabel_configs.withSeparator
-
-```jsonnet
-write_relabel_configs.withSeparator(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-Separator is the string between concatenated values from the source labels.
-#### fn write_relabel_configs.withSourceLabels
-
-```jsonnet
-write_relabel_configs.withSourceLabels(value)
-```
-
-PARAMETERS:
-
-* **value** (`array`)
-
-LabelNames is a sortable LabelName slice.
-#### fn write_relabel_configs.withSourceLabelsMixin
-
-```jsonnet
-write_relabel_configs.withSourceLabelsMixin(value)
-```
-
-PARAMETERS:
-
-* **value** (`array`)
-
-LabelNames is a sortable LabelName slice.
-#### fn write_relabel_configs.withTargetLabel
-
-```jsonnet
-write_relabel_configs.withTargetLabel(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-TargetLabel is the label to which the resulting string is written in a replacement.
-Regexp interpolation is allowed for the replace action.

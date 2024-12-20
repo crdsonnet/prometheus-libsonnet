@@ -17,11 +17,14 @@
 * [`obj tls_config`](#obj-tls_config)
   * [`fn withCa(value)`](#fn-tls_configwithca)
   * [`fn withCaFile(value)`](#fn-tls_configwithcafile)
+  * [`fn withCaRef(value)`](#fn-tls_configwithcaref)
   * [`fn withCert(value)`](#fn-tls_configwithcert)
   * [`fn withCertFile(value)`](#fn-tls_configwithcertfile)
+  * [`fn withCertRef(value)`](#fn-tls_configwithcertref)
   * [`fn withInsecureSkipVerify(value=true)`](#fn-tls_configwithinsecureskipverify)
   * [`fn withKey(value)`](#fn-tls_configwithkey)
   * [`fn withKeyFile(value)`](#fn-tls_configwithkeyfile)
+  * [`fn withKeyRef(value)`](#fn-tls_configwithkeyref)
   * [`fn withMaxVersion(value)`](#fn-tls_configwithmaxversion)
   * [`fn withMinVersion(value)`](#fn-tls_configwithminversion)
   * [`fn withServerName(value)`](#fn-tls_configwithservername)
@@ -164,6 +167,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The CA cert to use for the targets.
+#### fn tls_config.withCaRef
+
+```jsonnet
+tls_config.withCaRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+CARef is the name of the secret within the secret manager to use as the CA cert for the
+targets.
 #### fn tls_config.withCert
 
 ```jsonnet
@@ -186,6 +201,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The client cert file for the targets.
+#### fn tls_config.withCertRef
+
+```jsonnet
+tls_config.withCertRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+CertRef is the name of the secret within the secret manager to use as the client cert for
+the targets.
 #### fn tls_config.withInsecureSkipVerify
 
 ```jsonnet
@@ -220,6 +247,18 @@ PARAMETERS:
 * **value** (`string`)
 
 The client key file for the targets.
+#### fn tls_config.withKeyRef
+
+```jsonnet
+tls_config.withKeyRef(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+KeyRef is the name of the secret within the secret manager to use as the client key for
+the targets.
 #### fn tls_config.withMaxVersion
 
 ```jsonnet

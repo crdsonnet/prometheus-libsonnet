@@ -20,11 +20,13 @@ local prometheusConfig = import "github.com/crdsonnet/prometheus-libsonnet/prome
 
 ## Subpackages
 
-* [alerting](alerting.md)
-* [global](global.md)
+* [alerting](alerting/index.md)
+* [global](global/index.md)
+* [otlp](otlp.md)
 * [remote_read](remote_read.md)
-* [remote_write](remote_write.md)
-* [scrape_configs](scrape_configs.md)
+* [remote_write](remote_write/index.md)
+* [runtime](runtime.md)
+* [scrape_configs](scrape_configs/index.md)
 * [storage](storage.md)
 * [tracing](tracing.md)
 
@@ -34,12 +36,16 @@ local prometheusConfig = import "github.com/crdsonnet/prometheus-libsonnet/prome
 * [`fn withAlertingMixin(value)`](#fn-withalertingmixin)
 * [`fn withGlobal(value)`](#fn-withglobal)
 * [`fn withGlobalMixin(value)`](#fn-withglobalmixin)
+* [`fn withOtlp(value)`](#fn-withotlp)
+* [`fn withOtlpMixin(value)`](#fn-withotlpmixin)
 * [`fn withRemoteRead(value)`](#fn-withremoteread)
 * [`fn withRemoteReadMixin(value)`](#fn-withremotereadmixin)
 * [`fn withRemoteWrite(value)`](#fn-withremotewrite)
 * [`fn withRemoteWriteMixin(value)`](#fn-withremotewritemixin)
 * [`fn withRuleFiles(value)`](#fn-withrulefiles)
 * [`fn withRuleFilesMixin(value)`](#fn-withrulefilesmixin)
+* [`fn withRuntime(value)`](#fn-withruntime)
+* [`fn withRuntimeMixin(value)`](#fn-withruntimemixin)
 * [`fn withScrapeConfigFiles(value)`](#fn-withscrapeconfigfiles)
 * [`fn withScrapeConfigFilesMixin(value)`](#fn-withscrapeconfigfilesmixin)
 * [`fn withScrapeConfigs(value)`](#fn-withscrapeconfigs)
@@ -95,6 +101,28 @@ PARAMETERS:
 * **value** (`object`)
 
 GlobalConfig configures values that are used across other configuration objects.
+### fn withOtlp
+
+```jsonnet
+withOtlp(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+OTLPConfig is the configuration for writing to the OTLP endpoint.
+### fn withOtlpMixin
+
+```jsonnet
+withOtlpMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+OTLPConfig is the configuration for writing to the OTLP endpoint.
 ### fn withRemoteRead
 
 ```jsonnet
@@ -161,6 +189,28 @@ PARAMETERS:
 * **value** (`array`)
 
 
+### fn withRuntime
+
+```jsonnet
+withRuntime(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+RuntimeConfig configures the values for the process behavior.
+### fn withRuntimeMixin
+
+```jsonnet
+withRuntimeMixin(value)
+```
+
+PARAMETERS:
+
+* **value** (`object`)
+
+RuntimeConfig configures the values for the process behavior.
 ### fn withScrapeConfigFiles
 
 ```jsonnet
