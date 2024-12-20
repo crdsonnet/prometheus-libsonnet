@@ -104,13 +104,13 @@
           },
           HTTPClientConfig+:
             {
-              '#withAuthorization': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              '#withAuthorization': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'The HTTP authorization credentials for the targets.' } },
               withAuthorization(value): {
                 HTTPClientConfig+: {
                   authorization: value,
                 },
               },
-              '#withAuthorizationMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              '#withAuthorizationMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'The HTTP authorization credentials for the targets.' } },
               withAuthorizationMixin(value): {
                 HTTPClientConfig+: {
                   authorization+: value,
@@ -131,6 +131,14 @@
                     HTTPClientConfig+: {
                       authorization+: {
                         credentials_file: value,
+                      },
+                    },
+                  },
+                  '#withCredentialsRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CredentialsRef is the name of the secret within the secret manager to use as credentials.' } },
+                  withCredentialsRef(value): {
+                    HTTPClientConfig+: {
+                      authorization+: {
+                        credentials_ref: value,
                       },
                     },
                   },
@@ -173,6 +181,14 @@
                       },
                     },
                   },
+                  '#withPasswordRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'PasswordRef is the name of the secret within the secret manager to use as the password.' } },
+                  withPasswordRef(value): {
+                    HTTPClientConfig+: {
+                      basic_auth+: {
+                        password_ref: value,
+                      },
+                    },
+                  },
                   '#withUsername': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: '' } },
                   withUsername(value): {
                     HTTPClientConfig+: {
@@ -186,6 +202,14 @@
                     HTTPClientConfig+: {
                       basic_auth+: {
                         username_file: value,
+                      },
+                    },
+                  },
+                  '#withUsernameRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'UsernameRef is the name of the secret within the secret manager to use as the username.' } },
+                  withUsernameRef(value): {
+                    HTTPClientConfig+: {
+                      basic_auth+: {
+                        username_ref: value,
                       },
                     },
                   },
@@ -214,6 +238,37 @@
                   follow_redirects: value,
                 },
               },
+              '#withHttpHeaders': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'Headers represents the configuration for HTTP headers.' } },
+              withHttpHeaders(value): {
+                HTTPClientConfig+: {
+                  http_headers: value,
+                },
+              },
+              '#withHttpHeadersMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'Headers represents the configuration for HTTP headers.' } },
+              withHttpHeadersMixin(value): {
+                HTTPClientConfig+: {
+                  http_headers+: value,
+                },
+              },
+              http_headers+:
+                {
+                  '#withHeaders': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+                  withHeaders(value): {
+                    HTTPClientConfig+: {
+                      http_headers+: {
+                        Headers: value,
+                      },
+                    },
+                  },
+                  '#withHeadersMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+                  withHeadersMixin(value): {
+                    HTTPClientConfig+: {
+                      http_headers+: {
+                        Headers+: value,
+                      },
+                    },
+                  },
+                },
               '#withNoProxy': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'NoProxy contains addresses that should not use a proxy.' } },
               withNoProxy(value): {
                 HTTPClientConfig+: {
@@ -258,6 +313,14 @@
                       },
                     },
                   },
+                  '#withClientSecretRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'ClientSecretRef is the name of the secret within the secret manager to use as the client\nsecret.' } },
+                  withClientSecretRef(value): {
+                    HTTPClientConfig+: {
+                      oauth2+: {
+                        client_secret_ref: value,
+                      },
+                    },
+                  },
                   '#withEndpointParams': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
                   withEndpointParams(value): {
                     HTTPClientConfig+: {
@@ -282,7 +345,7 @@
                       },
                     },
                   },
-                  '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+                  '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
                   withProxyConnectHeader(value): {
                     HTTPClientConfig+: {
                       oauth2+: {
@@ -290,7 +353,7 @@
                       },
                     },
                   },
-                  '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+                  '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
                   withProxyConnectHeaderMixin(value): {
                     HTTPClientConfig+: {
                       oauth2+: {
@@ -505,6 +568,16 @@
                           },
                         },
                       },
+                      '#withCaRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CARef is the name of the secret within the secret manager to use as the CA cert for the\ntargets.' } },
+                      withCaRef(value): {
+                        HTTPClientConfig+: {
+                          oauth2+: {
+                            tls_config+: {
+                              ca_ref: value,
+                            },
+                          },
+                        },
+                      },
                       '#withCert': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'Text of the client cert file for the targets.' } },
                       withCert(value): {
                         HTTPClientConfig+: {
@@ -521,6 +594,16 @@
                           oauth2+: {
                             tls_config+: {
                               cert_file: value,
+                            },
+                          },
+                        },
+                      },
+                      '#withCertRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CertRef is the name of the secret within the secret manager to use as the client cert for\nthe targets.' } },
+                      withCertRef(value): {
+                        HTTPClientConfig+: {
+                          oauth2+: {
+                            tls_config+: {
+                              cert_ref: value,
                             },
                           },
                         },
@@ -551,6 +634,16 @@
                           oauth2+: {
                             tls_config+: {
                               key_file: value,
+                            },
+                          },
+                        },
+                      },
+                      '#withKeyRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'KeyRef is the name of the secret within the secret manager to use as the client key for\nthe targets.' } },
+                      withKeyRef(value): {
+                        HTTPClientConfig+: {
+                          oauth2+: {
+                            tls_config+: {
+                              key_ref: value,
                             },
                           },
                         },
@@ -595,13 +688,13 @@
                     },
                   },
                 },
-              '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
               withProxyConnectHeader(value): {
                 HTTPClientConfig+: {
                   proxy_connect_header: value,
                 },
               },
-              '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
               withProxyConnectHeaderMixin(value): {
                 HTTPClientConfig+: {
                   proxy_connect_header+: value,
@@ -754,6 +847,14 @@
                       },
                     },
                   },
+                  '#withCaRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CARef is the name of the secret within the secret manager to use as the CA cert for the\ntargets.' } },
+                  withCaRef(value): {
+                    HTTPClientConfig+: {
+                      tls_config+: {
+                        ca_ref: value,
+                      },
+                    },
+                  },
                   '#withCert': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'Text of the client cert file for the targets.' } },
                   withCert(value): {
                     HTTPClientConfig+: {
@@ -767,6 +868,14 @@
                     HTTPClientConfig+: {
                       tls_config+: {
                         cert_file: value,
+                      },
+                    },
+                  },
+                  '#withCertRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CertRef is the name of the secret within the secret manager to use as the client cert for\nthe targets.' } },
+                  withCertRef(value): {
+                    HTTPClientConfig+: {
+                      tls_config+: {
+                        cert_ref: value,
                       },
                     },
                   },
@@ -791,6 +900,14 @@
                     HTTPClientConfig+: {
                       tls_config+: {
                         key_file: value,
+                      },
+                    },
+                  },
+                  '#withKeyRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'KeyRef is the name of the secret within the secret manager to use as the client key for\nthe targets.' } },
+                  withKeyRef(value): {
+                    HTTPClientConfig+: {
+                      tls_config+: {
+                        key_ref: value,
                       },
                     },
                   },
@@ -1021,7 +1138,7 @@
           evaluation_interval: value,
         },
       },
-      '#withExternalLabels': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: 'Labels is implemented by a single flat string holding name/value pairs.' } },
+      '#withExternalLabels': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: 'Labels is a sorted set of labels.' } },
       withExternalLabels(value): {
         global+: {
           external_labels:
@@ -1030,7 +1147,7 @@
              else [value]),
         },
       },
-      '#withExternalLabelsMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: 'Labels is implemented by a single flat string holding name/value pairs.' } },
+      '#withExternalLabelsMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: 'Labels is a sorted set of labels.' } },
       withExternalLabelsMixin(value): {
         global+: {
           external_labels+:
@@ -1075,16 +1192,34 @@
           label_value_length_limit: value,
         },
       },
+      '#withMetricNameValidationScheme': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'Allow UTF8 Metric and Label Names.' } },
+      withMetricNameValidationScheme(value): {
+        global+: {
+          metric_name_validation_scheme: value,
+        },
+      },
       '#withQueryLogFile': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'File to which PromQL queries are logged.' } },
       withQueryLogFile(value): {
         global+: {
           query_log_file: value,
         },
       },
+      '#withRuleQueryOffset': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['integer'] }], help: 'Offset the rule evaluation timestamp of this particular group by the specified duration into the past to ensure the underlying metrics have been received.' } },
+      withRuleQueryOffset(value): {
+        global+: {
+          rule_query_offset: value,
+        },
+      },
       '#withSampleLimit': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['integer'] }], help: 'More than this many samples post metric-relabeling will cause the scrape to\nfail. 0 means no limit.' } },
       withSampleLimit(value): {
         global+: {
           sample_limit: value,
+        },
+      },
+      '#withScrapeFailureLogFile': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'File to which scrape failures are logged.' } },
+      withScrapeFailureLogFile(value): {
+        global+: {
+          scrape_failure_log_file: value,
         },
       },
       '#withScrapeInterval': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['integer'] }], help: 'How frequently to scrape targets by default.' } },
@@ -1124,6 +1259,41 @@
         },
       },
     },
+  '#withOtlp': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'OTLPConfig is the configuration for writing to the OTLP endpoint.' } },
+  withOtlp(value): {
+    otlp: value,
+  },
+  '#withOtlpMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'OTLPConfig is the configuration for writing to the OTLP endpoint.' } },
+  withOtlpMixin(value): {
+    otlp+: value,
+  },
+  otlp+:
+    {
+      '#withPromoteResourceAttributes': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: '' } },
+      withPromoteResourceAttributes(value): {
+        otlp+: {
+          promote_resource_attributes:
+            (if std.isArray(value)
+             then value
+             else [value]),
+        },
+      },
+      '#withPromoteResourceAttributesMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: '' } },
+      withPromoteResourceAttributesMixin(value): {
+        otlp+: {
+          promote_resource_attributes+:
+            (if std.isArray(value)
+             then value
+             else [value]),
+        },
+      },
+      '#withTranslationStrategy': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: '' } },
+      withTranslationStrategy(value): {
+        otlp+: {
+          translation_strategy: value,
+        },
+      },
+    },
   '#withRemoteRead': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: '' } },
   withRemoteRead(value): {
     remote_read:
@@ -1151,13 +1321,13 @@
       },
       HTTPClientConfig+:
         {
-          '#withAuthorization': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          '#withAuthorization': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'The HTTP authorization credentials for the targets.' } },
           withAuthorization(value): {
             HTTPClientConfig+: {
               authorization: value,
             },
           },
-          '#withAuthorizationMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          '#withAuthorizationMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'The HTTP authorization credentials for the targets.' } },
           withAuthorizationMixin(value): {
             HTTPClientConfig+: {
               authorization+: value,
@@ -1178,6 +1348,14 @@
                 HTTPClientConfig+: {
                   authorization+: {
                     credentials_file: value,
+                  },
+                },
+              },
+              '#withCredentialsRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CredentialsRef is the name of the secret within the secret manager to use as credentials.' } },
+              withCredentialsRef(value): {
+                HTTPClientConfig+: {
+                  authorization+: {
+                    credentials_ref: value,
                   },
                 },
               },
@@ -1220,6 +1398,14 @@
                   },
                 },
               },
+              '#withPasswordRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'PasswordRef is the name of the secret within the secret manager to use as the password.' } },
+              withPasswordRef(value): {
+                HTTPClientConfig+: {
+                  basic_auth+: {
+                    password_ref: value,
+                  },
+                },
+              },
               '#withUsername': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: '' } },
               withUsername(value): {
                 HTTPClientConfig+: {
@@ -1233,6 +1419,14 @@
                 HTTPClientConfig+: {
                   basic_auth+: {
                     username_file: value,
+                  },
+                },
+              },
+              '#withUsernameRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'UsernameRef is the name of the secret within the secret manager to use as the username.' } },
+              withUsernameRef(value): {
+                HTTPClientConfig+: {
+                  basic_auth+: {
+                    username_ref: value,
                   },
                 },
               },
@@ -1261,6 +1455,37 @@
               follow_redirects: value,
             },
           },
+          '#withHttpHeaders': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'Headers represents the configuration for HTTP headers.' } },
+          withHttpHeaders(value): {
+            HTTPClientConfig+: {
+              http_headers: value,
+            },
+          },
+          '#withHttpHeadersMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'Headers represents the configuration for HTTP headers.' } },
+          withHttpHeadersMixin(value): {
+            HTTPClientConfig+: {
+              http_headers+: value,
+            },
+          },
+          http_headers+:
+            {
+              '#withHeaders': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              withHeaders(value): {
+                HTTPClientConfig+: {
+                  http_headers+: {
+                    Headers: value,
+                  },
+                },
+              },
+              '#withHeadersMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              withHeadersMixin(value): {
+                HTTPClientConfig+: {
+                  http_headers+: {
+                    Headers+: value,
+                  },
+                },
+              },
+            },
           '#withNoProxy': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'NoProxy contains addresses that should not use a proxy.' } },
           withNoProxy(value): {
             HTTPClientConfig+: {
@@ -1305,6 +1530,14 @@
                   },
                 },
               },
+              '#withClientSecretRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'ClientSecretRef is the name of the secret within the secret manager to use as the client\nsecret.' } },
+              withClientSecretRef(value): {
+                HTTPClientConfig+: {
+                  oauth2+: {
+                    client_secret_ref: value,
+                  },
+                },
+              },
               '#withEndpointParams': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
               withEndpointParams(value): {
                 HTTPClientConfig+: {
@@ -1329,7 +1562,7 @@
                   },
                 },
               },
-              '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
               withProxyConnectHeader(value): {
                 HTTPClientConfig+: {
                   oauth2+: {
@@ -1337,7 +1570,7 @@
                   },
                 },
               },
-              '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
               withProxyConnectHeaderMixin(value): {
                 HTTPClientConfig+: {
                   oauth2+: {
@@ -1552,6 +1785,16 @@
                       },
                     },
                   },
+                  '#withCaRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CARef is the name of the secret within the secret manager to use as the CA cert for the\ntargets.' } },
+                  withCaRef(value): {
+                    HTTPClientConfig+: {
+                      oauth2+: {
+                        tls_config+: {
+                          ca_ref: value,
+                        },
+                      },
+                    },
+                  },
                   '#withCert': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'Text of the client cert file for the targets.' } },
                   withCert(value): {
                     HTTPClientConfig+: {
@@ -1568,6 +1811,16 @@
                       oauth2+: {
                         tls_config+: {
                           cert_file: value,
+                        },
+                      },
+                    },
+                  },
+                  '#withCertRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CertRef is the name of the secret within the secret manager to use as the client cert for\nthe targets.' } },
+                  withCertRef(value): {
+                    HTTPClientConfig+: {
+                      oauth2+: {
+                        tls_config+: {
+                          cert_ref: value,
                         },
                       },
                     },
@@ -1598,6 +1851,16 @@
                       oauth2+: {
                         tls_config+: {
                           key_file: value,
+                        },
+                      },
+                    },
+                  },
+                  '#withKeyRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'KeyRef is the name of the secret within the secret manager to use as the client key for\nthe targets.' } },
+                  withKeyRef(value): {
+                    HTTPClientConfig+: {
+                      oauth2+: {
+                        tls_config+: {
+                          key_ref: value,
                         },
                       },
                     },
@@ -1642,13 +1905,13 @@
                 },
               },
             },
-          '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
           withProxyConnectHeader(value): {
             HTTPClientConfig+: {
               proxy_connect_header: value,
             },
           },
-          '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
           withProxyConnectHeaderMixin(value): {
             HTTPClientConfig+: {
               proxy_connect_header+: value,
@@ -1801,6 +2064,14 @@
                   },
                 },
               },
+              '#withCaRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CARef is the name of the secret within the secret manager to use as the CA cert for the\ntargets.' } },
+              withCaRef(value): {
+                HTTPClientConfig+: {
+                  tls_config+: {
+                    ca_ref: value,
+                  },
+                },
+              },
               '#withCert': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'Text of the client cert file for the targets.' } },
               withCert(value): {
                 HTTPClientConfig+: {
@@ -1814,6 +2085,14 @@
                 HTTPClientConfig+: {
                   tls_config+: {
                     cert_file: value,
+                  },
+                },
+              },
+              '#withCertRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CertRef is the name of the secret within the secret manager to use as the client cert for\nthe targets.' } },
+              withCertRef(value): {
+                HTTPClientConfig+: {
+                  tls_config+: {
+                    cert_ref: value,
                   },
                 },
               },
@@ -1838,6 +2117,14 @@
                 HTTPClientConfig+: {
                   tls_config+: {
                     key_file: value,
+                  },
+                },
+              },
+              '#withKeyRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'KeyRef is the name of the secret within the secret manager to use as the client key for\nthe targets.' } },
+              withKeyRef(value): {
+                HTTPClientConfig+: {
+                  tls_config+: {
+                    key_ref: value,
                   },
                 },
               },
@@ -1867,6 +2154,10 @@
               },
             },
         },
+      '#withChunkedReadLimit': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['integer'] }], help: '' } },
+      withChunkedReadLimit(value): {
+        chunked_read_limit: value,
+      },
       '#withFilterExternalLabels': { 'function': { args: [{ default: true, enums: null, name: 'value', type: ['boolean'] }], help: 'Whether to use the external labels as selectors for the remote read endpoint.' } },
       withFilterExternalLabels(value=true): {
         filter_external_labels: value,
@@ -2010,13 +2301,13 @@
       },
       HTTPClientConfig+:
         {
-          '#withAuthorization': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          '#withAuthorization': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'The HTTP authorization credentials for the targets.' } },
           withAuthorization(value): {
             HTTPClientConfig+: {
               authorization: value,
             },
           },
-          '#withAuthorizationMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          '#withAuthorizationMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'The HTTP authorization credentials for the targets.' } },
           withAuthorizationMixin(value): {
             HTTPClientConfig+: {
               authorization+: value,
@@ -2037,6 +2328,14 @@
                 HTTPClientConfig+: {
                   authorization+: {
                     credentials_file: value,
+                  },
+                },
+              },
+              '#withCredentialsRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CredentialsRef is the name of the secret within the secret manager to use as credentials.' } },
+              withCredentialsRef(value): {
+                HTTPClientConfig+: {
+                  authorization+: {
+                    credentials_ref: value,
                   },
                 },
               },
@@ -2079,6 +2378,14 @@
                   },
                 },
               },
+              '#withPasswordRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'PasswordRef is the name of the secret within the secret manager to use as the password.' } },
+              withPasswordRef(value): {
+                HTTPClientConfig+: {
+                  basic_auth+: {
+                    password_ref: value,
+                  },
+                },
+              },
               '#withUsername': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: '' } },
               withUsername(value): {
                 HTTPClientConfig+: {
@@ -2092,6 +2399,14 @@
                 HTTPClientConfig+: {
                   basic_auth+: {
                     username_file: value,
+                  },
+                },
+              },
+              '#withUsernameRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'UsernameRef is the name of the secret within the secret manager to use as the username.' } },
+              withUsernameRef(value): {
+                HTTPClientConfig+: {
+                  basic_auth+: {
+                    username_ref: value,
                   },
                 },
               },
@@ -2120,6 +2435,37 @@
               follow_redirects: value,
             },
           },
+          '#withHttpHeaders': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'Headers represents the configuration for HTTP headers.' } },
+          withHttpHeaders(value): {
+            HTTPClientConfig+: {
+              http_headers: value,
+            },
+          },
+          '#withHttpHeadersMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'Headers represents the configuration for HTTP headers.' } },
+          withHttpHeadersMixin(value): {
+            HTTPClientConfig+: {
+              http_headers+: value,
+            },
+          },
+          http_headers+:
+            {
+              '#withHeaders': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              withHeaders(value): {
+                HTTPClientConfig+: {
+                  http_headers+: {
+                    Headers: value,
+                  },
+                },
+              },
+              '#withHeadersMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              withHeadersMixin(value): {
+                HTTPClientConfig+: {
+                  http_headers+: {
+                    Headers+: value,
+                  },
+                },
+              },
+            },
           '#withNoProxy': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'NoProxy contains addresses that should not use a proxy.' } },
           withNoProxy(value): {
             HTTPClientConfig+: {
@@ -2164,6 +2510,14 @@
                   },
                 },
               },
+              '#withClientSecretRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'ClientSecretRef is the name of the secret within the secret manager to use as the client\nsecret.' } },
+              withClientSecretRef(value): {
+                HTTPClientConfig+: {
+                  oauth2+: {
+                    client_secret_ref: value,
+                  },
+                },
+              },
               '#withEndpointParams': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
               withEndpointParams(value): {
                 HTTPClientConfig+: {
@@ -2188,7 +2542,7 @@
                   },
                 },
               },
-              '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
               withProxyConnectHeader(value): {
                 HTTPClientConfig+: {
                   oauth2+: {
@@ -2196,7 +2550,7 @@
                   },
                 },
               },
-              '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
               withProxyConnectHeaderMixin(value): {
                 HTTPClientConfig+: {
                   oauth2+: {
@@ -2411,6 +2765,16 @@
                       },
                     },
                   },
+                  '#withCaRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CARef is the name of the secret within the secret manager to use as the CA cert for the\ntargets.' } },
+                  withCaRef(value): {
+                    HTTPClientConfig+: {
+                      oauth2+: {
+                        tls_config+: {
+                          ca_ref: value,
+                        },
+                      },
+                    },
+                  },
                   '#withCert': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'Text of the client cert file for the targets.' } },
                   withCert(value): {
                     HTTPClientConfig+: {
@@ -2427,6 +2791,16 @@
                       oauth2+: {
                         tls_config+: {
                           cert_file: value,
+                        },
+                      },
+                    },
+                  },
+                  '#withCertRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CertRef is the name of the secret within the secret manager to use as the client cert for\nthe targets.' } },
+                  withCertRef(value): {
+                    HTTPClientConfig+: {
+                      oauth2+: {
+                        tls_config+: {
+                          cert_ref: value,
                         },
                       },
                     },
@@ -2457,6 +2831,16 @@
                       oauth2+: {
                         tls_config+: {
                           key_file: value,
+                        },
+                      },
+                    },
+                  },
+                  '#withKeyRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'KeyRef is the name of the secret within the secret manager to use as the client key for\nthe targets.' } },
+                  withKeyRef(value): {
+                    HTTPClientConfig+: {
+                      oauth2+: {
+                        tls_config+: {
+                          key_ref: value,
                         },
                       },
                     },
@@ -2501,13 +2885,13 @@
                 },
               },
             },
-          '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
           withProxyConnectHeader(value): {
             HTTPClientConfig+: {
               proxy_connect_header: value,
             },
           },
-          '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
           withProxyConnectHeaderMixin(value): {
             HTTPClientConfig+: {
               proxy_connect_header+: value,
@@ -2660,6 +3044,14 @@
                   },
                 },
               },
+              '#withCaRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CARef is the name of the secret within the secret manager to use as the CA cert for the\ntargets.' } },
+              withCaRef(value): {
+                HTTPClientConfig+: {
+                  tls_config+: {
+                    ca_ref: value,
+                  },
+                },
+              },
               '#withCert': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'Text of the client cert file for the targets.' } },
               withCert(value): {
                 HTTPClientConfig+: {
@@ -2673,6 +3065,14 @@
                 HTTPClientConfig+: {
                   tls_config+: {
                     cert_file: value,
+                  },
+                },
+              },
+              '#withCertRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CertRef is the name of the secret within the secret manager to use as the client cert for\nthe targets.' } },
+              withCertRef(value): {
+                HTTPClientConfig+: {
+                  tls_config+: {
+                    cert_ref: value,
                   },
                 },
               },
@@ -2697,6 +3097,14 @@
                 HTTPClientConfig+: {
                   tls_config+: {
                     key_file: value,
+                  },
+                },
+              },
+              '#withKeyRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'KeyRef is the name of the secret within the secret manager to use as the client key for\nthe targets.' } },
+              withKeyRef(value): {
+                HTTPClientConfig+: {
+                  tls_config+: {
+                    key_ref: value,
                   },
                 },
               },
@@ -2828,6 +3236,40 @@
               },
             },
         },
+      '#withGoogleIam': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+      withGoogleIam(value): {
+        google_iam: value,
+      },
+      '#withGoogleIamMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+      withGoogleIamMixin(value): {
+        google_iam+: value,
+      },
+      google_iam+:
+        {
+          '#withConfig': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          withConfig(value): {
+            google_iam+: {
+              Config: value,
+            },
+          },
+          '#withConfigMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          withConfigMixin(value): {
+            google_iam+: {
+              Config+: value,
+            },
+          },
+          Config+:
+            {
+              '#withCredentialsFile': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: '' } },
+              withCredentialsFile(value): {
+                google_iam+: {
+                  Config+: {
+                    credentials_file: value,
+                  },
+                },
+              },
+            },
+        },
       '#withHeaders': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
       withHeaders(value): {
         headers: value,
@@ -2868,6 +3310,10 @@
       '#withName': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: '' } },
       withName(value): {
         name: value,
+      },
+      '#withProtobufMessage': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'ProtobufMessage specifies the protobuf message to use against the remote\nreceiver as specified in https://prometheus.io/docs/specs/remote_write_spec_2_0/' } },
+      withProtobufMessage(value): {
+        protobuf_message: value,
       },
       '#withQueueConfig': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'QueueConfig is the configuration for the queue used to write to remote storage.' } },
       withQueueConfig(value): {
@@ -3145,6 +3591,23 @@
        then value
        else [value]),
   },
+  '#withRuntime': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'RuntimeConfig configures the values for the process behavior.' } },
+  withRuntime(value): {
+    runtime: value,
+  },
+  '#withRuntimeMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'RuntimeConfig configures the values for the process behavior.' } },
+  withRuntimeMixin(value): {
+    runtime+: value,
+  },
+  runtime+:
+    {
+      '#withGogc': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['integer'] }], help: 'The Go garbage collection target percentage.' } },
+      withGogc(value): {
+        runtime+: {
+          gogc: value,
+        },
+      },
+    },
   '#withScrapeConfigFiles': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: '' } },
   withScrapeConfigFiles(value): {
     scrape_config_files:
@@ -3186,13 +3649,13 @@
       },
       HTTPClientConfig+:
         {
-          '#withAuthorization': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          '#withAuthorization': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'The HTTP authorization credentials for the targets.' } },
           withAuthorization(value): {
             HTTPClientConfig+: {
               authorization: value,
             },
           },
-          '#withAuthorizationMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          '#withAuthorizationMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'The HTTP authorization credentials for the targets.' } },
           withAuthorizationMixin(value): {
             HTTPClientConfig+: {
               authorization+: value,
@@ -3213,6 +3676,14 @@
                 HTTPClientConfig+: {
                   authorization+: {
                     credentials_file: value,
+                  },
+                },
+              },
+              '#withCredentialsRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CredentialsRef is the name of the secret within the secret manager to use as credentials.' } },
+              withCredentialsRef(value): {
+                HTTPClientConfig+: {
+                  authorization+: {
+                    credentials_ref: value,
                   },
                 },
               },
@@ -3255,6 +3726,14 @@
                   },
                 },
               },
+              '#withPasswordRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'PasswordRef is the name of the secret within the secret manager to use as the password.' } },
+              withPasswordRef(value): {
+                HTTPClientConfig+: {
+                  basic_auth+: {
+                    password_ref: value,
+                  },
+                },
+              },
               '#withUsername': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: '' } },
               withUsername(value): {
                 HTTPClientConfig+: {
@@ -3268,6 +3747,14 @@
                 HTTPClientConfig+: {
                   basic_auth+: {
                     username_file: value,
+                  },
+                },
+              },
+              '#withUsernameRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'UsernameRef is the name of the secret within the secret manager to use as the username.' } },
+              withUsernameRef(value): {
+                HTTPClientConfig+: {
+                  basic_auth+: {
+                    username_ref: value,
                   },
                 },
               },
@@ -3296,6 +3783,37 @@
               follow_redirects: value,
             },
           },
+          '#withHttpHeaders': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'Headers represents the configuration for HTTP headers.' } },
+          withHttpHeaders(value): {
+            HTTPClientConfig+: {
+              http_headers: value,
+            },
+          },
+          '#withHttpHeadersMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'Headers represents the configuration for HTTP headers.' } },
+          withHttpHeadersMixin(value): {
+            HTTPClientConfig+: {
+              http_headers+: value,
+            },
+          },
+          http_headers+:
+            {
+              '#withHeaders': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              withHeaders(value): {
+                HTTPClientConfig+: {
+                  http_headers+: {
+                    Headers: value,
+                  },
+                },
+              },
+              '#withHeadersMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              withHeadersMixin(value): {
+                HTTPClientConfig+: {
+                  http_headers+: {
+                    Headers+: value,
+                  },
+                },
+              },
+            },
           '#withNoProxy': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'NoProxy contains addresses that should not use a proxy.' } },
           withNoProxy(value): {
             HTTPClientConfig+: {
@@ -3340,6 +3858,14 @@
                   },
                 },
               },
+              '#withClientSecretRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'ClientSecretRef is the name of the secret within the secret manager to use as the client\nsecret.' } },
+              withClientSecretRef(value): {
+                HTTPClientConfig+: {
+                  oauth2+: {
+                    client_secret_ref: value,
+                  },
+                },
+              },
               '#withEndpointParams': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
               withEndpointParams(value): {
                 HTTPClientConfig+: {
@@ -3364,7 +3890,7 @@
                   },
                 },
               },
-              '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
               withProxyConnectHeader(value): {
                 HTTPClientConfig+: {
                   oauth2+: {
@@ -3372,7 +3898,7 @@
                   },
                 },
               },
-              '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+              '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
               withProxyConnectHeaderMixin(value): {
                 HTTPClientConfig+: {
                   oauth2+: {
@@ -3587,6 +4113,16 @@
                       },
                     },
                   },
+                  '#withCaRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CARef is the name of the secret within the secret manager to use as the CA cert for the\ntargets.' } },
+                  withCaRef(value): {
+                    HTTPClientConfig+: {
+                      oauth2+: {
+                        tls_config+: {
+                          ca_ref: value,
+                        },
+                      },
+                    },
+                  },
                   '#withCert': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'Text of the client cert file for the targets.' } },
                   withCert(value): {
                     HTTPClientConfig+: {
@@ -3603,6 +4139,16 @@
                       oauth2+: {
                         tls_config+: {
                           cert_file: value,
+                        },
+                      },
+                    },
+                  },
+                  '#withCertRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CertRef is the name of the secret within the secret manager to use as the client cert for\nthe targets.' } },
+                  withCertRef(value): {
+                    HTTPClientConfig+: {
+                      oauth2+: {
+                        tls_config+: {
+                          cert_ref: value,
                         },
                       },
                     },
@@ -3633,6 +4179,16 @@
                       oauth2+: {
                         tls_config+: {
                           key_file: value,
+                        },
+                      },
+                    },
+                  },
+                  '#withKeyRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'KeyRef is the name of the secret within the secret manager to use as the client key for\nthe targets.' } },
+                  withKeyRef(value): {
+                    HTTPClientConfig+: {
+                      oauth2+: {
+                        tls_config+: {
+                          key_ref: value,
                         },
                       },
                     },
@@ -3677,13 +4233,13 @@
                 },
               },
             },
-          '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          '#withProxyConnectHeader': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
           withProxyConnectHeader(value): {
             HTTPClientConfig+: {
               proxy_connect_header: value,
             },
           },
-          '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+          '#withProxyConnectHeaderMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string.' } },
           withProxyConnectHeaderMixin(value): {
             HTTPClientConfig+: {
               proxy_connect_header+: value,
@@ -3836,6 +4392,14 @@
                   },
                 },
               },
+              '#withCaRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CARef is the name of the secret within the secret manager to use as the CA cert for the\ntargets.' } },
+              withCaRef(value): {
+                HTTPClientConfig+: {
+                  tls_config+: {
+                    ca_ref: value,
+                  },
+                },
+              },
               '#withCert': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'Text of the client cert file for the targets.' } },
               withCert(value): {
                 HTTPClientConfig+: {
@@ -3849,6 +4413,14 @@
                 HTTPClientConfig+: {
                   tls_config+: {
                     cert_file: value,
+                  },
+                },
+              },
+              '#withCertRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CertRef is the name of the secret within the secret manager to use as the client cert for\nthe targets.' } },
+              withCertRef(value): {
+                HTTPClientConfig+: {
+                  tls_config+: {
+                    cert_ref: value,
                   },
                 },
               },
@@ -3873,6 +4445,14 @@
                 HTTPClientConfig+: {
                   tls_config+: {
                     key_file: value,
+                  },
+                },
+              },
+              '#withKeyRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'KeyRef is the name of the secret within the secret manager to use as the client key for\nthe targets.' } },
+              withKeyRef(value): {
+                HTTPClientConfig+: {
+                  tls_config+: {
+                    key_ref: value,
                   },
                 },
               },
@@ -3902,13 +4482,25 @@
               },
             },
         },
+      '#withAlwaysScrapeClassicHistograms': { 'function': { args: [{ default: true, enums: null, name: 'value', type: ['boolean'] }], help: 'Whether to scrape a classic histogram, even if it is also exposed as a native histogram.' } },
+      withAlwaysScrapeClassicHistograms(value=true): {
+        always_scrape_classic_histograms: value,
+      },
       '#withBodySizeLimit': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['integer'] }], help: 'An uncompressed response body larger than this many bytes will cause the\nscrape to fail. 0 means no limit.' } },
       withBodySizeLimit(value): {
         body_size_limit: value,
       },
+      '#withConvertClassicHistogramsToNhcb': { 'function': { args: [{ default: true, enums: null, name: 'value', type: ['boolean'] }], help: 'Whether to convert all scraped classic histograms into a native histogram with custom buckets.' } },
+      withConvertClassicHistogramsToNhcb(value=true): {
+        convert_classic_histograms_to_nhcb: value,
+      },
       '#withEnableCompression': { 'function': { args: [{ default: true, enums: null, name: 'value', type: ['boolean'] }], help: 'Indicator whether to request compressed response from the target.' } },
       withEnableCompression(value=true): {
         enable_compression: value,
+      },
+      '#withFallbackScrapeProtocol': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'The fallback protocol to use if the Content-Type provided by the target\nis not provided, blank, or not one of the expected values.\nSupported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,\nOpenMetricsText1.0.0, PrometheusText1.0.0, PrometheusText0.0.4.' } },
+      withFallbackScrapeProtocol(value): {
+        fallback_scrape_protocol: value,
       },
       '#withHonorLabels': { 'function': { args: [{ default: true, enums: null, name: 'value', type: ['boolean'] }], help: 'Indicator whether the scraped metrics should remain unmodified.' } },
       withHonorLabels(value=true): {
@@ -3937,6 +4529,10 @@
       '#withLabelValueLengthLimit': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['integer'] }], help: 'More than this label value length post metric-relabeling will cause the\nscrape to fail. 0 means no limit.' } },
       withLabelValueLengthLimit(value): {
         label_value_length_limit: value,
+      },
+      '#withMetricNameValidationScheme': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'Allow UTF8 Metric and Label Names.' } },
+      withMetricNameValidationScheme(value): {
+        metric_name_validation_scheme: value,
       },
       '#withMetricRelabelConfigs': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: 'List of metric relabel configurations.' } },
       withMetricRelabelConfigs(value): {
@@ -4010,11 +4606,11 @@
       withNativeHistogramMinBucketFactor(value): {
         native_histogram_min_bucket_factor: value,
       },
-      '#withParams': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+      '#withParams': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'A set of query parameters with which the target is scraped.' } },
       withParams(value): {
         params: value,
       },
-      '#withParamsMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: '' } },
+      '#withParamsMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['object'] }], help: 'A set of query parameters with which the target is scraped.' } },
       withParamsMixin(value): {
         params+: value,
       },
@@ -4086,22 +4682,22 @@
       withScheme(value): {
         scheme: value,
       },
-      '#withScrapeClassicHistograms': { 'function': { args: [{ default: true, enums: null, name: 'value', type: ['boolean'] }], help: 'Whether to scrape a classic histogram that is also exposed as a native histogram.' } },
-      withScrapeClassicHistograms(value=true): {
-        scrape_classic_histograms: value,
+      '#withScrapeFailureLogFile': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'File to which scrape failures are logged.' } },
+      withScrapeFailureLogFile(value): {
+        scrape_failure_log_file: value,
       },
       '#withScrapeInterval': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['integer'] }], help: 'How frequently to scrape the targets of this scrape config.' } },
       withScrapeInterval(value): {
         scrape_interval: value,
       },
-      '#withScrapeProtocols': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: 'The protocols to negotiate during a scrape. It tells clients what\nprotocol are accepted by Prometheus and with what preference (most wanted is first).\nSupported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,\nOpenMetricsText1.0.0, PrometheusText0.0.4.' } },
+      '#withScrapeProtocols': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: 'The protocols to negotiate during a scrape. It tells clients what\nprotocol are accepted by Prometheus and with what preference (most wanted is first).\nSupported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,\nOpenMetricsText1.0.0, PrometheusText1.0.0, PrometheusText0.0.4.' } },
       withScrapeProtocols(value): {
         scrape_protocols:
           (if std.isArray(value)
            then value
            else [value]),
       },
-      '#withScrapeProtocolsMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: 'The protocols to negotiate during a scrape. It tells clients what\nprotocol are accepted by Prometheus and with what preference (most wanted is first).\nSupported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,\nOpenMetricsText1.0.0, PrometheusText0.0.4.' } },
+      '#withScrapeProtocolsMixin': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['array'] }], help: 'The protocols to negotiate during a scrape. It tells clients what\nprotocol are accepted by Prometheus and with what preference (most wanted is first).\nSupported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,\nOpenMetricsText1.0.0, PrometheusText1.0.0, PrometheusText0.0.4.' } },
       withScrapeProtocolsMixin(value): {
         scrape_protocols+:
           (if std.isArray(value)
@@ -4266,6 +4862,14 @@
               },
             },
           },
+          '#withCaRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CARef is the name of the secret within the secret manager to use as the CA cert for the\ntargets.' } },
+          withCaRef(value): {
+            tracing+: {
+              tls_config+: {
+                ca_ref: value,
+              },
+            },
+          },
           '#withCert': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'Text of the client cert file for the targets.' } },
           withCert(value): {
             tracing+: {
@@ -4279,6 +4883,14 @@
             tracing+: {
               tls_config+: {
                 cert_file: value,
+              },
+            },
+          },
+          '#withCertRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'CertRef is the name of the secret within the secret manager to use as the client cert for\nthe targets.' } },
+          withCertRef(value): {
+            tracing+: {
+              tls_config+: {
+                cert_ref: value,
               },
             },
           },
@@ -4303,6 +4915,14 @@
             tracing+: {
               tls_config+: {
                 key_file: value,
+              },
+            },
+          },
+          '#withKeyRef': { 'function': { args: [{ default: null, enums: null, name: 'value', type: ['string'] }], help: 'KeyRef is the name of the secret within the secret manager to use as the client key for\nthe targets.' } },
+          withKeyRef(value): {
+            tracing+: {
+              tls_config+: {
+                key_ref: value,
               },
             },
           },

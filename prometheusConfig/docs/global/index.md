@@ -2,6 +2,10 @@
 
 
 
+## Subpackages
+
+* [external_labels](external_labels.md)
+
 ## Index
 
 * [`fn withBodySizeLimit(value)`](#fn-withbodysizelimit)
@@ -12,16 +16,16 @@
 * [`fn withLabelLimit(value)`](#fn-withlabellimit)
 * [`fn withLabelNameLengthLimit(value)`](#fn-withlabelnamelengthlimit)
 * [`fn withLabelValueLengthLimit(value)`](#fn-withlabelvaluelengthlimit)
+* [`fn withMetricNameValidationScheme(value)`](#fn-withmetricnamevalidationscheme)
 * [`fn withQueryLogFile(value)`](#fn-withquerylogfile)
+* [`fn withRuleQueryOffset(value)`](#fn-withrulequeryoffset)
 * [`fn withSampleLimit(value)`](#fn-withsamplelimit)
+* [`fn withScrapeFailureLogFile(value)`](#fn-withscrapefailurelogfile)
 * [`fn withScrapeInterval(value)`](#fn-withscrapeinterval)
 * [`fn withScrapeProtocols(value)`](#fn-withscrapeprotocols)
 * [`fn withScrapeProtocolsMixin(value)`](#fn-withscrapeprotocolsmixin)
 * [`fn withScrapeTimeout(value)`](#fn-withscrapetimeout)
 * [`fn withTargetLimit(value)`](#fn-withtargetlimit)
-* [`obj external_labels`](#obj-external_labels)
-  * [`fn withName(value)`](#fn-external_labelswithname)
-  * [`fn withValue(value)`](#fn-external_labelswithvalue)
 
 ## Fields
 
@@ -118,6 +122,17 @@ PARAMETERS:
 
 More than this label value length post metric-relabeling will cause the
 scrape to fail. 0 means no limit.
+### fn withMetricNameValidationScheme
+
+```jsonnet
+withMetricNameValidationScheme(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+Allow UTF8 Metric and Label Names.
 ### fn withQueryLogFile
 
 ```jsonnet
@@ -129,6 +144,17 @@ PARAMETERS:
 * **value** (`string`)
 
 File to which PromQL queries are logged.
+### fn withRuleQueryOffset
+
+```jsonnet
+withRuleQueryOffset(value)
+```
+
+PARAMETERS:
+
+* **value** (`integer`)
+
+Offset the rule evaluation timestamp of this particular group by the specified duration into the past to ensure the underlying metrics have been received.
 ### fn withSampleLimit
 
 ```jsonnet
@@ -141,6 +167,17 @@ PARAMETERS:
 
 More than this many samples post metric-relabeling will cause the scrape to
 fail. 0 means no limit.
+### fn withScrapeFailureLogFile
+
+```jsonnet
+withScrapeFailureLogFile(value)
+```
+
+PARAMETERS:
+
+* **value** (`string`)
+
+File to which scrape failures are logged.
 ### fn withScrapeInterval
 
 ```jsonnet
@@ -203,27 +240,3 @@ PARAMETERS:
 
 More than this many targets after the target relabeling will cause the
 scrapes to fail. 0 means no limit.
-### obj external_labels
-
-
-#### fn external_labels.withName
-
-```jsonnet
-external_labels.withName(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-
-
-#### fn external_labels.withValue
-
-```jsonnet
-external_labels.withValue(value)
-```
-
-PARAMETERS:
-
-* **value** (`string`)
-

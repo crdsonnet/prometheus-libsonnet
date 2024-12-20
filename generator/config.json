@@ -83,6 +83,10 @@
         },
         "credentials_file": {
           "type": "string"
+        },
+        "credentials_ref": {
+          "type": "string",
+          "description": "CredentialsRef is the name of the secret within the secret manager to use as credentials."
         }
       },
       "additionalProperties": false,
@@ -114,11 +118,19 @@
         "username_file": {
           "type": "string"
         },
+        "username_ref": {
+          "type": "string",
+          "description": "UsernameRef is the name of the secret within the secret manager to use as the username."
+        },
         "password": {
           "type": "string"
         },
         "password_file": {
           "type": "string"
+        },
+        "password_ref": {
+          "type": "string",
+          "description": "PasswordRef is the name of the secret within the secret manager to use as the password."
         }
       },
       "additionalProperties": false,
@@ -132,6 +144,9 @@
       "properties": {
         "global": {
           "$ref": "#/$defs/GlobalConfig"
+        },
+        "runtime": {
+          "$ref": "#/$defs/RuntimeConfig"
         },
         "alerting": {
           "$ref": "#/$defs/AlertingConfig"
@@ -171,6 +186,9 @@
             "$ref": "#/$defs/RemoteReadConfig"
           },
           "type": "array"
+        },
+        "otlp": {
+          "$ref": "#/$defs/OTLPConfig"
         }
       },
       "additionalProperties": false,
@@ -212,9 +230,17 @@
           "type": "integer",
           "description": "How frequently to evaluate rules by default."
         },
+        "rule_query_offset": {
+          "type": "integer",
+          "description": "Offset the rule evaluation timestamp of this particular group by the specified duration into the past to ensure the underlying metrics have been received."
+        },
         "query_log_file": {
           "type": "string",
           "description": "File to which PromQL queries are logged."
+        },
+        "scrape_failure_log_file": {
+          "type": "string",
+          "description": "File to which scrape failures are logged."
         },
         "external_labels": {
           "$ref": "#/$defs/Labels",
@@ -247,6 +273,10 @@
         "keep_dropped_targets": {
           "type": "integer",
           "description": "Keep no more than this many dropped targets per job.\n0 means no limit."
+        },
+        "metric_name_validation_scheme": {
+          "type": "string",
+          "description": "Allow UTF8 Metric and Label Names."
         }
       },
       "additionalProperties": false,
@@ -254,13 +284,45 @@
       "description": "GlobalConfig configures values that are used across other configuration objects."
     },
     "Header": {
-      "additionalProperties": {
-        "items": {
-          "type": "string"
+      "properties": {
+        "values": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         },
-        "type": "array"
+        "secrets": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "files": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
       },
-      "type": "object"
+      "additionalProperties": false,
+      "type": "object",
+      "description": "Header represents the configuration for a single HTTP header."
+    },
+    "Headers": {
+      "properties": {
+        "Headers": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Header"
+          },
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "required": [
+        "Headers"
+      ],
+      "description": "Headers represents the configuration for HTTP headers."
     },
     "HttpclientConfig": {
       "properties": {
@@ -309,8 +371,12 @@
           "description": "ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function\nto determine proxies."
         },
         "proxy_connect_header": {
-          "$ref": "#/$defs/Header",
+          "$ref": "#/$defs/ProxyHeader",
           "description": "ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string."
+        },
+        "http_headers": {
+          "$ref": "#/$defs/Headers",
+          "description": "HTTPHeaders specify headers to inject in the requests. Those headers\ncould be marshalled back to the users."
         }
       },
       "additionalProperties": false,
@@ -391,6 +457,22 @@
       ],
       "description": "MetadataConfig is the configuration for sending metadata to remote storage."
     },
+    "OTLPConfig": {
+      "properties": {
+        "promote_resource_attributes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "translation_strategy": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "description": "OTLPConfig is the configuration for writing to the OTLP endpoint."
+    },
     "Oauth2": {
       "properties": {
         "client_id": {
@@ -401,6 +483,10 @@
         },
         "client_secret_file": {
           "type": "string"
+        },
+        "client_secret_ref": {
+          "type": "string",
+          "description": "ClientSecretRef is the name of the secret within the secret manager to use as the client\nsecret."
         },
         "scopes": {
           "items": {
@@ -433,7 +519,7 @@
           "description": "ProxyFromEnvironment makes use of net/http ProxyFromEnvironment function\nto determine proxies."
         },
         "proxy_connect_header": {
-          "$ref": "#/$defs/Header",
+          "$ref": "#/$defs/ProxyHeader",
           "description": "ProxyConnectHeader optionally specifies headers to send to\nproxies during CONNECT requests. Assume that at least _some_ of\nthese headers are going to contain secrets and use Secret as the\nvalue type instead of string."
         }
       },
@@ -443,6 +529,7 @@
         "client_id",
         "client_secret",
         "client_secret_file",
+        "client_secret_ref",
         "token_url"
       ],
       "description": "OAuth2 is the oauth2 client configuration."
@@ -460,6 +547,15 @@
         }
       },
       "additionalProperties": false,
+      "type": "object"
+    },
+    "ProxyHeader": {
+      "additionalProperties": {
+        "items": {
+          "type": "string"
+        },
+        "type": "array"
+      },
       "type": "object"
     },
     "QueueConfig": {
@@ -552,6 +648,9 @@
         "remote_timeout": {
           "type": "integer"
         },
+        "chunked_read_limit": {
+          "type": "integer"
+        },
         "headers": {
           "additionalProperties": {
             "type": "string"
@@ -614,6 +713,10 @@
         "send_native_histograms": {
           "type": "boolean"
         },
+        "protobuf_message": {
+          "type": "string",
+          "description": "ProtobufMessage specifies the protobuf message to use against the remote\nreceiver as specified in https://prometheus.io/docs/specs/remote_write_spec_2_0/"
+        },
         "HTTPClientConfig": {
           "$ref": "#/$defs/HttpclientConfig",
           "description": "We cannot do proper Go type embedding below as the parser will then parse\nvalues arbitrarily into the overflow maps of further-down types."
@@ -629,6 +732,9 @@
         },
         "azuread": {
           "$ref": "#/$defs/AzureAdconfig"
+        },
+        "google_iam": {
+          "$ref": "#/$defs/Config"
         }
       },
       "additionalProperties": false,
@@ -638,6 +744,17 @@
         "HTTPClientConfig"
       ],
       "description": "RemoteWriteConfig is the configuration for writing to remote storage."
+    },
+    "RuntimeConfig": {
+      "properties": {
+        "gogc": {
+          "type": "integer",
+          "description": "The Go garbage collection target percentage."
+        }
+      },
+      "additionalProperties": false,
+      "type": "object",
+      "description": "RuntimeConfig configures the values for the process behavior."
     },
     "ScrapeConfig": {
       "properties": {
@@ -674,11 +791,23 @@
             "type": "string"
           },
           "type": "array",
-          "description": "The protocols to negotiate during a scrape. It tells clients what\nprotocol are accepted by Prometheus and with what preference (most wanted is first).\nSupported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,\nOpenMetricsText1.0.0, PrometheusText0.0.4."
+          "description": "The protocols to negotiate during a scrape. It tells clients what\nprotocol are accepted by Prometheus and with what preference (most wanted is first).\nSupported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,\nOpenMetricsText1.0.0, PrometheusText1.0.0, PrometheusText0.0.4."
         },
-        "scrape_classic_histograms": {
+        "fallback_scrape_protocol": {
+          "type": "string",
+          "description": "The fallback protocol to use if the Content-Type provided by the target\nis not provided, blank, or not one of the expected values.\nSupported values (case sensitive): PrometheusProto, OpenMetricsText0.0.1,\nOpenMetricsText1.0.0, PrometheusText1.0.0, PrometheusText0.0.4."
+        },
+        "always_scrape_classic_histograms": {
           "type": "boolean",
-          "description": "Whether to scrape a classic histogram that is also exposed as a native histogram."
+          "description": "Whether to scrape a classic histogram, even if it is also exposed as a native histogram."
+        },
+        "convert_classic_histograms_to_nhcb": {
+          "type": "boolean",
+          "description": "Whether to convert all scraped classic histograms into a native histogram with custom buckets."
+        },
+        "scrape_failure_log_file": {
+          "type": "string",
+          "description": "File to which scrape failures are logged."
         },
         "metrics_path": {
           "type": "string",
@@ -727,6 +856,10 @@
         "keep_dropped_targets": {
           "type": "integer",
           "description": "Keep no more than this many dropped targets per job.\n0 means no limit."
+        },
+        "metric_name_validation_scheme": {
+          "type": "string",
+          "description": "Allow UTF8 Metric and Label Names."
         },
         "HTTPClientConfig": {
           "$ref": "#/$defs/HttpclientConfig"
@@ -843,6 +976,18 @@
         "key_file": {
           "type": "string",
           "description": "The client key file for the targets."
+        },
+        "ca_ref": {
+          "type": "string",
+          "description": "CARef is the name of the secret within the secret manager to use as the CA cert for the\ntargets."
+        },
+        "cert_ref": {
+          "type": "string",
+          "description": "CertRef is the name of the secret within the secret manager to use as the client cert for\nthe targets."
+        },
+        "key_ref": {
+          "type": "string",
+          "description": "KeyRef is the name of the secret within the secret manager to use as the client key for\nthe targets."
         },
         "server_name": {
           "type": "string",
