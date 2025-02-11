@@ -98,7 +98,8 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
           port,
           self.path,
         ],
-      ]),
+      ])
+      + k.util.resourcesRequests('10m', '10Mi'),
 
     local policyRule = k.rbac.v1.policyRule,
     rbac:
