@@ -65,7 +65,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         ]
       ),
       newRule(name, expr)::
-        super.withRule(name)
+        super.withRecord(name)
         + super.withExpr(expr),
     },
 }
