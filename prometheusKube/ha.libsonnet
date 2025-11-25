@@ -48,7 +48,7 @@ function(replicas=2) {
     + container.startupProbe.withPeriodSeconds(30)
   ,
 
-  watch_container+::
+  reload_container+::
     container.withEnv([
       envVar.fromFieldPath('POD_NAME', 'metadata.name'),
     ]),

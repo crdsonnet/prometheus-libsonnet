@@ -3,6 +3,8 @@ local k = import 'github.com/grafana/jsonnet-libs/ksonnet-util/kausal.libsonnet'
 local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
 
 {
+    local container = k.core.v1.container,
+    local volumeMount = k.core.v1.volumeMount,
   '#'::
     d.pkg(
       name='prometheusKube',
@@ -33,6 +35,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         d.arg('name', d.T.string, default='prometheus'),
         d.arg('image', d.T.string, default='prom/prometheus:v2.43.0'),
         d.arg('watchImage', d.T.string, default='weaveworks/watch:master-0c44bf6'),
+        d.arg('configmapReloadImage', d.T.string, default=''),
         d.arg('port', d.T.number, default=9090),
       ]
     ),
@@ -41,6 +44,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
     name='prometheus',
     image='prom/prometheus:v2.43.0',
     watchImage='weaveworks/watch:master-0c44bf6',
+    configmapReloadImage='quay.io/coreos/configmap-reload:v0.5.0',
     port=9090,
   ): {
     local this = self,
@@ -59,8 +63,6 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         [this.config_file]: k.util.manifestYaml(this.config),
       }),
 
-    local container = k.core.v1.container,
-    local volumeMount = k.core.v1.volumeMount,
     container::
       container.new('prometheus', image)
       + container.withPorts([
@@ -81,25 +83,22 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
       + k.util.resourcesRequests('250m', '1536Mi')
       + k.util.resourcesLimits('500m', '2Gi'),
 
-    watch_container::
-      container.new('watch', watchImage)
-      + container.withArgs([
-        '-v',
-        '-t',
-        '-p=' + self.config_path,
-        'curl',
-        '-X',
-        'POST',
-        '--fail',
-        '-o',
-        '-',
-        '-sS',
-        'http://localhost:%s%s-/reload' % [
-          port,
-          self.path,
-        ],
-      ])
-      + k.util.resourcesRequests('10m', '10Mi'),
+      // // configmap-reload container
+      // local configmap_reload_image = 'quay.io/coreos/configmap-reload:v0.5.0',
+      // local configmap_reload_container = container.new('configmap-reload', configmap_reload_image),
+      // configmap_reload_container:: configmap_reload_container + container.withArgs([
+      //   '--volume-path=%s' % self.config_path,
+      //   '--web.listen-address=:%s' % self.port,
+      //   '--webhook-url=http://localhost:%s%s-/reload' % [self.port, self.path],
+      //   '--webhook-retries=3',
+      // ])
+//      + configmap_reload_container.withVolumeMountsMixin(
+//        volumeMount.new(self.config_map.metadata.name, '%s/configmaps' % self.config_path)
+//      )
+      // + k.util.resourcesRequests('10m', '10Mi')
+      // + k.util.resourcesLimits('20m', '20Mi'),
+
+
 
     local policyRule = k.rbac.v1.policyRule,
     rbac:
@@ -137,7 +136,7 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
         1,  // use withHighAvailability(replicas) to increase
         [
           self.container,
-          self.watch_container,
+          self.reload_container,
         ],
         self.pvc
       )
@@ -345,6 +344,47 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
     ),
   withAlertmanagers(alertmanagers): {
     config+: prometheusConfig.alerting.withAlertmanagers(alertmanagers),
+  },
+
+  '#withWatchContainer'::
+    d.func.new(
+      |||
+        `withWatchContainer` configures the watch container.
+      |||,
+    ),
+      withWatchContainer(image='weaveworks/watch:master-0c44bf6'): {
+    reload_container:: container.new('watch', image) + container.withArgs([
+        '-v',
+        '-t',
+        '-p=' + self.config_path,
+        'curl',
+        '-X',
+        'POST',
+        '--fail',
+        '-o',
+        '-',
+        '-sS',
+        'http://localhost:%s%s-/reload' % [
+          port,
+          self.path,
+        ],
+      ])
+      + k.util.resourcesRequests('10m', '10Mi'),
+  },
+
+  '#withConfigmapReload'::
+    d.func.new(
+      |||
+        `withConfigmapReload` configures the configmap-reload container.
+      |||,
+    ),
+  withConfigmapReload(image='quay.io/coreos/configmap-reload:v0.5.0'): {
+    reload_container:: container.new('configmap-reload', image) + container.withArgs([
+      '--volume-path=%s' % self.config_path,
+      '--web.listen-address=:%s' % self.port,
+      '--webhook-url=http://localhost:%s%s-/reload' % [self.port, self.path],
+      '--webhook-retries=3',
+    ]) + k.util.resourcesRequests('10m', '10Mi') + k.util.resourcesLimits('20m', '20Mi'),
   },
 
   util: (import './util.libsonnet'),
