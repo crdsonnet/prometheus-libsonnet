@@ -202,6 +202,43 @@ local d = import 'github.com/jsonnet-libs/docsonnet/doc-util/main.libsonnet';
     config+: config,
   },
 
+  '#withAutoReload'::
+    d.func.new(
+      |||
+        `withAutoReload` replaces the `weaveworks/watch` sidecar with Prometheus's
+        native `auto-reload-config` feature (available since v3.0). It adds
+        `auto-reload-config` to the enabled feature flags, configures the reload
+        interval, and removes the `watch` container from the StatefulSet.
+      |||,
+      args=[
+        d.arg('interval', d.T.string, default='30s'),
+      ]
+    ),
+  withAutoReload(interval='30s'): {
+    container+: {
+      args: std.map(
+        function(a)
+          if std.startsWith(a, '--enable-feature=')
+          then a + ',auto-reload-config'
+          else a,
+        super.args,
+      ) + ['--config.auto-reload-interval=%s' % interval],
+    },
+
+    statefulset+: {
+      spec+: {
+        template+: {
+          spec+: {
+            containers: std.filter(
+              function(c) c.name != 'watch',
+              super.containers,
+            ),
+          },
+        },
+      },
+    },
+  },
+
   '#withEnabledFeatures'::
     d.func.new(
       |||
